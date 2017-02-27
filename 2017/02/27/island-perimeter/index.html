@@ -6,17 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://faramita.us">
-  <title>Tag: algorithm | 之言片语</title>
+  <title>463. Island Perimeter | 之言片语</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Just a blog for some thinkings.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="之言片语">
-<meta property="og:url" content="http://faramita.us/tags/algorithm/index.html">
+  <meta name="description" content="DescriptionDifficulty: Easy
+You are given a map in form of a two-dimensional integer grid where 1 represents land and 0 represents water. Grid cells are connected horizontally/vertically (not diagonal">
+<meta property="og:type" content="article">
+<meta property="og:title" content="463. Island Perimeter">
+<meta property="og:url" content="http://faramita.us/2017/02/27/island-perimeter/index.html">
 <meta property="og:site_name" content="之言片语">
-<meta property="og:description" content="Just a blog for some thinkings.">
+<meta property="og:description" content="DescriptionDifficulty: Easy
+You are given a map in form of a two-dimensional integer grid where 1 represents land and 0 represents water. Grid cells are connected horizontally/vertically (not diagonal">
+<meta property="og:updated_time" content="2017-02-26T17:38:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="之言片语">
-<meta name="twitter:description" content="Just a blog for some thinkings.">
+<meta name="twitter:title" content="463. Island Perimeter">
+<meta name="twitter:description" content="DescriptionDifficulty: Easy
+You are given a map in form of a two-dimensional integer grid where 1 represents land and 0 represents water. Grid cells are connected horizontally/vertically (not diagonal">
   
     <link rel="alternative" href="/atom.xml" title="之言片语" type="application/atom+xml">
   
@@ -148,36 +152,40 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-island-perimeter" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      463. Island Perimeter
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/27/island-perimeter/" class="archive-article-date">
+
+        
+        <a href="/2017/02/27/island-perimeter/" class="archive-article-date">
   	<time datetime="2017-02-26T17:35:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-27</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/27/island-perimeter/">463. Island Perimeter</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
+<p>You are given a map in form of a two-dimensional integer grid where 1 represents land and 0 represents water. Grid cells are connected horizontally/vertically (not diagonally). The grid is completely surrounded by water, and there is exactly one island (i.e., one or more connected land cells). The island doesn’t have “lakes” (water inside that isn’t connected to the water around the island). One cell is a square with side length 1. The grid is rectangular, width and height don’t exceed 100. Determine the perimeter of the island.</p>
+<h2 id="Example"><a href="#Example" class="headerlink" title="Example:"></a>Example:</h2><p>[[0,1,0,0],<br> [1,1,1,0],<br> [0,1,0,0],<br> [1,1,0,0]]</p>
+<p>Answer: 16<br>Explanation: The perimeter is the 16 yellow stripes in the image below:<br><a href="https://leetcode.com/static/images/problemset/island.png" target="_blank" rel="external">island</a></p>
+<p>找 1 组成的「岛」的边界。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>1 与 0 交替时、以及 1 元素越界时为边界。<br>定义了一个方法，探测该位置是否为 0，或坐标包含负数，或数组越界。对 1 周围元素使用这个方法，这些情况边界长度加一。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">testSurround</span><span class="params">(grid, perimeter, x, y)</span>:</span></div><div class="line">    <span class="keyword">if</span> x &lt; <span class="number">0</span> <span class="keyword">or</span> y &lt; <span class="number">0</span>:</div><div class="line">        perimeter += <span class="number">1</span></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">try</span>:</div><div class="line">            z = grid[x][y]</div><div class="line">        <span class="keyword">except</span> IndexError:</div><div class="line">            perimeter += <span class="number">1</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">if</span> z == <span class="number">0</span>:</div><div class="line">               perimeter += <span class="number">1</span></div><div class="line">    <span class="keyword">return</span> perimeter</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">islandPerimeter</span><span class="params">(self, grid)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type grid: List[List[int]]</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        perimeter = <span class="number">0</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(grid)):</div><div class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> xrange(len(grid[i])):</div><div class="line">                <span class="keyword">if</span> grid[i][j] == <span class="number">1</span>:</div><div class="line">                    perimeter = testSurround(grid, perimeter, i, j - <span class="number">1</span>)</div><div class="line">                    perimeter = testSurround(grid, perimeter, i, j + <span class="number">1</span>)</div><div class="line">                    perimeter = testSurround(grid, perimeter, i - <span class="number">1</span>, j)</div><div class="line">                    perimeter = testSurround(grid, perimeter, i + <span class="number">1</span>, j)</div><div class="line">        <span class="keyword">return</span> perimeter</div></pre></td></tr></table></figure>
+      
 
-        <div class="article-info info-on-right">
-          
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -189,171 +197,88 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://faramita.us/2017/02/27/island-perimeter/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/25/add-two-numbers/" class="archive-article-date">
-  	<time datetime="2017-02-24T16:01:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-25</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/25/add-two-numbers/">2. Add Two Numbers</a>
-    </h1>
+  
+    <a href="/2017/02/25/add-two-numbers/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">2. Add Two Numbers</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/23/longest-substring-without-repeating-characters/" class="archive-article-date">
-  	<time datetime="2017-02-23T04:19:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/23/longest-substring-without-repeating-characters/">3. Longest Substring Without Repeating Characters</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/23/reverse-integer/" class="archive-article-date">
-  	<time datetime="2017-02-22T16:05:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/23/reverse-integer/">7. Reverse Integer</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/22/two-sum/" class="archive-article-date">
-  	<time datetime="2017-02-22T10:43:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/22/two-sum/">1. Two Sum</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -376,9 +301,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
