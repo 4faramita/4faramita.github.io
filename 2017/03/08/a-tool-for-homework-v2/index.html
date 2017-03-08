@@ -6,17 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://faramita.us">
-  <title>Archives | 之言片语</title>
+  <title>一个交作业的小工具 v2.0 | 之言片语</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Just a blog for some thinkings.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="之言片语">
-<meta property="og:url" content="http://faramita.us/archives/index.html">
+  <meta name="description" content="本版将参数减少到一个：题目的 URL。之后自动获取文件名、标题、描述、难度等等，只需填写题目解释、解题思路与代码。
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950#!/usr/bin/python# -*- coding: UTF-8 -*-import sysi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一个交作业的小工具 v2.0">
+<meta property="og:url" content="http://faramita.us/2017/03/08/a-tool-for-homework-v2/index.html">
 <meta property="og:site_name" content="之言片语">
-<meta property="og:description" content="Just a blog for some thinkings.">
+<meta property="og:description" content="本版将参数减少到一个：题目的 URL。之后自动获取文件名、标题、描述、难度等等，只需填写题目解释、解题思路与代码。
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950#!/usr/bin/python# -*- coding: UTF-8 -*-import sysi">
+<meta property="og:updated_time" content="2017-03-08T13:47:42.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="之言片语">
-<meta name="twitter:description" content="Just a blog for some thinkings.">
+<meta name="twitter:title" content="一个交作业的小工具 v2.0">
+<meta name="twitter:description" content="本版将参数减少到一个：题目的 URL。之后自动获取文件名、标题、描述、难度等等，只需填写题目解释、解题思路与代码。
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950#!/usr/bin/python# -*- coding: UTF-8 -*-import sysi">
   
     <link rel="alternative" href="/atom.xml" title="之言片语" type="application/atom+xml">
   
@@ -148,36 +152,40 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-a-tool-for-homework-v2" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      一个交作业的小工具 v2.0
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/08/a-tool-for-homework-v2/" class="archive-article-date">
+
+        
+        <a href="/2017/03/08/a-tool-for-homework-v2/" class="archive-article-date">
   	<time datetime="2017-03-08T13:32:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-08</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/08/a-tool-for-homework-v2/">一个交作业的小工具 v2.0</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本版将参数减少到一个：题目的 URL。之后自动获取文件名、标题、描述、难度等等，只需填写题目解释、解题思路与代码。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> sys</div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line"><span class="keyword">from</span> pyquery <span class="keyword">import</span> PyQuery <span class="keyword">as</span> pq</div><div class="line"></div><div class="line">tmp = <span class="string">'''---</span></div><div class="line">title: &#123;title&#125;</div><div class="line">tag: algorithm</div><div class="line">date: &#123;date&#125;</div><div class="line">---</div><div class="line">## Description</div><div class="line"></div><div class="line">**Difficulty: &#123;difficulty&#125;**</div><div class="line"></div><div class="line">&#123;contents&#125;</div><div class="line"></div><div class="line">## Solution</div><div class="line"></div><div class="line">&#123;% codeblock lang:text %&#125;</div><div class="line"></div><div class="line">&#123;% endcodeblock %&#125;</div><div class="line"></div><div class="line">'''</div><div class="line"></div><div class="line">url = sys.argv[<span class="number">1</span>]</div><div class="line">d = pq(url)</div><div class="line"></div><div class="line">get_title = d(<span class="string">'.question-title h3'</span>).text()</div><div class="line">get_difficulty = d(<span class="string">'#DescriptionContent .question-info li strong'</span>).eq(<span class="number">2</span>).text()</div><div class="line">get_filename = url.rstrip(<span class="string">'?tab=Description'</span>).rstrip(<span class="string">'/'</span>).split(<span class="string">'/'</span>)[<span class="number">-1</span>] + <span class="string">'.md'</span></div><div class="line">get_contents = (d(<span class="string">'.question-content'</span>)</div><div class="line">                    .html(method=<span class="string">'html'</span>)</div><div class="line">                    .split(<span class="string">'&lt;div&gt;&lt;p&gt;&lt;a href="/subscribe/"&gt;Subscribe&lt;/a&gt;'</span>)[<span class="number">0</span>]</div><div class="line">                    .split(<span class="string">'&lt;p&gt;&lt;b&gt;Credits:&lt;/b&gt;'</span>)[<span class="number">0</span>]</div><div class="line">                    .strip())</div><div class="line"></div><div class="line">tmp = tmp.format(</div><div class="line">    title=get_title,</div><div class="line">    difficulty=get_difficulty,</div><div class="line">    contents=get_contents,</div><div class="line">    date=time.strftime(<span class="string">"%F %H:%M:%S"</span>, time.localtime()))</div><div class="line"></div><div class="line"></div><div class="line">file = open(get_filename, <span class="string">'w'</span>)</div><div class="line">file.write(tmp)</div><div class="line">file.close()</div><div class="line">print(<span class="string">'Show time:'</span>, get_filename)</div></pre></td></tr></table></figure>
+<p>下一版打算实现输入题号代替网址。</p>
+<blockquote>
+<p>人生苦短，我用 Python。</p>
+</blockquote>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -189,348 +197,88 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://faramita.us/2017/03/08/a-tool-for-homework-v2/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/08/happy-number/" class="archive-article-date">
-  	<time datetime="2017-03-08T13:27:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-08</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/08/happy-number/">202. Happy Number</a>
-    </h1>
+  
+    <a href="/2017/03/08/happy-number/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">202. Happy Number</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/08/a-tool-for-homework/" class="archive-article-date">
-  	<time datetime="2017-03-08T08:58:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/08/a-tool-for-homework/">一个交作业的小工具</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">thinking</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/08/best-time-to-buy-and-sell-stock/" class="archive-article-date">
-  	<time datetime="2017-03-08T08:51:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/08/best-time-to-buy-and-sell-stock/">121. Best Time to Buy and Sell Stock</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/08/sdsdsd/" class="archive-article-date">
-  	<time datetime="2017-03-08T08:02:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-08</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/07/missing-number/" class="archive-article-date">
-  	<time datetime="2017-03-07T12:46:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/07/missing-number/">268. Missing Number</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/07/intersection-of-two-arrays-ii/" class="archive-article-date">
-  	<time datetime="2017-03-07T12:26:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/07/intersection-of-two-arrays-ii/">350. Intersection of Two Arrays II</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/07/roman-to-integer/" class="archive-article-date">
-  	<time datetime="2017-03-07T11:46:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/07/roman-to-integer/">13. Roman to Integer</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/07/valid-anagram/" class="archive-article-date">
-  	<time datetime="2017-03-07T11:11:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/07/valid-anagram/">242. Valid Anagram</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/07/majority-element/" class="archive-article-date">
-  	<time datetime="2017-03-07T10:55:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/07/majority-element/">169. Majority Element</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -553,8 +301,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
