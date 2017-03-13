@@ -1,0 +1,179 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>一个交作业的小工具 v2.1 | 之言片语</title>
+
+  
+  <meta name="author" content="4faramita">
+  
+
+  
+  <meta name="description" content="Buried alive.">
+  
+
+  
+  
+  <meta name="keywords" content="works">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="一个交作业的小工具 v2.1"/>
+
+  <meta property="og:site_name" content="之言片语"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="之言片语" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">之言片语</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/tags/algorithm">Algorithms</a></li>
+      
+        <li><a href="/tags/thinking">Thoughts</a></li>
+      
+        <li><a href="/tags/works">Works</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>一个交作业的小工具 v2.1</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/03/13/a-tool-for-homework-v2.1/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-03-13T11:40:32.000Z">
+          2017-03-13
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>update:<br>网页结构稍有变化，修改以适应；<br>文件名获取方式更加可靠。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/python3</span></div><div class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> sys</div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line"><span class="keyword">from</span> pyquery <span class="keyword">import</span> PyQuery <span class="keyword">as</span> pq</div><div class="line"></div><div class="line">tmp = <span class="string">'''---</span></div><div class="line">title: &#123;title&#125;</div><div class="line">tag: algorithm</div><div class="line">date: &#123;date&#125;</div><div class="line">---</div><div class="line">## Description</div><div class="line"></div><div class="line">**Difficulty: &#123;difficulty&#125;**</div><div class="line"></div><div class="line">&#123;contents&#125;</div><div class="line"></div><div class="line">&lt;b&gt;题意:&lt;/b&gt;&lt;br&gt;</div><div class="line"></div><div class="line">## Solution</div><div class="line"></div><div class="line">&#123;% codeblock lang:text %&#125;</div><div class="line"></div><div class="line">&#123;% endcodeblock %&#125;</div><div class="line"></div><div class="line">'''</div><div class="line"></div><div class="line">url = sys.argv[<span class="number">1</span>]</div><div class="line"></div><div class="line">d = pq(url)</div><div class="line"></div><div class="line">get_title = d(<span class="string">'.question-title h3'</span>).text()</div><div class="line">get_difficulty = d(<span class="string">'.question-info li strong'</span>).eq(<span class="number">2</span>).text()</div><div class="line">get_filename = url.lstrip(<span class="string">'https://'</span>).split(<span class="string">'/'</span>)[<span class="number">2</span>] + <span class="string">'.md'</span></div><div class="line">get_contents = (d(<span class="string">'.question-content'</span>).html(method=<span class="string">'html'</span>)</div><div class="line">                .split(<span class="string">'&lt;p&gt;&lt;a href="/subscribe/"&gt;Subscribe&lt;/a&gt;'</span>)[<span class="number">0</span>].rstrip().rstrip(<span class="string">'&lt;div&gt;'</span>)</div><div class="line">                .split(<span class="string">'&lt;p&gt;&lt;b&gt;Credits:&lt;/b&gt;'</span>)[<span class="number">0</span>].strip())</div><div class="line"></div><div class="line">tmp = tmp.format(</div><div class="line">    title=get_title,</div><div class="line">    difficulty=get_difficulty,</div><div class="line">    contents=get_contents,</div><div class="line">    date=time.strftime(<span class="string">"%F %H:%M:%S"</span>, time.localtime()))</div><div class="line"></div><div class="line"></div><div class="line">file = open(get_filename, <span class="string">'w'</span>)</div><div class="line">file.write(tmp)</div><div class="line">file.close()</div><div class="line"><span class="comment"># call(['vim', get_filename])</span></div><div class="line">print(<span class="string">'Show time:\n'</span>, get_filename)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>人生苦短，我用 Python。</p>
+</blockquote>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/works/">works</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+	<section id="comments" class="comment">
+	  <div id="disqus_thread">
+	  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	  </div>
+	</section>
+
+	<script type="text/javascript">
+	var disqus_shortname = 'zhi-yan-pian-yu';
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	</script>
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2017 4faramita
+    
+  </p>
+</footer>
+    
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-93516577-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+  </div>
+</div>
+</body>
+</html>
