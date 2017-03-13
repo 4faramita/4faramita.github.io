@@ -1,0 +1,183 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>101. Symmetric Tree | 之言片语</title>
+
+  
+  <meta name="author" content="4faramita">
+  
+
+  
+  <meta name="description" content="Buried alive.">
+  
+
+  
+  
+  <meta name="keywords" content="algorithm">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="101. Symmetric Tree"/>
+
+  <meta property="og:site_name" content="之言片语"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="之言片语" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">之言片语</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/tags/algorithm">Algorithms</a></li>
+      
+        <li><a href="/tags/thinking">Thoughts</a></li>
+      
+        <li><a href="/tags/works">Works</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>101. Symmetric Tree</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/03/13/symmetric-tree/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-03-13T11:20:39.000Z">
+          2017-03-13
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
+<p></p><p>Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).</p>
+
+<p><br>For example, this binary tree <code>[1,2,2,3,4,4,3]</code> is symmetric:<br></p><pre><br>    1<br>   / \<br>  2   2<br> / \ / \<br>3  4 4  3<br></pre><br><br><p><br>But the following <code>[1,2,2,null,3,null,3]</code>  is not:<br><br></p><pre><br>    1<br>   / \<br>  2   2<br>   \   \<br>   3    3<br></pre><br><br><br><p><br><b>Note:</b><br><br>Bonus points if you could solve it both recursively and iteratively.<br></p>
+
+<p>输入一棵二叉树，判断是否纵向轴对称（与镜像相同）。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>只需要判断跟节点的左右子树是否镜像对称。<br>也就是说只需要判断右子树翻转后是否与左子树相同即可。<br>也就是以相同方式遍历左子树与翻转后的右子树，生成的值的数组相同即可。</p>
+<p>方法 revrs_bt 用于反转二叉树；<br>方法 mlr_walk 用于前序遍历二叉树；<br>返回生成的两数组是否相等。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Definition for a binary tree node.</span></div><div class="line"><span class="comment"># class TreeNode(object):</span></div><div class="line"><span class="comment">#     def __init__(self, x):</span></div><div class="line"><span class="comment">#         self.val = x</span></div><div class="line"><span class="comment">#         self.left = None</span></div><div class="line"><span class="comment">#         self.right = None</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">revrs_bt</span><span class="params">(node)</span>:</span></div><div class="line">    head = node</div><div class="line">    <span class="keyword">if</span> node:</div><div class="line">        node.left, node.right = revrs_bt(node.right), revrs_bt(node.left)</div><div class="line">    <span class="keyword">return</span> head</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">mlr_walk</span><span class="params">(rslt, node)</span>:</span></div><div class="line">    <span class="keyword">if</span> node:</div><div class="line">        rslt.append(node.val)</div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        mlr_walk(rslt, node.left)</div><div class="line">    <span class="keyword">except</span> AttributeError:</div><div class="line">        rslt.append(<span class="keyword">None</span>)</div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        mlr_walk(rslt, node.right)</div><div class="line">    <span class="keyword">except</span> AttributeError:</div><div class="line">        rslt.append(<span class="keyword">None</span>)</div><div class="line">    <span class="keyword">return</span> rslt</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isSymmetric</span><span class="params">(self, root)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type root: TreeNode</div><div class="line">        :rtype: bool</div><div class="line">        """</div><div class="line">        <span class="keyword">if</span> root == <span class="keyword">None</span> <span class="keyword">or</span> (root.left, root.right) == (<span class="keyword">None</span>, <span class="keyword">None</span>):</div><div class="line">            <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">    </div><div class="line">        t_l = root.left        <span class="comment"># left tree</span></div><div class="line">        t_r = root.right       <span class="comment"># right tree</span></div><div class="line">        t_r_r = revrs_bt(t_r)  <span class="comment"># reversed right tree</span></div><div class="line">    </div><div class="line">        rslt_l, rslt_r = [], []</div><div class="line">        rslt_l = mlr_walk(rslt_l, t_l)</div><div class="line">        rslt_r = mlr_walk(rslt_r, t_r_r)</div><div class="line">    </div><div class="line">        <span class="keyword">return</span> rslt_l == rslt_r</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+	<section id="comments" class="comment">
+	  <div id="disqus_thread">
+	  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	  </div>
+	</section>
+
+	<script type="text/javascript">
+	var disqus_shortname = 'zhi-yan-pian-yu';
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	</script>
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2017 4faramita
+    
+  </p>
+</footer>
+    
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-93516577-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+  </div>
+</div>
+</body>
+</html>
