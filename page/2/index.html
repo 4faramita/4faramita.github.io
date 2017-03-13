@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>第 2 页 | 之言片语</title>
+  <title>Page 2 | 之言片语</title>
 
   
   <meta name="author" content="4faramita">
@@ -47,7 +47,7 @@
   <nav class="site-navigation">
     <ul>
       
-        <li><a href="/">主页</a></li>
+        <li><a href="/">Home</a></li>
       
         <li><a href="/tags/algorithm">Algorithms</a></li>
       
@@ -55,7 +55,7 @@
       
         <li><a href="/tags/works">Works</a></li>
       
-        <li><a href="/archives">归档</a></li>
+        <li><a href="/archives">Archives</a></li>
       
     </ul>
   </nav>
@@ -63,6 +63,74 @@
 
     <main class="site-main posts-loop">
     
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/03/07/missing-number/"><span>268. Missing Number</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/03/07/missing-number/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-03-07T12:46:00.000Z">
+          2017-03-07
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
+<p>Given an array containing n distinct numbers taken from 0, 1, 2, …, n, find the one that is missing from the array.</p>
+<p>For example,<br>Given nums = [0, 1, 3] return 2.</p>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note:"></a>Note:</h3><p>Your algorithm should run in linear runtime complexity. Could you implement it using only constant extra space complexity?</p>
+<p>给一数组，给出数组与 [0,1,2,3,4,…,n] 相比缺少的<strong>一个</strong>数。所给数组可为任意顺序。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>先排序。<br>分析一下情况：<br>数组长度为 0：缺 1<br>数组长度为 1：有两种情况（因为只能缺一个数）[0], [1]；分别返回 1, 0<br>数组更长：若第一个元素不是 0，则返回 0；设两个指针从开头遍历，若后一个减前一个大于 1，则返回前一个 + 1；若一直连续，这返回最后一个元素 + 1</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">missingNumber</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type nums: List[int]</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        nums.sort()</div><div class="line">        <span class="keyword">if</span> len(nums) == <span class="number">0</span> <span class="keyword">or</span> nums[<span class="number">0</span>] != <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span></div><div class="line">        <span class="keyword">elif</span> nums == [<span class="number">0</span>]:</div><div class="line">            <span class="keyword">return</span> <span class="number">1</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(nums) - <span class="number">1</span>):</div><div class="line">                <span class="keyword">if</span> nums[i + <span class="number">1</span>] - nums[i] &gt; <span class="number">1</span>:</div><div class="line">                    <span class="keyword">return</span> nums[i] + <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> nums[<span class="number">-1</span>] + <span class="number">1</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="/2017/03/07/missing-number/#comment">Comments</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
   <article>
 
   
@@ -122,7 +190,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/07/intersection-of-two-arrays-ii/#comment">评论</a>
+          <a href="/2017/03/07/intersection-of-two-arrays-ii/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -189,7 +257,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/07/roman-to-integer/#comment">评论</a>
+          <a href="/2017/03/07/roman-to-integer/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -259,7 +327,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/07/valid-anagram/#comment">评论</a>
+          <a href="/2017/03/07/valid-anagram/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -326,7 +394,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/07/majority-element/#comment">评论</a>
+          <a href="/2017/03/07/majority-element/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -392,7 +460,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/07/excel-sheet-column-number/#comment">评论</a>
+          <a href="/2017/03/07/excel-sheet-column-number/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -461,7 +529,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/07/best-time-to-buy-and-sell-stock-ii/#comment">评论</a>
+          <a href="/2017/03/07/best-time-to-buy-and-sell-stock-ii/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -529,7 +597,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/07/first-unique-character-in-a-string/#comment">评论</a>
+          <a href="/2017/03/07/first-unique-character-in-a-string/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -598,7 +666,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/03/string-to-integer-atoi/#comment">评论</a>
+          <a href="/2017/03/03/string-to-integer-atoi/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -668,74 +736,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/02/28/move-zeroes/#comment">评论</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/02/27/island-perimeter/"><span>463. Island Perimeter</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/02/27/island-perimeter/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-02-26T17:35:00.000Z">
-          2017-02-27
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
-<p>You are given a map in form of a two-dimensional integer grid where 1 represents land and 0 represents water. Grid cells are connected horizontally/vertically (not diagonally). The grid is completely surrounded by water, and there is exactly one island (i.e., one or more connected land cells). The island doesn’t have “lakes” (water inside that isn’t connected to the water around the island). One cell is a square with side length 1. The grid is rectangular, width and height don’t exceed 100. Determine the perimeter of the island.</p>
-<h2 id="Example"><a href="#Example" class="headerlink" title="Example:"></a>Example:</h2><p>[[0,1,0,0],<br> [1,1,1,0],<br> [0,1,0,0],<br> [1,1,0,0]]</p>
-<p>Answer: 16<br>Explanation: The perimeter is the 16 yellow stripes in the image below:<br><img src="https://leetcode.com/static/images/problemset/island.png" alt="island"></p>
-<p>找 1 组成的「岛」的边界。</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>1 与 0 交替时、以及 1 元素越界时为边界。<br>定义了一个方法，探测该位置是否为 0，或坐标包含负数，或数组越界。对 1 周围元素使用这个方法，这些情况边界长度加一。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">testSurround</span><span class="params">(grid, perimeter, x, y)</span>:</span></div><div class="line">    <span class="keyword">if</span> x &lt; <span class="number">0</span> <span class="keyword">or</span> y &lt; <span class="number">0</span>:</div><div class="line">        perimeter += <span class="number">1</span></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">try</span>:</div><div class="line">            z = grid[x][y]</div><div class="line">        <span class="keyword">except</span> IndexError:</div><div class="line">            perimeter += <span class="number">1</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">if</span> z == <span class="number">0</span>:</div><div class="line">               perimeter += <span class="number">1</span></div><div class="line">    <span class="keyword">return</span> perimeter</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">islandPerimeter</span><span class="params">(self, grid)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type grid: List[List[int]]</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        perimeter = <span class="number">0</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(grid)):</div><div class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> xrange(len(grid[i])):</div><div class="line">                <span class="keyword">if</span> grid[i][j] == <span class="number">1</span>:</div><div class="line">                    perimeter = testSurround(grid, perimeter, i, j - <span class="number">1</span>)</div><div class="line">                    perimeter = testSurround(grid, perimeter, i, j + <span class="number">1</span>)</div><div class="line">                    perimeter = testSurround(grid, perimeter, i - <span class="number">1</span>, j)</div><div class="line">                    perimeter = testSurround(grid, perimeter, i + <span class="number">1</span>, j)</div><div class="line">        <span class="keyword">return</span> perimeter</div></pre></td></tr></table></figure>
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/algorithm/">algorithm</a>
-    </span>
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/02/27/island-perimeter/#comment">评论</a>
+          <a href="/2017/02/28/move-zeroes/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -748,10 +749,10 @@
 
 <nav class="pagination">
   
-  <a href="/" class="pagination-prev">上一页</a>
+  <a href="/" class="pagination-prev">Prev</a>
   
   
-  <a href="/page/3/" class="pagination-next">下一页</a>
+  <a href="/page/3/" class="pagination-next">Next</a>
   
 </nav>
     </main>
