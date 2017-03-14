@@ -67,6 +67,141 @@
 
   
     
+    <h3 class="article-title"><a href="/2017/03/14/palindrome-linked-list/"><span>234. Palindrome Linked List</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/03/14/palindrome-linked-list/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-03-14T08:18:22.000Z">
+          2017-03-14
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
+<p></p><p>Given a singly linked list, determine if it is a palindrome.</p>
+
+<p><b>Follow up:</b><br><br>Could you do it in O(n) time and O(1) space?</p>
+
+<p><b>题意:</b><br><br>判断一个链表是否回文。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>最简单的想法是把链表的值按顺序输出到一个数组，在判断数组是否回文；<br>判断数组是否回文，也就是判断前一半的逆序是否与后一半相等。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Definition for singly-linked list.</span></div><div class="line"><span class="comment"># class ListNode(object):</span></div><div class="line"><span class="comment">#     def __init__(self, x):</span></div><div class="line"><span class="comment">#         self.val = x</span></div><div class="line"><span class="comment">#         self.next = None</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isPalindrome</span><span class="params">(self, head)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type head: ListNode</div><div class="line">        :rtype: bool</div><div class="line">        """</div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> head:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">        link_list = []</div><div class="line">        p = head</div><div class="line">        <span class="keyword">while</span> p:</div><div class="line">            link_list.append(p.val)</div><div class="line">            p = p.next</div><div class="line">    </div><div class="line">        length = len(link_list)</div><div class="line">        <span class="keyword">if</span> length % <span class="number">2</span> == <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> link_list[:(length / <span class="number">2</span>)] == link_list[(length / <span class="number">2</span>):][::<span class="number">-1</span>]</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> link_list[:(length / <span class="number">2</span>)] == link_list[(length / <span class="number">2</span>) + <span class="number">1</span>:][::<span class="number">-1</span>]</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="/2017/03/14/palindrome-linked-list/#comment">Comments</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/03/14/fizz-buzz/"><span>412. Fizz Buzz</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/03/14/fizz-buzz/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-03-14T07:38:00.000Z">
+          2017-03-14
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
+<p>Write a program that outputs the string representation of numbers from 1 to n.</p>
+<p>But for multiples of three it should output “Fizz” instead of the number and for the multiples of five output “Buzz”. For numbers which are multiples of both three and five output “FizzBuzz”.</p>
+<p><strong>Example</strong><br>n = 15,</p>
+<p>Return:<br>[<br>    “1”,<br>    “2”,<br>    “Fizz”,<br>    “4”,<br>    “Buzz”,<br>    “Fizz”,<br>    “7”,<br>    “8”,<br>    “Fizz”,<br>    “Buzz”,<br>    “11”,<br>    “Fizz”,<br>    “13”,<br>    “14”,<br>    “FizzBuzz”<br>]</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fizzBuzz</span><span class="params">(self, n)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type n: int</div><div class="line">        :rtype: List[str]</div><div class="line">        """</div><div class="line">        rslt = []</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n):</div><div class="line">            <span class="keyword">if</span> (i + <span class="number">1</span>) % <span class="number">15</span> == <span class="number">0</span>:</div><div class="line">                rslt.append(<span class="string">'FizzBuzz'</span>)</div><div class="line">            <span class="keyword">elif</span> (i + <span class="number">1</span>) % <span class="number">5</span> == <span class="number">0</span>:</div><div class="line">                rslt.append(<span class="string">'Buzz'</span>)</div><div class="line">            <span class="keyword">elif</span> (i + <span class="number">1</span>) % <span class="number">3</span> == <span class="number">0</span>:</div><div class="line">                rslt.append(<span class="string">'Fizz'</span>)</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                rslt.append(str(i + <span class="number">1</span>))</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> rslt</div></pre></td></tr></table></figure>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="/2017/03/14/fizz-buzz/#comment">Comments</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
     <h3 class="article-title"><a href="/2017/03/14/valid-parentheses/"><span>20. Valid Parentheses</span></a></h3>
     
   
@@ -278,6 +413,205 @@
 
   
     
+    <h3 class="article-title"><a href="/2017/03/14/single-number/"><span>136. Single Number</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/03/14/single-number/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-03-14T03:28:00.000Z">
+          2017-03-14
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
+<p>Given an array of integers, every element appears twice except for one. Find that single one.</p>
+<p><strong>Note</strong>:<br>Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?</p>
+<p>给出一个整数数组，有一个元素只出现了一次，其他所有元素都出现了两次。找出这个元素。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">singleNumber</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type nums: List[int]</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        rslt = &#123;&#125;</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> nums:</div><div class="line">            <span class="keyword">try</span>:</div><div class="line">                rslt[i] += <span class="number">1</span></div><div class="line">            <span class="keyword">except</span> KeyError:</div><div class="line">                rslt[i] = <span class="number">1</span></div><div class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> rslt:</div><div class="line">            <span class="keyword">if</span> rslt[j] == <span class="number">1</span>:</div><div class="line">                <span class="keyword">return</span> j</div></pre></td></tr></table></figure>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="/2017/03/14/single-number/#comment">Comments</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/03/14/reverse-string/"><span>344. Reverse String</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/03/14/reverse-string/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-03-14T03:28:00.000Z">
+          2017-03-14
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
+<p>Write a function that takes a string as input and returns the string reversed.</p>
+<p><strong>Example1</strong><br>Given s = “hello”, return “olleh”.</p>
+<p>反转字符串。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reverseString</span><span class="params">(self, s)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type s: str</div><div class="line">        :rtype: str</div><div class="line">        """</div><div class="line">        <span class="keyword">return</span> s[::<span class="number">-1</span>]</div></pre></td></tr></table></figure>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="/2017/03/14/reverse-string/#comment">Comments</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/03/14/median-of-two-sorted-arrays/"><span>4. Median of Two Sorted Arrays</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/03/14/median-of-two-sorted-arrays/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-03-14T03:28:00.000Z">
+          2017-03-14
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Hard</strong></p>
+<p>There are two sorted arrays nums1 and nums2 of size m and n respectively.</p>
+<p>Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).</p>
+<p><strong>Example1</strong><br>nums1 = [1, 3]<br>nums2 = [2]</p>
+<p>The median is 2.0</p>
+<p><strong>Example2</strong><br>nums1 = [1, 2]<br>nums2 = [3, 4]</p>
+<p>The median is (2 + 3)/2 = 2.5</p>
+<p>给出两个有序数列，返回两个数列形成的大数列的中位数。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findMedianSortedArrays</span><span class="params">(self, nums1, nums2)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type nums1: List[int]</div><div class="line">        :type nums2: List[int]</div><div class="line">        :rtype: float</div><div class="line">        """</div><div class="line">        <span class="comment"># pointers for two lists</span></div><div class="line">        p1 = <span class="number">0</span></div><div class="line">        p2 = <span class="number">0</span></div><div class="line">        </div><div class="line">        isOdd = <span class="keyword">True</span></div><div class="line">        </div><div class="line">        <span class="comment"># last nums</span></div><div class="line">        last = <span class="number">0</span></div><div class="line">        </div><div class="line">        <span class="keyword">if</span> (len(nums1) + len (nums2)) % <span class="number">2</span> == <span class="number">1</span>:</div><div class="line">            exp_num = (len(nums1) + len (nums2) + <span class="number">1</span>) / <span class="number">2</span></div><div class="line">            isOdd = <span class="keyword">True</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            exp_num = ((len(nums1) + len (nums2)) / <span class="number">2</span>) + <span class="number">1</span></div><div class="line">            isOdd = <span class="keyword">False</span></div><div class="line">            </div><div class="line">        <span class="keyword">if</span> len(nums1) == <span class="number">0</span> <span class="keyword">or</span> len(nums2) == <span class="number">0</span>:</div><div class="line">            comb = nums1 + nums2</div><div class="line">            <span class="keyword">if</span> isOdd == <span class="keyword">True</span>:</div><div class="line">                <span class="keyword">return</span> comb[exp_num - <span class="number">1</span>]</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                <span class="keyword">return</span> (comb[exp_num - <span class="number">1</span>] + comb[exp_num - <span class="number">2</span>]) / float(<span class="number">2</span>)</div><div class="line">        <span class="keyword">elif</span> nums1[<span class="number">-1</span>] &lt;= nums2[<span class="number">0</span>]:</div><div class="line">            comb = nums1 + nums2</div><div class="line">            <span class="keyword">if</span> isOdd == <span class="keyword">True</span>:</div><div class="line">                <span class="keyword">return</span> comb[exp_num - <span class="number">1</span>]</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                <span class="keyword">return</span> (comb[exp_num - <span class="number">1</span>] + comb[exp_num - <span class="number">2</span>]) / float(<span class="number">2</span>)</div><div class="line">        <span class="keyword">elif</span> nums2[<span class="number">-1</span>] &lt;= nums1[<span class="number">0</span>]:</div><div class="line">            comb = nums2 + nums1</div><div class="line">            <span class="keyword">if</span> isOdd == <span class="keyword">True</span>:</div><div class="line">                print(comb[exp_num])</div><div class="line">                <span class="keyword">return</span> comb[exp_num - <span class="number">1</span>]</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                <span class="keyword">return</span> (comb[exp_num - <span class="number">1</span>] + comb[exp_num - <span class="number">2</span>]) / float(<span class="number">2</span>)</div><div class="line">        </div><div class="line">        </div><div class="line">        <span class="keyword">while</span> p1 + p2 &lt;= exp_num - <span class="number">2</span>:</div><div class="line">            <span class="keyword">if</span> p1 &gt;= len(nums1):</div><div class="line">                last = nums2[p2]</div><div class="line">                p2 += <span class="number">1</span></div><div class="line">            <span class="keyword">elif</span> p2 &gt;= len(nums2):</div><div class="line">                last = nums1[p1]</div><div class="line">                p1 += <span class="number">1</span></div><div class="line">            <span class="keyword">elif</span> nums1[p1] &lt; nums2[p2]:</div><div class="line">                last = nums1[p1]</div><div class="line">                p1 += <span class="number">1</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                last = nums2[p2]</div><div class="line">                p2 += <span class="number">1</span></div><div class="line">        </div><div class="line">        <span class="keyword">if</span> p1 &gt;= len(nums1):</div><div class="line">            toAdd = nums2[p2]</div><div class="line">        <span class="keyword">elif</span> p2 &gt;= len(nums2):</div><div class="line">            toAdd = nums1[p1]</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            toAdd = min(nums1[p1], nums2[p2])</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> isOdd == <span class="keyword">True</span>:</div><div class="line">            <span class="keyword">return</span> toAdd</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> (toAdd + last) / float(<span class="number">2</span>)</div></pre></td></tr></table></figure>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="/2017/03/14/median-of-two-sorted-arrays/#comment">Comments</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
     <h3 class="article-title"><a href="/2017/03/14/remove-duplicates-from-sorted-array/"><span>26. Remove Duplicates from Sorted Array</span></a></h3>
     
   
@@ -406,359 +740,6 @@
         <i class="icon-comments"></i>
         <span>
           <a href="/2017/03/13/pascals-triangle/#comment">Comments</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/03/13/plus-one/"><span>66. Plus One</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/03/13/plus-one/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-03-13T15:13:18.000Z">
-          2017-03-13
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
-<p></p><p>Given a non-negative integer represented as a <b>non-empty</b> array of digits, plus one to the integer.</p>
-
-<p>You may assume the integer do not contain any leading zero, except the number 0 itself.</p>
-
-<p>The digits are stored such that the most significant digit is at the head of the list.</p>
-
-<p><b>题意:</b><br><br>给一个数组，每个元素表示一个数字的每一位，要求以相同形式给出这个数字加一的结果。</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>难点在于进位，特别是由 n 位数变为 n + 1 位数时，如果每一位都移动代价太太。<br>这里先将数组逆置，然后从头部（即末位）加一，进位完成后在逆置回来。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">plusOne</span><span class="params">(self, digits)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type digits: List[int]</div><div class="line">        :rtype: List[int]</div><div class="line">        """</div><div class="line">        digits_r = digits[::<span class="number">-1</span>]</div><div class="line">        added = <span class="keyword">False</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(digits)):</div><div class="line">            <span class="keyword">if</span> digits_r[i] + <span class="number">1</span> &lt; <span class="number">10</span>:</div><div class="line">                digits_r[i] += <span class="number">1</span></div><div class="line">                added = <span class="keyword">True</span></div><div class="line">                <span class="keyword">break</span></div><div class="line">            <span class="keyword">elif</span> digits_r[i] + <span class="number">1</span> == <span class="number">10</span>:</div><div class="line">                digits_r[i] = <span class="number">0</span></div><div class="line">        <span class="keyword">if</span> added == <span class="keyword">False</span>:</div><div class="line">            digits_r.append(<span class="number">1</span>)</div><div class="line">        <span class="keyword">return</span> digits_r[::<span class="number">-1</span>]</div></pre></td></tr></table></figure>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/algorithm/">algorithm</a>
-    </span>
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/03/13/plus-one/#comment">Comments</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/03/13/a-tool-for-homework-v2.1/"><span>一个交作业的小工具 v2.1</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/03/13/a-tool-for-homework-v2.1/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-03-13T11:40:32.000Z">
-          2017-03-13
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>update:<br>网页结构稍有变化，修改以适应；<br>文件名获取方式更加可靠。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/python3</span></div><div class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> sys</div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line"><span class="keyword">from</span> pyquery <span class="keyword">import</span> PyQuery <span class="keyword">as</span> pq</div><div class="line"></div><div class="line">tmp = <span class="string">'''---</span></div><div class="line">title: &#123;title&#125;</div><div class="line">tag: algorithm</div><div class="line">date: &#123;date&#125;</div><div class="line">---</div><div class="line">## Description</div><div class="line"></div><div class="line">**Difficulty: &#123;difficulty&#125;**</div><div class="line"></div><div class="line">&#123;contents&#125;</div><div class="line"></div><div class="line">&lt;b&gt;题意:&lt;/b&gt;&lt;br&gt;</div><div class="line"></div><div class="line">## Solution</div><div class="line"></div><div class="line">&#123;% codeblock lang:text %&#125;</div><div class="line"></div><div class="line">&#123;% endcodeblock %&#125;</div><div class="line"></div><div class="line">'''</div><div class="line"></div><div class="line">url = sys.argv[<span class="number">1</span>]</div><div class="line"></div><div class="line">d = pq(url)</div><div class="line"></div><div class="line">get_title = d(<span class="string">'.question-title h3'</span>).text()</div><div class="line">get_difficulty = d(<span class="string">'.question-info li strong'</span>).eq(<span class="number">2</span>).text()</div><div class="line">get_filename = url.lstrip(<span class="string">'https://'</span>).split(<span class="string">'/'</span>)[<span class="number">2</span>] + <span class="string">'.md'</span></div><div class="line">get_contents = (d(<span class="string">'.question-content'</span>).html(method=<span class="string">'html'</span>)</div><div class="line">                .split(<span class="string">'&lt;p&gt;&lt;a href="/subscribe/"&gt;Subscribe&lt;/a&gt;'</span>)[<span class="number">0</span>].rstrip().rstrip(<span class="string">'&lt;div&gt;'</span>)</div><div class="line">                .split(<span class="string">'&lt;p&gt;&lt;b&gt;Credits:&lt;/b&gt;'</span>)[<span class="number">0</span>].strip())</div><div class="line"></div><div class="line">tmp = tmp.format(</div><div class="line">    title=get_title,</div><div class="line">    difficulty=get_difficulty,</div><div class="line">    contents=get_contents,</div><div class="line">    date=time.strftime(<span class="string">"%F %H:%M:%S"</span>, time.localtime()))</div><div class="line"></div><div class="line"></div><div class="line">file = open(get_filename, <span class="string">'w'</span>)</div><div class="line">file.write(tmp)</div><div class="line">file.close()</div><div class="line"><span class="comment"># call(['vim', get_filename])</span></div><div class="line">print(<span class="string">'Show time:\n'</span>, get_filename)</div></pre></td></tr></table></figure>
-<blockquote>
-<p>人生苦短，我用 Python。</p>
-</blockquote>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/works/">works</a>
-    </span>
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/03/13/a-tool-for-homework-v2.1/#comment">Comments</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/03/13/symmetric-tree/"><span>101. Symmetric Tree</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/03/13/symmetric-tree/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-03-13T11:20:39.000Z">
-          2017-03-13
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
-<p></p><p>Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).</p>
-
-<p><br>For example, this binary tree <code>[1,2,2,3,4,4,3]</code> is symmetric:<br></p><pre><br>    1<br>   / \<br>  2   2<br> / \ / \<br>3  4 4  3<br></pre><br><br><p><br>But the following <code>[1,2,2,null,3,null,3]</code>  is not:<br><br></p><pre><br>    1<br>   / \<br>  2   2<br>   \   \<br>   3    3<br></pre><br><br><br><p><br><b>Note:</b><br><br>Bonus points if you could solve it both recursively and iteratively.<br></p>
-
-<p><strong>题意：</strong><br>输入一棵二叉树，判断是否纵向轴对称（与镜像相同）。</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>只需要判断跟节点的左右子树是否镜像对称。<br>也就是说只需要判断右子树翻转后是否与左子树相同即可。<br>也就是以相同方式遍历左子树与翻转后的右子树，生成的值的数组相同即可。</p>
-<p>方法 revrs_bt 用于反转二叉树；<br>方法 mlr_walk 用于前序遍历二叉树；<br>返回生成的两数组是否相等。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Definition for a binary tree node.</span></div><div class="line"><span class="comment"># class TreeNode(object):</span></div><div class="line"><span class="comment">#     def __init__(self, x):</span></div><div class="line"><span class="comment">#         self.val = x</span></div><div class="line"><span class="comment">#         self.left = None</span></div><div class="line"><span class="comment">#         self.right = None</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">revrs_bt</span><span class="params">(node)</span>:</span></div><div class="line">    head = node</div><div class="line">    <span class="keyword">if</span> node:</div><div class="line">        node.left, node.right = revrs_bt(node.right), revrs_bt(node.left)</div><div class="line">    <span class="keyword">return</span> head</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">mlr_walk</span><span class="params">(rslt, node)</span>:</span></div><div class="line">    <span class="keyword">if</span> node:</div><div class="line">        rslt.append(node.val)</div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        mlr_walk(rslt, node.left)</div><div class="line">    <span class="keyword">except</span> AttributeError:</div><div class="line">        rslt.append(<span class="keyword">None</span>)</div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        mlr_walk(rslt, node.right)</div><div class="line">    <span class="keyword">except</span> AttributeError:</div><div class="line">        rslt.append(<span class="keyword">None</span>)</div><div class="line">    <span class="keyword">return</span> rslt</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isSymmetric</span><span class="params">(self, root)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type root: TreeNode</div><div class="line">        :rtype: bool</div><div class="line">        """</div><div class="line">        <span class="keyword">if</span> root == <span class="keyword">None</span> <span class="keyword">or</span> (root.left, root.right) == (<span class="keyword">None</span>, <span class="keyword">None</span>):</div><div class="line">            <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">    </div><div class="line">        t_l = root.left        <span class="comment"># left tree</span></div><div class="line">        t_r = root.right       <span class="comment"># right tree</span></div><div class="line">        t_r_r = revrs_bt(t_r)  <span class="comment"># reversed right tree</span></div><div class="line">    </div><div class="line">        rslt_l, rslt_r = [], []</div><div class="line">        rslt_l = mlr_walk(rslt_l, t_l)</div><div class="line">        rslt_r = mlr_walk(rslt_r, t_r_r)</div><div class="line">    </div><div class="line">        <span class="keyword">return</span> rslt_l == rslt_r</div></pre></td></tr></table></figure>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/algorithm/">algorithm</a>
-    </span>
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/03/13/symmetric-tree/#comment">Comments</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/03/13/house-robber/"><span>198. House Robber</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/03/13/house-robber/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-03-13T04:30:07.000Z">
-          2017-03-13
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
-<p></p><p>You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security system connected and <b>it will automatically contact the police if two adjacent houses were broken into on the same night</b>.</p>
-
-<p>Given a list of non-negative integers representing the amount of money of each house, determine the maximum amount of money you can rob tonight <b>without alerting the police</b>.</p>
-
-<p>一个数组，每个元素是这家藏的钱，不能连续抢两家的钱，要求抢到尽量多的钱，求能抢到的最多的钱数。</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>又一道动态规划的问题，当数组遍历至 i 位置时，pre2 表示 i - 2 位置的和, pre1 表示 i - 1 位置的和, curr 用于保存本轮结果。对于每个 i（i &gt; 3）都要做出这样一个选择：要 pre2 + nums[i] 还是要 pre1.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">rob</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type nums: List[int]</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        <span class="keyword">if</span> len(nums) == <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span></div><div class="line">        <span class="keyword">elif</span> len(nums) == <span class="number">1</span>:</div><div class="line">            <span class="keyword">return</span> nums[<span class="number">0</span>]</div><div class="line">        <span class="keyword">elif</span> len(nums) == <span class="number">2</span>:</div><div class="line">            <span class="keyword">return</span> max(nums[<span class="number">0</span>], nums[<span class="number">1</span>])</div><div class="line">            </div><div class="line">        prev1,prev2,curr = <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span></div><div class="line"></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> nums:</div><div class="line">            curr = max(i + prev2, prev1);</div><div class="line">            prev2 = prev1;</div><div class="line">            prev1 = curr;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> curr</div></pre></td></tr></table></figure>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/algorithm/">algorithm</a>
-    </span>
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/03/13/house-robber/#comment">Comments</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/03/10/climbing-stairs/"><span>70. Climbing Stairs</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/03/10/climbing-stairs/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-03-10T02:00:59.000Z">
-          2017-03-10
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
-<p></p><p>You are climbing a stair case. It takes <i>n</i> steps to reach to the top.</p>
-
-<p>Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?<br></p>
-
-<p><b>Note:</b> Given <i>n</i> will be a positive integer.<br></p>
-
-<p>n 阶楼梯，每次可以爬一阶或者两阶，问有多少种方法。</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>由于包含动态规划的两个特征：</p>
-<ul>
-<li>最优子结构</li>
-<li>重复的子问题</li>
-</ul>
-<p>因此可用动态规划。</p>
-<p>核心算法：为了到达第 i 阶（i &gt;= 3)，可以从 i - 1 阶上一阶，也可以从 i - 2 阶上两阶。递归这个算法即可。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">climbStairs</span><span class="params">(self, n)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type n: int</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        stor = &#123;<span class="number">1</span>: <span class="number">1</span>, <span class="number">2</span>: <span class="number">2</span>&#125;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">3</span>, n+<span class="number">1</span>):</div><div class="line">            stor[i] = stor[i<span class="number">-1</span>] + stor[i<span class="number">-2</span>]</div><div class="line">        <span class="keyword">return</span> stor[n]</div></pre></td></tr></table></figure>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/algorithm/">algorithm</a>
-    </span>
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/03/10/climbing-stairs/#comment">Comments</a>
         </span>
       </span>
     </div>
