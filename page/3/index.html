@@ -67,6 +67,75 @@
 
   
     
+    <h3 class="article-title"><a href="/2017/03/03/string-to-integer-atoi/"><span>7. Reverse Integer</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/03/03/string-to-integer-atoi/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-03-02T16:13:00.000Z">
+          2017-03-03
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Medium</strong></p>
+<p>Implement atoi to convert a string to an integer.</p>
+<p><strong>Hint</strong>: Carefully consider all possible input cases. If you want a challenge, please do not see below and ask yourself what are the possible input cases.</p>
+<p><strong>Note</strong>: It is intended for this problem to be specified vaguely (ie, no given input specs). You are responsible to gather all the input requirements up front.</p>
+<h2 id="CheatSheet"><a href="#CheatSheet" class="headerlink" title="CheatSheet"></a>CheatSheet</h2><p>Requirements for atoi:<br>The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character, takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value.</p>
+<p>The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function.</p>
+<p>If the first sequence of non-whitespace characters in str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed.</p>
+<p>If no valid conversion could be performed, a zero value is returned. If the correct value is out of the range of representable values, INT_MAX (2147483647) or INT_MIN (-2147483648) is returned.</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">myAtoi</span><span class="params">(self, str)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type str: str</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        str = str.strip()</div><div class="line">        <span class="keyword">if</span> str == <span class="string">''</span>:</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span></div><div class="line">            </div><div class="line">        neg = <span class="keyword">False</span></div><div class="line">        nums = <span class="string">'0123456789'</span></div><div class="line">        </div><div class="line">        <span class="keyword">if</span> str[<span class="number">0</span>] == <span class="string">'-'</span>:</div><div class="line">            neg = <span class="keyword">True</span></div><div class="line">            str = str[<span class="number">1</span>:]</div><div class="line">        <span class="keyword">elif</span> str[<span class="number">0</span>] == <span class="string">'+'</span>:</div><div class="line">            neg = <span class="keyword">False</span></div><div class="line">            str = str[<span class="number">1</span>:]</div><div class="line">        <span class="keyword">if</span> str == <span class="string">''</span> <span class="keyword">or</span> str[<span class="number">0</span>] <span class="keyword">not</span> <span class="keyword">in</span> nums:</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span></div><div class="line">            </div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(str)):</div><div class="line">            <span class="keyword">if</span> str[i] <span class="keyword">not</span> <span class="keyword">in</span> nums:</div><div class="line">                str = str[:i]</div><div class="line">                <span class="keyword">break</span></div><div class="line">        <span class="keyword">if</span> str == <span class="string">''</span>:</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span></div><div class="line">            </div><div class="line">        <span class="keyword">if</span> neg == <span class="keyword">False</span>:</div><div class="line">            <span class="keyword">return</span> min(int(str), <span class="number">2147483647</span>)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> max(-int(str), <span class="number">-2147483648</span>)</div></pre></td></tr></table></figure>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="/2017/03/03/string-to-integer-atoi/#comment">Comments</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
     <h3 class="article-title"><a href="/2017/02/28/move-zeroes/"><span>283. Move Zeroes</span></a></h3>
     
   
