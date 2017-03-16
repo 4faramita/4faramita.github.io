@@ -47,7 +47,7 @@
   <nav class="site-navigation">
     <ul>
       
-        <li><a href="/">Home</a></li>
+        <li><a href="/">主页</a></li>
       
         <li><a href="/tags/algorithm">Algorithms</a></li>
       
@@ -55,7 +55,7 @@
       
         <li><a href="/tags/works">Works</a></li>
       
-        <li><a href="/archives">Archives</a></li>
+        <li><a href="/archives">归档</a></li>
       
     </ul>
   </nav>
@@ -63,6 +63,75 @@
 
     <main class="site-main posts-loop">
     
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/03/16/merge-sorted-array/"><span>88. Merge Sorted Array</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/03/16/merge-sorted-array/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-03-16T08:31:03.000Z">
+          2017-03-16
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
+<p></p><p>Given two sorted integer arrays <i>nums1</i> and <i>nums2</i>, merge <i>nums2</i> into <i>nums1</i> as one sorted array.</p>
+
+<p><br><b>Note:</b><br><br>You may assume that <i>nums1</i> has enough space (size that is greater or equal to <i>m</i> + <i>n</i>) to hold additional elements from <i>nums2</i>. The number of elements initialized in <i>nums1</i> and <i>nums2</i> are <i>m</i> and <i>n</i> respectively.</p>
+
+<p><b>题意:</b><br><br>给两个有序数组 nums1、nums2，将两个数组原地合并到 nums1，保持 nums1 有序。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>与归并排序类似，但是从头部开始归并的成本太高，而 nums1 又有足够的长度，因此从两数组的尾部开始归并，放在 nums1 尾部（从 m + n - 1 开始）。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(self, nums1, m, nums2, n)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type nums1: List[int]</div><div class="line">        :type m: int</div><div class="line">        :type nums2: List[int]</div><div class="line">        :type n: int</div><div class="line">        :rtype: void Do not return anything, modify nums1 in-place instead.</div><div class="line">        """</div><div class="line">        <span class="keyword">if</span> n == <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span></div><div class="line"></div><div class="line">        p1, p2 = m - <span class="number">1</span>, n - <span class="number">1</span>  <span class="comment"># 2 working pointers init at the ends</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(m + n - <span class="number">1</span>, <span class="number">-1</span>, <span class="number">-1</span>):</div><div class="line">            <span class="keyword">if</span> p1 &lt; <span class="number">0</span>:</div><div class="line">                nums1[i] = nums2[p2]</div><div class="line">                p2 -= <span class="number">1</span></div><div class="line">            <span class="keyword">elif</span> p2 &lt; <span class="number">0</span>:</div><div class="line">                nums1[i] = nums1[p1]</div><div class="line">                p1 -= <span class="number">1</span></div><div class="line">            <span class="keyword">elif</span> nums1[p1] &gt; nums2[p2]:</div><div class="line">                nums1[i] = nums1[p1]</div><div class="line">                p1 -= <span class="number">1</span></div><div class="line">            <span class="keyword">elif</span> nums1[p1] &lt;= nums2[p2]:</div><div class="line">                nums1[i] = nums2[p2]</div><div class="line">                p2 -= <span class="number">1</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="/2017/03/16/merge-sorted-array/#comment">评论</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
   <article>
 
   
@@ -122,7 +191,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/14/palindrome-linked-list/#comment">Comments</a>
+          <a href="/2017/03/14/palindrome-linked-list/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -188,7 +257,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/14/fizz-buzz/#comment">Comments</a>
+          <a href="/2017/03/14/fizz-buzz/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -257,7 +326,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/14/valid-parentheses/#comment">Comments</a>
+          <a href="/2017/03/14/valid-parentheses/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -330,7 +399,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/14/count-and-say/#comment">Comments</a>
+          <a href="/2017/03/14/count-and-say/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -399,72 +468,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/14/factorial-trailing-zeroes/#comment">Comments</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/03/14/single-number/"><span>136. Single Number</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/03/14/single-number/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-03-14T03:28:00.000Z">
-          2017-03-14
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
-<p>Given an array of integers, every element appears twice except for one. Find that single one.</p>
-<p><strong>Note</strong>:<br>Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?</p>
-<p>给出一个整数数组，有一个元素只出现了一次，其他所有元素都出现了两次。找出这个元素。</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">singleNumber</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type nums: List[int]</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        rslt = &#123;&#125;</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> nums:</div><div class="line">            <span class="keyword">try</span>:</div><div class="line">                rslt[i] += <span class="number">1</span></div><div class="line">            <span class="keyword">except</span> KeyError:</div><div class="line">                rslt[i] = <span class="number">1</span></div><div class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> rslt:</div><div class="line">            <span class="keyword">if</span> rslt[j] == <span class="number">1</span>:</div><div class="line">                <span class="keyword">return</span> j</div></pre></td></tr></table></figure>
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/algorithm/">algorithm</a>
-    </span>
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/03/14/single-number/#comment">Comments</a>
+          <a href="/2017/03/14/factorial-trailing-zeroes/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -529,7 +533,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/14/reverse-string/#comment">Comments</a>
+          <a href="/2017/03/14/reverse-string/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -598,7 +602,72 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/14/median-of-two-sorted-arrays/#comment">Comments</a>
+          <a href="/2017/03/14/median-of-two-sorted-arrays/#comment">评论</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/03/14/single-number/"><span>136. Single Number</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/03/14/single-number/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-03-14T03:28:00.000Z">
+          2017-03-14
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
+<p>Given an array of integers, every element appears twice except for one. Find that single one.</p>
+<p><strong>Note</strong>:<br>Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?</p>
+<p>给出一个整数数组，有一个元素只出现了一次，其他所有元素都出现了两次。找出这个元素。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">singleNumber</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type nums: List[int]</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        rslt = &#123;&#125;</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> nums:</div><div class="line">            <span class="keyword">try</span>:</div><div class="line">                rslt[i] += <span class="number">1</span></div><div class="line">            <span class="keyword">except</span> KeyError:</div><div class="line">                rslt[i] = <span class="number">1</span></div><div class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> rslt:</div><div class="line">            <span class="keyword">if</span> rslt[j] == <span class="number">1</span>:</div><div class="line">                <span class="keyword">return</span> j</div></pre></td></tr></table></figure>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="/2017/03/14/single-number/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -671,75 +740,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/14/remove-duplicates-from-sorted-array/#comment">Comments</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/03/13/pascals-triangle/"><span>118. Pascal&#39;s Triangle</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/03/13/pascals-triangle/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-03-13T15:31:29.000Z">
-          2017-03-13
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
-<p></p><p>Given <i>numRows</i>, generate the first <i>numRows</i> of Pascal’s triangle.</p>
-
-<p></p><p><br>For example, given <i>numRows</i> = 5,<br><br>Return<br></p><pre><br>[<br>     [1],<br>    [1,1],<br>   [1,2,1],<br>  [1,3,3,1],<br> [1,4,6,4,1]<br>]<br></pre><p></p>
-<p><b>题意:</b><br><br>给出行数，生成相应行帕斯卡三角。</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>帕斯卡三角的下一行的某元素是上一行的相邻两元素的和。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">generate</span><span class="params">(self, numRows)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type numRows: int</div><div class="line">        :rtype: List[List[int]]</div><div class="line">        """</div><div class="line">        <span class="keyword">if</span> numRows == <span class="number">0</span>:</div><div class="line">            rslt = []</div><div class="line">        <span class="keyword">elif</span> numRows == <span class="number">1</span>:</div><div class="line">            rslt = [[<span class="number">1</span>]]</div><div class="line">        <span class="keyword">elif</span> numRows == <span class="number">2</span>:</div><div class="line">            rslt = [[<span class="number">1</span>], [<span class="number">1</span>, <span class="number">1</span>]]</div><div class="line">        <span class="keyword">elif</span> numRows &gt; <span class="number">2</span>:</div><div class="line">            rslt = [[<span class="number">1</span>], [<span class="number">1</span>, <span class="number">1</span>]]</div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">2</span>, numRows):</div><div class="line">                now = [<span class="number">1</span>]</div><div class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> xrange(<span class="number">1</span>, i):</div><div class="line">                    now.append(rslt[i<span class="number">-1</span>][j<span class="number">-1</span>] + rslt[i<span class="number">-1</span>][j])</div><div class="line">                now.append(<span class="number">1</span>)</div><div class="line">                rslt.append(now)</div><div class="line">        <span class="keyword">return</span> rslt</div></pre></td></tr></table></figure>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/algorithm/">algorithm</a>
-    </span>
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/03/13/pascals-triangle/#comment">Comments</a>
+          <a href="/2017/03/14/remove-duplicates-from-sorted-array/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -753,7 +754,7 @@
 <nav class="pagination">
   
   
-  <a href="/page/2/" class="pagination-next">Next</a>
+  <a href="/page/2/" class="pagination-next">下一页</a>
   
 </nav>
     </main>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Page 4 | 之言片语</title>
+  <title>第 4 页 | 之言片语</title>
 
   
   <meta name="author" content="4faramita">
@@ -47,7 +47,7 @@
   <nav class="site-navigation">
     <ul>
       
-        <li><a href="/">Home</a></li>
+        <li><a href="/">主页</a></li>
       
         <li><a href="/tags/algorithm">Algorithms</a></li>
       
@@ -55,7 +55,7 @@
       
         <li><a href="/tags/works">Works</a></li>
       
-        <li><a href="/archives">Archives</a></li>
+        <li><a href="/archives">归档</a></li>
       
     </ul>
   </nav>
@@ -63,6 +63,76 @@
 
     <main class="site-main posts-loop">
     
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/02/28/move-zeroes/"><span>283. Move Zeroes</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/02/28/move-zeroes/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-02-28T14:07:00.000Z">
+          2017-02-28
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
+<p>Given an array nums, write a function to move all 0’s to the end of it while maintaining the relative order of the non-zero elements.</p>
+<p>For example, given nums = [0, 1, 0, 3, 12], after calling your function, nums should be [1, 3, 12, 0, 0].</p>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note:"></a>Note:</h3><p>You must do this in-place without making a copy of the array.<br>Minimize the total number of operations.</p>
+<p>将数列中的所有 0 移到末尾，其他元素保持不变。<strong>要求原地执行</strong></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>设定工作指针初始为 0 位置，设定 tail 指针指向非 0 尾部。<br>若工作指针指向元素为 0，则将该元素移动到 tail 位置，tail 前移一位；<br>若工作指针指向元素非 0，工作指针后移一位，直至工作指针遇到 tail。<br>实现如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">moveZeroes</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type nums: List[int]</div><div class="line">        :rtype: void Do not return anything, modify nums in-place instead.</div><div class="line">        """</div><div class="line">        <span class="comment"># nums = moveZeroes_main(nums)</span></div><div class="line">        length = len(nums)</div><div class="line">        tail = length - <span class="number">1</span></div><div class="line">        <span class="keyword">if</span> length &gt; <span class="number">1</span>:</div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> xrange(length<span class="number">-1</span>, <span class="number">0</span>, <span class="number">-1</span>):</div><div class="line">                <span class="keyword">if</span> nums[i] == <span class="number">0</span>:  <span class="comment"># if there are zeros at the end</span></div><div class="line">                    tail -= <span class="number">1</span></div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    <span class="keyword">break</span></div><div class="line">            j = <span class="number">0</span></div><div class="line">            <span class="keyword">while</span> j &lt; tail:</div><div class="line">                <span class="keyword">if</span> nums[j] == <span class="number">0</span>:</div><div class="line">                    <span class="keyword">for</span> k <span class="keyword">in</span> xrange(j, tail):</div><div class="line">                        nums[k] = nums[k+<span class="number">1</span>]</div><div class="line">                    nums[tail] = <span class="number">0</span></div><div class="line">                    tail -= <span class="number">1</span></div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    j += <span class="number">1</span></div></pre></td></tr></table></figure>
+<p>最初考虑写一个递归的方法实现，每次讲末尾 0 和开头确定非 0 部分略去。但是 Python 的 list 每次切分时都会复制，因此不满足原地执行以及不使用 return 的要求。但是这个方法我很喜欢，无论如何还是附上</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">moveZeroes_main</span><span class="params">(nums)</span>:</span></div><div class="line">    tail = len(nums)</div><div class="line">    <span class="keyword">if</span> tail &gt; <span class="number">1</span>:</div><div class="line">        <span class="keyword">if</span> nums[<span class="number">-1</span>] == <span class="number">0</span>:</div><div class="line">            <span class="comment"># tail = len(''.join([str(i) for i in nums]).rstrip('0'))</span></div><div class="line">            <span class="keyword">return</span> moveZeroes_main(nums[:<span class="number">-1</span>]) + [<span class="number">0</span>]</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">if</span> nums[<span class="number">0</span>] == <span class="number">0</span>:</div><div class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> xrange(<span class="number">1</span>, tail):</div><div class="line">                    nums[j<span class="number">-1</span>] = nums[j]</div><div class="line">                nums[<span class="number">-1</span>] = <span class="number">0</span></div><div class="line">                <span class="keyword">return</span> moveZeroes_main(nums)</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                <span class="keyword">return</span> [nums[<span class="number">0</span>]] + moveZeroes_main(nums[<span class="number">1</span>:tail])</div><div class="line">    <span class="keyword">return</span> nums</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="/2017/02/28/move-zeroes/#comment">评论</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
   <article>
 
   
@@ -120,7 +190,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/02/27/island-perimeter/#comment">Comments</a>
+          <a href="/2017/02/27/island-perimeter/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -187,7 +257,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/02/27/keyboard-row/#comment">Comments</a>
+          <a href="/2017/02/27/keyboard-row/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -257,7 +327,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/02/26/hamming-distance/#comment">Comments</a>
+          <a href="/2017/02/26/hamming-distance/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -322,7 +392,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/02/25/maximum-depth-of-binary-tree/#comment">Comments</a>
+          <a href="/2017/02/25/maximum-depth-of-binary-tree/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -388,7 +458,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/02/25/add-two-numbers/#comment">Comments</a>
+          <a href="/2017/02/25/add-two-numbers/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -458,7 +528,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/02/23/longest-substring-without-repeating-characters/#comment">Comments</a>
+          <a href="/2017/02/23/longest-substring-without-repeating-characters/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -523,7 +593,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/02/23/reverse-integer/#comment">Comments</a>
+          <a href="/2017/02/23/reverse-integer/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -588,7 +658,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/02/22/two-sum/#comment">Comments</a>
+          <a href="/2017/02/22/two-sum/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -650,7 +720,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/02/22/hello-world/#comment">Comments</a>
+          <a href="/2017/02/22/hello-world/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -663,7 +733,7 @@
 
 <nav class="pagination">
   
-  <a href="/page/3/" class="pagination-prev">Prev</a>
+  <a href="/page/3/" class="pagination-prev">上一页</a>
   
   
 </nav>
