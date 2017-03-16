@@ -8,7 +8,7 @@ import time
 # import urllib
 # import urllib.request
 # import random
-# from subprocess import call
+from subprocess import call
 
 from pyquery import PyQuery as pq
 
@@ -101,5 +101,5 @@ tmp = tmp.format(
 file = open(path_dir + get_filename, 'w')
 file.write(tmp)
 file.close()
-# call(['vim', get_filename])
-print('Show time:\n', get_filename)
+call(['micro', path_dir + get_filename])
+print('Show time:\n', path_dir + get_filename)
