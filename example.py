@@ -5,10 +5,11 @@
 
 import sys
 import time
+import os
 # import urllib
 # import urllib.request
 # import random
-from subprocess import call
+# from subprocess import call
 
 from pyquery import PyQuery as pq
 
@@ -98,8 +99,12 @@ tmp = tmp.format(
     contents   = get_contents,
     date       = time.strftime("%F %H:%M:%S", time.localtime()))
 
-file = open(path_dir + get_filename, 'w')
-file.write(tmp)
-file.close()
-call(['micro', path_dir + get_filename])
-print('Show time:\n', path_dir + get_filename)
+full_path = path_dir + get_filename
+if not os.path.exists(full_path):
+    file = open(full_path, 'w')
+    file.write(tmp)
+    file.close()
+    # call(['micro', path_dir + get_filename])
+    print('Show time:\n', full_path)
+else:
+    print('Pick up from where u left:\n', full_path)
