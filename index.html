@@ -47,7 +47,7 @@
   <nav class="site-navigation">
     <ul>
       
-        <li><a href="/">Home</a></li>
+        <li><a href="/">主页</a></li>
       
         <li><a href="/tags/algorithm">Algorithms</a></li>
       
@@ -55,7 +55,7 @@
       
         <li><a href="/tags/works">Works</a></li>
       
-        <li><a href="/archives">Archives</a></li>
+        <li><a href="/archives">归档</a></li>
       
     </ul>
   </nav>
@@ -102,6 +102,7 @@
 <p>这个算法则将执行时间从原来的 2.5s 优化到了 1s 以内。<br>但是时间复杂度依然是 O(n^2)</p>
 <p>这道题是可以用动态规划的。遍历到每个节点时都有两个选择：选择上一个 sum 加当前数，或者选择当前数作为新的 sum。<br>算法如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">maxSubArray</span><span class="params">(A)</span>:</span></div><div class="line">    <span class="keyword">if</span> <span class="keyword">not</span> A:</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span></div><div class="line"></div><div class="line">    curSum = maxSum = A[<span class="number">0</span>]</div><div class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> A[<span class="number">1</span>:]:</div><div class="line">        curSum = max(num, curSum + num)</div><div class="line">        maxSum = max(maxSum, curSum)</div><div class="line"></div><div class="line">    <span class="keyword">return</span> maxSum</div></pre></td></tr></table></figure>
+<p>P.S 写这道题的时候 LeetCode 挂了…… 🤦</p>
 
       
     </div>
@@ -129,7 +130,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/17/maximum-subarray/#comment">Comments</a>
+          <a href="/2017/03/17/maximum-subarray/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -209,7 +210,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/17/valid-palindrome/#comment">Comments</a>
+          <a href="/2017/03/17/valid-palindrome/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -287,7 +288,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/16/count-primes/#comment">Comments</a>
+          <a href="/2017/03/16/count-primes/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -358,7 +359,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/16/min-stack/#comment">Comments</a>
+          <a href="/2017/03/16/min-stack/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -432,7 +433,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/16/intersection-of-two-linked-lists/#comment">Comments</a>
+          <a href="/2017/03/16/intersection-of-two-linked-lists/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -499,7 +500,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/16/longest-common-prefix/#comment">Comments</a>
+          <a href="/2017/03/16/longest-common-prefix/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -568,7 +569,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/16/merge-sorted-array/#comment">Comments</a>
+          <a href="/2017/03/16/merge-sorted-array/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -637,7 +638,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/14/palindrome-linked-list/#comment">Comments</a>
+          <a href="/2017/03/14/palindrome-linked-list/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -703,7 +704,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/14/fizz-buzz/#comment">Comments</a>
+          <a href="/2017/03/14/fizz-buzz/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -772,7 +773,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/14/valid-parentheses/#comment">Comments</a>
+          <a href="/2017/03/14/valid-parentheses/#comment">评论</a>
         </span>
       </span>
     </div>
@@ -786,7 +787,7 @@
 <nav class="pagination">
   
   
-  <a href="/page/2/" class="pagination-next">Next</a>
+  <a href="/page/2/" class="pagination-next">下一页</a>
   
 </nav>
     </main>
