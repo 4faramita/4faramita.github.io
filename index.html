@@ -67,6 +67,82 @@
 
   
     
+    <h3 class="article-title"><a href="/2017/04/11/letter-combinations-of-a-phone-number/"><span>17. Letter Combinations of a Phone Number</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/04/11/letter-combinations-of-a-phone-number/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-04-10T16:49:26.000Z">
+          2017-04-11
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Medium</strong></p>
+<p></p><p>Given a digit string, return all possible letter combinations that the number could represent.<br></p>
+
+<p><br>A mapping of digit to letters (just like on the telephone buttons) is given below.</p><br><p><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Telephone-keypad2.svg/200px-Telephone-keypad2.svg.png"></p>
+
+<pre>
+<b>Input:</b>Digit string "23"
+<b>Output:</b> ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
+</pre>
+
+<p><br><b>Note:</b><br><br>Although the above answer is in lexicographical order, your answer could be in any order you want.<br></p>
+
+<p><b>题意:</b><br><br>给出一串数字，求这串数字在 T9 键盘上 能打出的所有字母组合。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>算法很简单，预设一个字典，查每个数的对应字母，然后求组合即可。<br>重点在于 Python 有一个强大的工具集：itertools<br>itertools 里面的 combination 等方法之前也用过很多次，这次用到的是 product。这个方法能产生输入数组（每组一个元素）所能组成的所有组合。知道了这个方法这道题也就解开了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> itertools</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">letterCombinations</span><span class="params">(self, digits)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type digits: str</div><div class="line">        :rtype: List[str]</div><div class="line">        """</div><div class="line">        num_pad = &#123;</div><div class="line">            <span class="string">'2'</span>: <span class="string">'abc'</span>,</div><div class="line">            <span class="string">'3'</span>: <span class="string">'def'</span>,</div><div class="line">            <span class="string">'4'</span>: <span class="string">'ghi'</span>,</div><div class="line">            <span class="string">'5'</span>: <span class="string">'jkl'</span>,</div><div class="line">            <span class="string">'6'</span>: <span class="string">'mno'</span>,</div><div class="line">            <span class="string">'7'</span>: <span class="string">'pqrs'</span>,</div><div class="line">            <span class="string">'8'</span>: <span class="string">'tuv'</span>,</div><div class="line">            <span class="string">'9'</span>: <span class="string">'wxyz'</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> digits == <span class="string">''</span>:</div><div class="line">            <span class="keyword">return</span> []</div><div class="line">        chars = []</div><div class="line">        <span class="keyword">for</span> n <span class="keyword">in</span> digits:</div><div class="line">            chars.append([i <span class="keyword">for</span> i <span class="keyword">in</span> num_pad[n]])</div><div class="line">        char_list = list(itertools.product(*chars))</div><div class="line">        result = []</div><div class="line">        <span class="keyword">for</span> s <span class="keyword">in</span> char_list:</div><div class="line">            result.append(<span class="string">''</span>.join(list(s)))</div><div class="line">        <span class="keyword">return</span> result</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="/2017/04/11/letter-combinations-of-a-phone-number/#comment">Comments</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
     <h3 class="article-title"><a href="/2017/04/11/3sum/"><span>15. 3Sum</span></a></h3>
     
   
@@ -719,75 +795,6 @@ A solution set is:
         <i class="icon-comments"></i>
         <span>
           <a href="/2017/03/16/longest-common-prefix/#comment">Comments</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/03/16/merge-sorted-array/"><span>88. Merge Sorted Array</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/03/16/merge-sorted-array/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-03-16T08:31:03.000Z">
-          2017-03-16
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
-<p></p><p>Given two sorted integer arrays <i>nums1</i> and <i>nums2</i>, merge <i>nums2</i> into <i>nums1</i> as one sorted array.</p>
-
-<p><br><b>Note:</b><br><br>You may assume that <i>nums1</i> has enough space (size that is greater or equal to <i>m</i> + <i>n</i>) to hold additional elements from <i>nums2</i>. The number of elements initialized in <i>nums1</i> and <i>nums2</i> are <i>m</i> and <i>n</i> respectively.</p>
-
-<p><b>题意:</b><br><br>给两个有序数组 nums1、nums2，将两个数组原地合并到 nums1，保持 nums1 有序。</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>与归并排序类似，但是从头部开始归并的成本太高，而 nums1 又有足够的长度，因此从两数组的尾部开始归并，放在 nums1 尾部（从 m + n - 1 开始）。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(self, nums1, m, nums2, n)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type nums1: List[int]</div><div class="line">        :type m: int</div><div class="line">        :type nums2: List[int]</div><div class="line">        :type n: int</div><div class="line">        :rtype: void Do not return anything, modify nums1 in-place instead.</div><div class="line">        """</div><div class="line">        <span class="keyword">if</span> n == <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span></div><div class="line"></div><div class="line">        p1, p2 = m - <span class="number">1</span>, n - <span class="number">1</span>  <span class="comment"># 2 working pointers init at the ends</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(m + n - <span class="number">1</span>, <span class="number">-1</span>, <span class="number">-1</span>):</div><div class="line">            <span class="keyword">if</span> p1 &lt; <span class="number">0</span>:</div><div class="line">                nums1[i] = nums2[p2]</div><div class="line">                p2 -= <span class="number">1</span></div><div class="line">            <span class="keyword">elif</span> p2 &lt; <span class="number">0</span>:</div><div class="line">                nums1[i] = nums1[p1]</div><div class="line">                p1 -= <span class="number">1</span></div><div class="line">            <span class="keyword">elif</span> nums1[p1] &gt; nums2[p2]:</div><div class="line">                nums1[i] = nums1[p1]</div><div class="line">                p1 -= <span class="number">1</span></div><div class="line">            <span class="keyword">elif</span> nums1[p1] &lt;= nums2[p2]:</div><div class="line">                nums1[i] = nums2[p2]</div><div class="line">                p2 -= <span class="number">1</span></div></pre></td></tr></table></figure>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/algorithm/">algorithm</a>
-    </span>
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/03/16/merge-sorted-array/#comment">Comments</a>
         </span>
       </span>
     </div>

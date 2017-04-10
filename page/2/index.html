@@ -67,6 +67,75 @@
 
   
     
+    <h3 class="article-title"><a href="/2017/03/16/merge-sorted-array/"><span>88. Merge Sorted Array</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/03/16/merge-sorted-array/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-03-16T08:31:03.000Z">
+          2017-03-16
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
+<p></p><p>Given two sorted integer arrays <i>nums1</i> and <i>nums2</i>, merge <i>nums2</i> into <i>nums1</i> as one sorted array.</p>
+
+<p><br><b>Note:</b><br><br>You may assume that <i>nums1</i> has enough space (size that is greater or equal to <i>m</i> + <i>n</i>) to hold additional elements from <i>nums2</i>. The number of elements initialized in <i>nums1</i> and <i>nums2</i> are <i>m</i> and <i>n</i> respectively.</p>
+
+<p><b>题意:</b><br><br>给两个有序数组 nums1、nums2，将两个数组原地合并到 nums1，保持 nums1 有序。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>与归并排序类似，但是从头部开始归并的成本太高，而 nums1 又有足够的长度，因此从两数组的尾部开始归并，放在 nums1 尾部（从 m + n - 1 开始）。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(self, nums1, m, nums2, n)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type nums1: List[int]</div><div class="line">        :type m: int</div><div class="line">        :type nums2: List[int]</div><div class="line">        :type n: int</div><div class="line">        :rtype: void Do not return anything, modify nums1 in-place instead.</div><div class="line">        """</div><div class="line">        <span class="keyword">if</span> n == <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span></div><div class="line"></div><div class="line">        p1, p2 = m - <span class="number">1</span>, n - <span class="number">1</span>  <span class="comment"># 2 working pointers init at the ends</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(m + n - <span class="number">1</span>, <span class="number">-1</span>, <span class="number">-1</span>):</div><div class="line">            <span class="keyword">if</span> p1 &lt; <span class="number">0</span>:</div><div class="line">                nums1[i] = nums2[p2]</div><div class="line">                p2 -= <span class="number">1</span></div><div class="line">            <span class="keyword">elif</span> p2 &lt; <span class="number">0</span>:</div><div class="line">                nums1[i] = nums1[p1]</div><div class="line">                p1 -= <span class="number">1</span></div><div class="line">            <span class="keyword">elif</span> nums1[p1] &gt; nums2[p2]:</div><div class="line">                nums1[i] = nums1[p1]</div><div class="line">                p1 -= <span class="number">1</span></div><div class="line">            <span class="keyword">elif</span> nums1[p1] &lt;= nums2[p2]:</div><div class="line">                nums1[i] = nums2[p2]</div><div class="line">                p2 -= <span class="number">1</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="/2017/03/16/merge-sorted-array/#comment">Comments</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
     <h3 class="article-title"><a href="/2017/03/14/palindrome-linked-list/"><span>234. Palindrome Linked List</span></a></h3>
     
   
@@ -413,13 +482,13 @@
 
   
     
-    <h3 class="article-title"><a href="/2017/03/14/median-of-two-sorted-arrays/"><span>4. Median of Two Sorted Arrays</span></a></h3>
+    <h3 class="article-title"><a href="/2017/03/14/reverse-string/"><span>344. Reverse String</span></a></h3>
     
   
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/2017/03/14/median-of-two-sorted-arrays/" rel="bookmark">
+      <a href="/2017/03/14/reverse-string/" rel="bookmark">
         <time class="entry-date published" datetime="2017-03-14T03:28:00.000Z">
           2017-03-14
         </time>
@@ -433,15 +502,11 @@
   <div class="article-content">
     <div class="entry">
       
-        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Hard</strong></p>
-<p>There are two sorted arrays nums1 and nums2 of size m and n respectively.</p>
-<p>Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).</p>
-<p><strong>Example1</strong><br>nums1 = [1, 3]<br>nums2 = [2]</p>
-<p>The median is 2.0</p>
-<p><strong>Example2</strong><br>nums1 = [1, 2]<br>nums2 = [3, 4]</p>
-<p>The median is (2 + 3)/2 = 2.5</p>
-<p>给出两个有序数列，返回两个数列形成的大数列的中位数。</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findMedianSortedArrays</span><span class="params">(self, nums1, nums2)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type nums1: List[int]</div><div class="line">        :type nums2: List[int]</div><div class="line">        :rtype: float</div><div class="line">        """</div><div class="line">        <span class="comment"># pointers for two lists</span></div><div class="line">        p1 = <span class="number">0</span></div><div class="line">        p2 = <span class="number">0</span></div><div class="line">        </div><div class="line">        isOdd = <span class="keyword">True</span></div><div class="line">        </div><div class="line">        <span class="comment"># last nums</span></div><div class="line">        last = <span class="number">0</span></div><div class="line">        </div><div class="line">        <span class="keyword">if</span> (len(nums1) + len (nums2)) % <span class="number">2</span> == <span class="number">1</span>:</div><div class="line">            exp_num = (len(nums1) + len (nums2) + <span class="number">1</span>) / <span class="number">2</span></div><div class="line">            isOdd = <span class="keyword">True</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            exp_num = ((len(nums1) + len (nums2)) / <span class="number">2</span>) + <span class="number">1</span></div><div class="line">            isOdd = <span class="keyword">False</span></div><div class="line">            </div><div class="line">        <span class="keyword">if</span> len(nums1) == <span class="number">0</span> <span class="keyword">or</span> len(nums2) == <span class="number">0</span>:</div><div class="line">            comb = nums1 + nums2</div><div class="line">            <span class="keyword">if</span> isOdd == <span class="keyword">True</span>:</div><div class="line">                <span class="keyword">return</span> comb[exp_num - <span class="number">1</span>]</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                <span class="keyword">return</span> (comb[exp_num - <span class="number">1</span>] + comb[exp_num - <span class="number">2</span>]) / float(<span class="number">2</span>)</div><div class="line">        <span class="keyword">elif</span> nums1[<span class="number">-1</span>] &lt;= nums2[<span class="number">0</span>]:</div><div class="line">            comb = nums1 + nums2</div><div class="line">            <span class="keyword">if</span> isOdd == <span class="keyword">True</span>:</div><div class="line">                <span class="keyword">return</span> comb[exp_num - <span class="number">1</span>]</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                <span class="keyword">return</span> (comb[exp_num - <span class="number">1</span>] + comb[exp_num - <span class="number">2</span>]) / float(<span class="number">2</span>)</div><div class="line">        <span class="keyword">elif</span> nums2[<span class="number">-1</span>] &lt;= nums1[<span class="number">0</span>]:</div><div class="line">            comb = nums2 + nums1</div><div class="line">            <span class="keyword">if</span> isOdd == <span class="keyword">True</span>:</div><div class="line">                print(comb[exp_num])</div><div class="line">                <span class="keyword">return</span> comb[exp_num - <span class="number">1</span>]</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                <span class="keyword">return</span> (comb[exp_num - <span class="number">1</span>] + comb[exp_num - <span class="number">2</span>]) / float(<span class="number">2</span>)</div><div class="line">        </div><div class="line">        </div><div class="line">        <span class="keyword">while</span> p1 + p2 &lt;= exp_num - <span class="number">2</span>:</div><div class="line">            <span class="keyword">if</span> p1 &gt;= len(nums1):</div><div class="line">                last = nums2[p2]</div><div class="line">                p2 += <span class="number">1</span></div><div class="line">            <span class="keyword">elif</span> p2 &gt;= len(nums2):</div><div class="line">                last = nums1[p1]</div><div class="line">                p1 += <span class="number">1</span></div><div class="line">            <span class="keyword">elif</span> nums1[p1] &lt; nums2[p2]:</div><div class="line">                last = nums1[p1]</div><div class="line">                p1 += <span class="number">1</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                last = nums2[p2]</div><div class="line">                p2 += <span class="number">1</span></div><div class="line">        </div><div class="line">        <span class="keyword">if</span> p1 &gt;= len(nums1):</div><div class="line">            toAdd = nums2[p2]</div><div class="line">        <span class="keyword">elif</span> p2 &gt;= len(nums2):</div><div class="line">            toAdd = nums1[p1]</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            toAdd = min(nums1[p1], nums2[p2])</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> isOdd == <span class="keyword">True</span>:</div><div class="line">            <span class="keyword">return</span> toAdd</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> (toAdd + last) / float(<span class="number">2</span>)</div></pre></td></tr></table></figure>
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
+<p>Write a function that takes a string as input and returns the string reversed.</p>
+<p><strong>Example1</strong><br>Given s = “hello”, return “olleh”.</p>
+<p>反转字符串。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reverseString</span><span class="params">(self, s)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type s: str</div><div class="line">        :rtype: str</div><div class="line">        """</div><div class="line">        <span class="keyword">return</span> s[::<span class="number">-1</span>]</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -468,7 +533,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/14/median-of-two-sorted-arrays/#comment">Comments</a>
+          <a href="/2017/03/14/reverse-string/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -547,13 +612,13 @@
 
   
     
-    <h3 class="article-title"><a href="/2017/03/14/reverse-string/"><span>344. Reverse String</span></a></h3>
+    <h3 class="article-title"><a href="/2017/03/14/median-of-two-sorted-arrays/"><span>4. Median of Two Sorted Arrays</span></a></h3>
     
   
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/2017/03/14/reverse-string/" rel="bookmark">
+      <a href="/2017/03/14/median-of-two-sorted-arrays/" rel="bookmark">
         <time class="entry-date published" datetime="2017-03-14T03:28:00.000Z">
           2017-03-14
         </time>
@@ -567,11 +632,15 @@
   <div class="article-content">
     <div class="entry">
       
-        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
-<p>Write a function that takes a string as input and returns the string reversed.</p>
-<p><strong>Example1</strong><br>Given s = “hello”, return “olleh”.</p>
-<p>反转字符串。</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reverseString</span><span class="params">(self, s)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type s: str</div><div class="line">        :rtype: str</div><div class="line">        """</div><div class="line">        <span class="keyword">return</span> s[::<span class="number">-1</span>]</div></pre></td></tr></table></figure>
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Hard</strong></p>
+<p>There are two sorted arrays nums1 and nums2 of size m and n respectively.</p>
+<p>Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).</p>
+<p><strong>Example1</strong><br>nums1 = [1, 3]<br>nums2 = [2]</p>
+<p>The median is 2.0</p>
+<p><strong>Example2</strong><br>nums1 = [1, 2]<br>nums2 = [3, 4]</p>
+<p>The median is (2 + 3)/2 = 2.5</p>
+<p>给出两个有序数列，返回两个数列形成的大数列的中位数。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findMedianSortedArrays</span><span class="params">(self, nums1, nums2)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type nums1: List[int]</div><div class="line">        :type nums2: List[int]</div><div class="line">        :rtype: float</div><div class="line">        """</div><div class="line">        <span class="comment"># pointers for two lists</span></div><div class="line">        p1 = <span class="number">0</span></div><div class="line">        p2 = <span class="number">0</span></div><div class="line">        </div><div class="line">        isOdd = <span class="keyword">True</span></div><div class="line">        </div><div class="line">        <span class="comment"># last nums</span></div><div class="line">        last = <span class="number">0</span></div><div class="line">        </div><div class="line">        <span class="keyword">if</span> (len(nums1) + len (nums2)) % <span class="number">2</span> == <span class="number">1</span>:</div><div class="line">            exp_num = (len(nums1) + len (nums2) + <span class="number">1</span>) / <span class="number">2</span></div><div class="line">            isOdd = <span class="keyword">True</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            exp_num = ((len(nums1) + len (nums2)) / <span class="number">2</span>) + <span class="number">1</span></div><div class="line">            isOdd = <span class="keyword">False</span></div><div class="line">            </div><div class="line">        <span class="keyword">if</span> len(nums1) == <span class="number">0</span> <span class="keyword">or</span> len(nums2) == <span class="number">0</span>:</div><div class="line">            comb = nums1 + nums2</div><div class="line">            <span class="keyword">if</span> isOdd == <span class="keyword">True</span>:</div><div class="line">                <span class="keyword">return</span> comb[exp_num - <span class="number">1</span>]</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                <span class="keyword">return</span> (comb[exp_num - <span class="number">1</span>] + comb[exp_num - <span class="number">2</span>]) / float(<span class="number">2</span>)</div><div class="line">        <span class="keyword">elif</span> nums1[<span class="number">-1</span>] &lt;= nums2[<span class="number">0</span>]:</div><div class="line">            comb = nums1 + nums2</div><div class="line">            <span class="keyword">if</span> isOdd == <span class="keyword">True</span>:</div><div class="line">                <span class="keyword">return</span> comb[exp_num - <span class="number">1</span>]</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                <span class="keyword">return</span> (comb[exp_num - <span class="number">1</span>] + comb[exp_num - <span class="number">2</span>]) / float(<span class="number">2</span>)</div><div class="line">        <span class="keyword">elif</span> nums2[<span class="number">-1</span>] &lt;= nums1[<span class="number">0</span>]:</div><div class="line">            comb = nums2 + nums1</div><div class="line">            <span class="keyword">if</span> isOdd == <span class="keyword">True</span>:</div><div class="line">                print(comb[exp_num])</div><div class="line">                <span class="keyword">return</span> comb[exp_num - <span class="number">1</span>]</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                <span class="keyword">return</span> (comb[exp_num - <span class="number">1</span>] + comb[exp_num - <span class="number">2</span>]) / float(<span class="number">2</span>)</div><div class="line">        </div><div class="line">        </div><div class="line">        <span class="keyword">while</span> p1 + p2 &lt;= exp_num - <span class="number">2</span>:</div><div class="line">            <span class="keyword">if</span> p1 &gt;= len(nums1):</div><div class="line">                last = nums2[p2]</div><div class="line">                p2 += <span class="number">1</span></div><div class="line">            <span class="keyword">elif</span> p2 &gt;= len(nums2):</div><div class="line">                last = nums1[p1]</div><div class="line">                p1 += <span class="number">1</span></div><div class="line">            <span class="keyword">elif</span> nums1[p1] &lt; nums2[p2]:</div><div class="line">                last = nums1[p1]</div><div class="line">                p1 += <span class="number">1</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                last = nums2[p2]</div><div class="line">                p2 += <span class="number">1</span></div><div class="line">        </div><div class="line">        <span class="keyword">if</span> p1 &gt;= len(nums1):</div><div class="line">            toAdd = nums2[p2]</div><div class="line">        <span class="keyword">elif</span> p2 &gt;= len(nums2):</div><div class="line">            toAdd = nums1[p1]</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            toAdd = min(nums1[p1], nums2[p2])</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> isOdd == <span class="keyword">True</span>:</div><div class="line">            <span class="keyword">return</span> toAdd</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> (toAdd + last) / float(<span class="number">2</span>)</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -598,7 +667,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/14/reverse-string/#comment">Comments</a>
+          <a href="/2017/03/14/median-of-two-sorted-arrays/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -672,74 +741,6 @@
         <i class="icon-comments"></i>
         <span>
           <a href="/2017/03/14/remove-duplicates-from-sorted-array/#comment">Comments</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/03/13/pascals-triangle/"><span>118. Pascal&#39;s Triangle</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/03/13/pascals-triangle/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-03-13T15:31:29.000Z">
-          2017-03-13
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
-<p></p><p>Given <i>numRows</i>, generate the first <i>numRows</i> of Pascal’s triangle.</p>
-
-<p></p><p><br>For example, given <i>numRows</i> = 5,<br><br>Return<br></p><pre><br>[<br>     [1],<br>    [1,1],<br>   [1,2,1],<br>  [1,3,3,1],<br> [1,4,6,4,1]<br>]<br></pre><p></p>
-<p><b>题意:</b><br><br>给出行数，生成相应行帕斯卡三角。</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>帕斯卡三角的下一行的某元素是上一行的相邻两元素的和。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">generate</span><span class="params">(self, numRows)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type numRows: int</div><div class="line">        :rtype: List[List[int]]</div><div class="line">        """</div><div class="line">        <span class="keyword">if</span> numRows == <span class="number">0</span>:</div><div class="line">            rslt = []</div><div class="line">        <span class="keyword">elif</span> numRows == <span class="number">1</span>:</div><div class="line">            rslt = [[<span class="number">1</span>]]</div><div class="line">        <span class="keyword">elif</span> numRows == <span class="number">2</span>:</div><div class="line">            rslt = [[<span class="number">1</span>], [<span class="number">1</span>, <span class="number">1</span>]]</div><div class="line">        <span class="keyword">elif</span> numRows &gt; <span class="number">2</span>:</div><div class="line">            rslt = [[<span class="number">1</span>], [<span class="number">1</span>, <span class="number">1</span>]]</div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">2</span>, numRows):</div><div class="line">                now = [<span class="number">1</span>]</div><div class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> xrange(<span class="number">1</span>, i):</div><div class="line">                    now.append(rslt[i<span class="number">-1</span>][j<span class="number">-1</span>] + rslt[i<span class="number">-1</span>][j])</div><div class="line">                now.append(<span class="number">1</span>)</div><div class="line">                rslt.append(now)</div><div class="line">        <span class="keyword">return</span> rslt</div></pre></td></tr></table></figure>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/algorithm/">algorithm</a>
-    </span>
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/03/13/pascals-triangle/#comment">Comments</a>
         </span>
       </span>
     </div>
