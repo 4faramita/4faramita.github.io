@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>第 4 页 | 之言片语</title>
+  <title>Page 4 | 之言片语</title>
 
   
   <meta name="author" content="4faramita">
@@ -47,7 +47,7 @@
   <nav class="site-navigation">
     <ul>
       
-        <li><a href="/">主页</a></li>
+        <li><a href="/">Home</a></li>
       
         <li><a href="/tags/algorithm">Algorithms</a></li>
       
@@ -55,7 +55,7 @@
       
         <li><a href="/tags/works">Works</a></li>
       
-        <li><a href="/archives">归档</a></li>
+        <li><a href="/archives">Archives</a></li>
       
     </ul>
   </nav>
@@ -63,6 +63,78 @@
 
     <main class="site-main posts-loop">
     
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/03/08/best-time-to-buy-and-sell-stock/"><span>121. Best Time to Buy and Sell Stock</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/03/08/best-time-to-buy-and-sell-stock/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-03-08T08:51:32.000Z">
+          2017-03-08
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
+<p>Say you have an array for which the ith element is the price of a given stock on day i.</p>
+<p>If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), design an algorithm to find the maximum profit.</p>
+<h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1:"></a>Example 1:</h3><p>Input: [7, 1, 5, 3, 6, 4]<br>Output: 5</p>
+<p>max. difference = 6-1 = 5 (not 7-1 = 6, as selling price needs to be larger than buying price)</p>
+<h2 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2:"></a>Example 2:</h2><p>Input: [7, 6, 4, 3, 1]<br>Output: 0</p>
+<p>In this case, no transaction is done, i.e. max profit = 0.</p>
+<p>给出一数组，代表每天的股价。要求只能买卖一次，求最大利润。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>实际上是求数组中后面的数与前面的数的最大差值。<br>最简单的方法自然是两个循环，但是时间复杂度为 O(n^2)，很不理想。</p>
+<p>思路：由于在每个单调区间中对答案有意义的元素只有区间两端的值而已。<br>因此构建两个新数组，分别只包含每个单调区间的最大值与最小值。<br>之后，针对最小值数组中每个元素，找最大值数组相应位置及之后的最大元素即可算出最大差值（利润）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxProfit</span><span class="params">(self, prices)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type prices: List[int]</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        max_profit = <span class="number">0</span></div><div class="line">    </div><div class="line">        <span class="keyword">if</span> len(prices) == <span class="number">2</span>:</div><div class="line">            <span class="keyword">return</span> max(prices[<span class="number">1</span>] - prices[<span class="number">0</span>], <span class="number">0</span>)</div><div class="line">    </div><div class="line">        <span class="keyword">elif</span> len(prices) &gt; <span class="number">2</span>:</div><div class="line">            low = prices[<span class="number">0</span>]</div><div class="line">            high = prices[<span class="number">0</span>]</div><div class="line">            profit = <span class="number">0</span></div><div class="line">            list_low = [prices[<span class="number">0</span>]]</div><div class="line">            list_high = []</div><div class="line">            up = <span class="keyword">True</span></div><div class="line">        </div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(prices) - <span class="number">1</span>):</div><div class="line">                <span class="keyword">if</span> prices[i + <span class="number">1</span>] &gt;= prices[i]:  <span class="comment"># going up</span></div><div class="line">                    high = prices[i + <span class="number">1</span>]</div><div class="line">                    <span class="keyword">if</span> up == <span class="keyword">False</span>:</div><div class="line">                        low = prices[i]</div><div class="line">                        list_low.append(low)</div><div class="line">                        up = <span class="keyword">True</span></div><div class="line">                <span class="keyword">elif</span> prices[i + <span class="number">1</span>] &lt; prices[i]:  <span class="comment"># going down</span></div><div class="line">                    low = prices[i + <span class="number">1</span>]</div><div class="line">                    <span class="keyword">if</span> up == <span class="keyword">True</span>:</div><div class="line">                        high = prices[i]</div><div class="line">                        list_high.append(high)</div><div class="line">                        up = <span class="keyword">False</span></div><div class="line">            <span class="keyword">if</span> len(list_high) &lt; len(list_low):</div><div class="line">                list_high.append(prices[<span class="number">-1</span>])</div><div class="line">    </div><div class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> xrange(len(list_low)):</div><div class="line">                max_profit = max(max_profit, max(list_high[j:]) - list_low[j])</div><div class="line">        <span class="keyword">return</span> max_profit</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="/2017/03/08/best-time-to-buy-and-sell-stock/#comment">Comments</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
   <article>
 
   
@@ -108,7 +180,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/08/sdsdsd/#comment">评论</a>
+          <a href="/2017/03/08/sdsdsd/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -176,7 +248,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/07/missing-number/#comment">评论</a>
+          <a href="/2017/03/07/missing-number/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -245,7 +317,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/07/intersection-of-two-arrays-ii/#comment">评论</a>
+          <a href="/2017/03/07/intersection-of-two-arrays-ii/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -312,7 +384,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/07/roman-to-integer/#comment">评论</a>
+          <a href="/2017/03/07/roman-to-integer/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -382,7 +454,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/07/valid-anagram/#comment">评论</a>
+          <a href="/2017/03/07/valid-anagram/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -449,7 +521,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/07/majority-element/#comment">评论</a>
+          <a href="/2017/03/07/majority-element/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -515,7 +587,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/07/excel-sheet-column-number/#comment">评论</a>
+          <a href="/2017/03/07/excel-sheet-column-number/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -584,7 +656,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/07/best-time-to-buy-and-sell-stock-ii/#comment">评论</a>
+          <a href="/2017/03/07/best-time-to-buy-and-sell-stock-ii/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -652,76 +724,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/07/first-unique-character-in-a-string/#comment">评论</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/03/03/string-to-integer-atoi/"><span>7. Reverse Integer</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/03/03/string-to-integer-atoi/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-03-02T16:13:00.000Z">
-          2017-03-03
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Medium</strong></p>
-<p>Implement atoi to convert a string to an integer.</p>
-<p><strong>Hint</strong>: Carefully consider all possible input cases. If you want a challenge, please do not see below and ask yourself what are the possible input cases.</p>
-<p><strong>Note</strong>: It is intended for this problem to be specified vaguely (ie, no given input specs). You are responsible to gather all the input requirements up front.</p>
-<h2 id="CheatSheet"><a href="#CheatSheet" class="headerlink" title="CheatSheet"></a>CheatSheet</h2><p>Requirements for atoi:<br>The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character, takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value.</p>
-<p>The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function.</p>
-<p>If the first sequence of non-whitespace characters in str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed.</p>
-<p>If no valid conversion could be performed, a zero value is returned. If the correct value is out of the range of representable values, INT_MAX (2147483647) or INT_MIN (-2147483648) is returned.</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">myAtoi</span><span class="params">(self, str)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type str: str</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        str = str.strip()</div><div class="line">        <span class="keyword">if</span> str == <span class="string">''</span>:</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span></div><div class="line">            </div><div class="line">        neg = <span class="keyword">False</span></div><div class="line">        nums = <span class="string">'0123456789'</span></div><div class="line">        </div><div class="line">        <span class="keyword">if</span> str[<span class="number">0</span>] == <span class="string">'-'</span>:</div><div class="line">            neg = <span class="keyword">True</span></div><div class="line">            str = str[<span class="number">1</span>:]</div><div class="line">        <span class="keyword">elif</span> str[<span class="number">0</span>] == <span class="string">'+'</span>:</div><div class="line">            neg = <span class="keyword">False</span></div><div class="line">            str = str[<span class="number">1</span>:]</div><div class="line">        <span class="keyword">if</span> str == <span class="string">''</span> <span class="keyword">or</span> str[<span class="number">0</span>] <span class="keyword">not</span> <span class="keyword">in</span> nums:</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span></div><div class="line">            </div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(str)):</div><div class="line">            <span class="keyword">if</span> str[i] <span class="keyword">not</span> <span class="keyword">in</span> nums:</div><div class="line">                str = str[:i]</div><div class="line">                <span class="keyword">break</span></div><div class="line">        <span class="keyword">if</span> str == <span class="string">''</span>:</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span></div><div class="line">            </div><div class="line">        <span class="keyword">if</span> neg == <span class="keyword">False</span>:</div><div class="line">            <span class="keyword">return</span> min(int(str), <span class="number">2147483647</span>)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> max(-int(str), <span class="number">-2147483648</span>)</div></pre></td></tr></table></figure>
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/algorithm/">algorithm</a>
-    </span>
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/03/03/string-to-integer-atoi/#comment">评论</a>
+          <a href="/2017/03/07/first-unique-character-in-a-string/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -734,10 +737,10 @@
 
 <nav class="pagination">
   
-  <a href="/page/3/" class="pagination-prev">上一页</a>
+  <a href="/page/3/" class="pagination-prev">Prev</a>
   
   
-  <a href="/page/5/" class="pagination-next">下一页</a>
+  <a href="/page/5/" class="pagination-next">Next</a>
   
 </nav>
     </main>

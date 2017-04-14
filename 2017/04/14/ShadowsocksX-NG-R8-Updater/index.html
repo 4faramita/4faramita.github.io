@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>1. Two Sum | 之言片语</title>
+  <title>一个更新 ShadowsocksX-NG-R8 的小工具 | 之言片语</title>
 
   
   <meta name="author" content="4faramita">
@@ -15,14 +15,14 @@
 
   
   
-  <meta name="keywords" content="algorithm">
+  <meta name="keywords" content="works">
   
 
   <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <meta property="og:title" content="1. Two Sum"/>
+  <meta property="og:title" content="一个更新 ShadowsocksX-NG-R8 的小工具"/>
 
   <meta property="og:site_name" content="之言片语"/>
 
@@ -69,15 +69,15 @@
 
   
     
-    <h3 class="article-title"><span>1. Two Sum</span></h3>
+    <h3 class="article-title"><span>一个更新 ShadowsocksX-NG-R8 的小工具</span></h3>
     
   
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/2017/02/22/two-sum/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-02-22T10:43:48.000Z">
-          2017-02-22
+      <a href="/2017/04/14/ShadowsocksX-NG-R8-Updater/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-04-14T15:48:02.000Z">
+          2017-04-14
         </time>
       </a>
     </span>
@@ -89,11 +89,33 @@
   <div class="article-content">
     <div class="entry">
       
-        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
-<p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
-<p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
-<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Given nums = [2, 7, 11, 15], target = 9,</div><div class="line"></div><div class="line">Because nums[0] + nums[1] = 2 + 7 = 9,</div><div class="line">return [0, 1].</div></pre></td></tr></table></figure>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">twoSum</span><span class="params">(self, nums, target)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type nums: List[int]</div><div class="line">        :type target: int</div><div class="line">        :rtype: List[int]</div><div class="line">        """</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</div><div class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(i + <span class="number">1</span>, len(nums)):</div><div class="line">                <span class="keyword">if</span> nums[i] + nums[j] == target:</div><div class="line">                    <span class="keyword">return</span> [i, j]</div></pre></td></tr></table></figure>
+        <p>在国内上网的话，绕不开 GFW 这个话题。要翻墙的话，如果你在用 macOS，那么 ShadowsocksX-NG-R8 是个不错的选择。ShadowsocksX-NG 从 ShadowsocksX fork 而来，而 ShadowsocksX-NG-R8 又是 ShadowsocksX-NG 的支持 ShadowsocksR 的 fork，目前维护十分活跃。</p>
+<p>维护活跃就意味着更新频繁，当然这是件好事，但是每次打开网页手工下载实在太麻烦。于是写了个这个小工具用于自动下载最新版本。</p>
+<p><a href="https://github.com/4faramita/ShadowsocksX-NG-R8-Updater" target="_blank" rel="external">ShadowsocksX-NG-R8-Updater</a></p>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>克隆仓库：</p>
+<p><code>git clone git@github.com:4faramita/ShadowsocksX-NG-R8-Updater.git</code></p>
+<p>脚本用 Node 写成，基于 cheerio 和 request。因此你需要安装 Node 和 npm：</p>
+<p><code>brew install node npm</code></p>
+<p>然后安装依赖：</p>
+<p><code>npm install cheerio request -g</code></p>
+<p>然后运行即可，文件会下载到脚本所在目录。</p>
+<p><code>cd ShadowsocksX-NG-R8-Updater</code></p>
+<p><code>node updater.js</code></p>
+<h2 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h2><p>既然你想用这个脚本，我假设你已经在用 ShadowsocksX-NG-R8 并打开了「HTTP 代理」，所以本脚本会自动调用 <a href="http://127.0.0.1:1087/" target="_blank" rel="external">http://127.0.0.1:1087</a> 作为默认 HTTP 代理。</p>
+<p>如果你不想使用代理，请用这个命令</p>
+<p> <code>node updater.js -n</code>;</p>
+<p>如果你想使用其他代理：</p>
+<p> <code>node updater.js -y [服务器] [端口]</code>. </p>
+<p>比如: <code>node updater.js -y 127.0.0.1 1087</code>. </p>
+<p>无需手工添加「<a href="http://」，这也意味着本脚本只支持" target="_blank" rel="external">http://」，这也意味着本脚本只支持</a> HTTP 代理</p>
+<h2 id="下一步"><a href="#下一步" class="headerlink" title="下一步"></a>下一步</h2><p>未来还有一些不痛不痒的功能需要添加，比如</p>
+<ul>
+<li>[ ] 自定义下载路径</li>
+<li>[ ] 校验 GPG Sig</li>
+<li>[ ] 显示下载进度</li>
+<li>[ ] 用 Python 重写</li>
+</ul>
+
       
     </div>
 
@@ -109,7 +131,7 @@
 
     <span class="post-tags">
       <i class="icon-tags"></i>
-        <a href="/tags/algorithm/">algorithm</a>
+        <a href="/tags/works/">works</a>
     </span>
     
 
