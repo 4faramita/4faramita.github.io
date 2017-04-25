@@ -67,6 +67,80 @@
 
   
     
+    <h3 class="article-title"><a href="/2017/03/16/intersection-of-two-linked-lists/"><span>160. Intersection of Two Linked Lists</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/03/16/intersection-of-two-linked-lists/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-03-16T09:18:58.000Z">
+          2017-03-16
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
+<p></p><p>Write a program to find the node at which the intersection of two singly linked lists begins.</p>
+
+<p>For example, the following two linked lists: </p><br><pre><br>A:          a1 → a2<br>                   ↘<br>                     c1 → c2 → c3<br>                   ↗<br>B:     b1 → b2 → b3<br></pre><br><p>begin to intersect at node c1.</p>
+
+<p></p><p><b>Notes:</b><br></p><ul><p></p>
+<p><li>If the two linked lists have no intersection at all, return <code>null</code>.</li></p>
+<p><li>The linked lists must retain their original structure after the function returns. </li></p>
+<p><li>You may assume there are no cycles anywhere in the entire linked structure.</li></p>
+<p><li>Your code should preferably run in O(n) time and use only O(1) memory.</li><br></p></ul><p></p>
+<p><b>题意:</b><br><br>两个链表，要求返回交叉点。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>先遍历一遍，确定二者的长度。<br>从较长的一个开始遍历，直到二者长度相同，然后两个链表同时向后遍历，检测每一个点是不是点是不是相等<br>遍历两次，时间复杂度 O(n),；<br>新建四个指针，空间复杂度 O(1)。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Definition for singly-linked list.</span></div><div class="line"><span class="comment"># class ListNode(object):</span></div><div class="line"><span class="comment">#     def __init__(self, x):</span></div><div class="line"><span class="comment">#         self.val = x</span></div><div class="line"><span class="comment">#         self.next = None</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getIntersectionNode</span><span class="params">(self, headA, headB)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type head1, head1: ListNode</div><div class="line">        :rtype: ListNode</div><div class="line">        """</div><div class="line">        pt_a, pt_b = headA, headB</div><div class="line">        len_a, len_b = <span class="number">0</span>, <span class="number">0</span></div><div class="line">        </div><div class="line">        <span class="keyword">while</span> pt_a:</div><div class="line">            len_a += <span class="number">1</span></div><div class="line">            pt_a = pt_a.next</div><div class="line">        <span class="keyword">while</span> pt_b:</div><div class="line">            len_b += <span class="number">1</span></div><div class="line">            pt_b = pt_b.next</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> len_a &gt; len_b:</div><div class="line">            long, short = headA, headB</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            long, short = headB, headA</div><div class="line">        </div><div class="line">        <span class="keyword">for</span> diff <span class="keyword">in</span> range(abs(len_a - len_b)):</div><div class="line">            long = long.next</div><div class="line">        </div><div class="line">        common = <span class="keyword">None</span></div><div class="line">        <span class="keyword">while</span> long:</div><div class="line">            <span class="keyword">if</span> long == short:</div><div class="line">                common = long</div><div class="line">                <span class="keyword">break</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                long, short = long.next, short.next</div><div class="line">        <span class="keyword">return</span> common</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="/2017/03/16/intersection-of-two-linked-lists/#comment">Comments</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
     <h3 class="article-title"><a href="/2017/03/16/longest-common-prefix/"><span>14. Longest Common Prefix</span></a></h3>
     
   
@@ -666,75 +740,6 @@
         <i class="icon-comments"></i>
         <span>
           <a href="/2017/03/14/single-number/#comment">Comments</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/03/14/median-of-two-sorted-arrays/"><span>4. Median of Two Sorted Arrays</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/03/14/median-of-two-sorted-arrays/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-03-14T03:28:00.000Z">
-          2017-03-14
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Hard</strong></p>
-<p>There are two sorted arrays nums1 and nums2 of size m and n respectively.</p>
-<p>Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).</p>
-<p><strong>Example1</strong><br>nums1 = [1, 3]<br>nums2 = [2]</p>
-<p>The median is 2.0</p>
-<p><strong>Example2</strong><br>nums1 = [1, 2]<br>nums2 = [3, 4]</p>
-<p>The median is (2 + 3)/2 = 2.5</p>
-<p>给出两个有序数列，返回两个数列形成的大数列的中位数。</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findMedianSortedArrays</span><span class="params">(self, nums1, nums2)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type nums1: List[int]</div><div class="line">        :type nums2: List[int]</div><div class="line">        :rtype: float</div><div class="line">        """</div><div class="line">        <span class="comment"># pointers for two lists</span></div><div class="line">        p1 = <span class="number">0</span></div><div class="line">        p2 = <span class="number">0</span></div><div class="line">        </div><div class="line">        isOdd = <span class="keyword">True</span></div><div class="line">        </div><div class="line">        <span class="comment"># last nums</span></div><div class="line">        last = <span class="number">0</span></div><div class="line">        </div><div class="line">        <span class="keyword">if</span> (len(nums1) + len (nums2)) % <span class="number">2</span> == <span class="number">1</span>:</div><div class="line">            exp_num = (len(nums1) + len (nums2) + <span class="number">1</span>) / <span class="number">2</span></div><div class="line">            isOdd = <span class="keyword">True</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            exp_num = ((len(nums1) + len (nums2)) / <span class="number">2</span>) + <span class="number">1</span></div><div class="line">            isOdd = <span class="keyword">False</span></div><div class="line">            </div><div class="line">        <span class="keyword">if</span> len(nums1) == <span class="number">0</span> <span class="keyword">or</span> len(nums2) == <span class="number">0</span>:</div><div class="line">            comb = nums1 + nums2</div><div class="line">            <span class="keyword">if</span> isOdd == <span class="keyword">True</span>:</div><div class="line">                <span class="keyword">return</span> comb[exp_num - <span class="number">1</span>]</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                <span class="keyword">return</span> (comb[exp_num - <span class="number">1</span>] + comb[exp_num - <span class="number">2</span>]) / float(<span class="number">2</span>)</div><div class="line">        <span class="keyword">elif</span> nums1[<span class="number">-1</span>] &lt;= nums2[<span class="number">0</span>]:</div><div class="line">            comb = nums1 + nums2</div><div class="line">            <span class="keyword">if</span> isOdd == <span class="keyword">True</span>:</div><div class="line">                <span class="keyword">return</span> comb[exp_num - <span class="number">1</span>]</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                <span class="keyword">return</span> (comb[exp_num - <span class="number">1</span>] + comb[exp_num - <span class="number">2</span>]) / float(<span class="number">2</span>)</div><div class="line">        <span class="keyword">elif</span> nums2[<span class="number">-1</span>] &lt;= nums1[<span class="number">0</span>]:</div><div class="line">            comb = nums2 + nums1</div><div class="line">            <span class="keyword">if</span> isOdd == <span class="keyword">True</span>:</div><div class="line">                print(comb[exp_num])</div><div class="line">                <span class="keyword">return</span> comb[exp_num - <span class="number">1</span>]</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                <span class="keyword">return</span> (comb[exp_num - <span class="number">1</span>] + comb[exp_num - <span class="number">2</span>]) / float(<span class="number">2</span>)</div><div class="line">        </div><div class="line">        </div><div class="line">        <span class="keyword">while</span> p1 + p2 &lt;= exp_num - <span class="number">2</span>:</div><div class="line">            <span class="keyword">if</span> p1 &gt;= len(nums1):</div><div class="line">                last = nums2[p2]</div><div class="line">                p2 += <span class="number">1</span></div><div class="line">            <span class="keyword">elif</span> p2 &gt;= len(nums2):</div><div class="line">                last = nums1[p1]</div><div class="line">                p1 += <span class="number">1</span></div><div class="line">            <span class="keyword">elif</span> nums1[p1] &lt; nums2[p2]:</div><div class="line">                last = nums1[p1]</div><div class="line">                p1 += <span class="number">1</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                last = nums2[p2]</div><div class="line">                p2 += <span class="number">1</span></div><div class="line">        </div><div class="line">        <span class="keyword">if</span> p1 &gt;= len(nums1):</div><div class="line">            toAdd = nums2[p2]</div><div class="line">        <span class="keyword">elif</span> p2 &gt;= len(nums2):</div><div class="line">            toAdd = nums1[p1]</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            toAdd = min(nums1[p1], nums2[p2])</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> isOdd == <span class="keyword">True</span>:</div><div class="line">            <span class="keyword">return</span> toAdd</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> (toAdd + last) / float(<span class="number">2</span>)</div></pre></td></tr></table></figure>
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/algorithm/">algorithm</a>
-    </span>
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/03/14/median-of-two-sorted-arrays/#comment">Comments</a>
         </span>
       </span>
     </div>
