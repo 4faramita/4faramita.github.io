@@ -51,6 +51,8 @@
       
         <li><a href="/tags/algorithm">Algorithms</a></li>
       
+        <li><a href="/tags/javascript">JavaScript</a></li>
+      
         <li><a href="/tags/thinking">Thoughts</a></li>
       
         <li><a href="/tags/works">Works</a></li>
@@ -63,6 +65,93 @@
 
     <main class="site-main posts-loop">
     
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/05/01/javascript-what-this-is/"><span>JavaScript: this, 这个到底是哪个？</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/05/01/javascript-what-this-is/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-05-01T14:25:59.000Z">
+          2017-05-01
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>最近做项目过程中，遇到了一个问题：因为需要解析 JavaScript 代码，所以会需要解析 <code>this</code> 指的是什么。经过一番实验查询，现在有了一个初步的结果，特此记录。</p>
+<p><code>this</code> 一般来说只存在于方法体中，而其指代，说白了就三种情况。</p>
+<h2 id="一般情况"><a href="#一般情况" class="headerlink" title="一般情况"></a>一般情况</h2><p>一般情况下，<code>this</code> 指代调用所在方法的对象。示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">testThis</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.x)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> obj = &#123;&#125;</div><div class="line">obj.x = <span class="number">1</span></div><div class="line">obj.testThis = testThis</div><div class="line"></div><div class="line">obj.testThis()  <span class="comment">// 打印 1</span></div></pre></td></tr></table></figure>
+<p>当 <code>obj</code> 调用 <code>testThis</code> 时，<code>this</code> 指向调用者 <code>obj</code>。</p>
+<p>需要注意的是，这里 <code>this</code> 只与方法调用位置有关，与方法定义位置无关。示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> obj1 = &#123;&#125;</div><div class="line">obj1.x = <span class="number">1</span></div><div class="line">obj1.testThis = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.x)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> obj2 = &#123;&#125;</div><div class="line">obj2.x = <span class="number">2</span></div><div class="line">obj2.testThis = obj1.testThis</div><div class="line">obj2.testThis()  <span class="comment">// 打印 2</span></div></pre></td></tr></table></figure>
+<h3 id="全局调用"><a href="#全局调用" class="headerlink" title="全局调用"></a>全局调用</h3><p>特别地，若直接调用这个方法，这个方法的调用者为默认全局对象，如浏览器中的 <code>[Object Window]</code>，或是 node 中的 <code>[object global]</code>。示例如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">testThis</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.x)</div><div class="line">&#125;</div><div class="line"></div><div class="line">global.x = <span class="number">2</span></div><div class="line"></div><div class="line">testThis()  <span class="comment">// 打印 2</span></div></pre></td></tr></table></figure>
+<h3 id="类调用"><a href="#类调用" class="headerlink" title="类调用"></a>类调用</h3><p>在类定义的代码块（包括构造方法）中，<code>this</code> 默认指代这个类本身（或者说在类被实例化之后指这个实例）。示例如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestThis</span> </span>&#123;</div><div class="line">    <span class="keyword">constructor</span> () &#123;</div><div class="line">        <span class="keyword">this</span>.x = <span class="number">3</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    printThis () &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.x)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">test = <span class="keyword">new</span> TestThis()</div><div class="line"><span class="built_in">console</span>.log(test.x)  <span class="comment">// 打印 3</span></div><div class="line">test.printThis()  <span class="comment">// 打印 3</span></div></pre></td></tr></table></figure>
+<h2 id="特殊情况"><a href="#特殊情况" class="headerlink" title="特殊情况"></a>特殊情况</h2><p>说完了一般情况，下面是有一点特殊的情况。</p>
+<h3 id="apply-与-call"><a href="#apply-与-call" class="headerlink" title="apply() 与 call()"></a>apply() 与 call()</h3><p>关于 <code>apply()</code>，我无法比阮一峰老师解释的更清楚了，这里引用他的解释：</p>
+<blockquote>
+<p><code>apply()</code> 是函数对象的一个方法，它的作用是改变函数的调用对象，它的第一个参数就表示改变后的调用这个函数的对象。因此，<code>this</code> 指的就是这第一个参数。</p>
+</blockquote>
+<p>而 <code>call()</code> 于 <code>apply()</code> 的区别仅在于参数传入方式，示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> obj1 = &#123;&#125;</div><div class="line"><span class="keyword">let</span> obj2 = &#123;&#125;</div><div class="line"></div><div class="line">obj1.x = <span class="number">1</span></div><div class="line">obj2.x = <span class="number">2</span></div><div class="line"></div><div class="line">obj1.testThis = <span class="function"><span class="keyword">function</span> (<span class="params">a1, a2</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.x)</div><div class="line">&#125;</div><div class="line"></div><div class="line">obj.testThis.apply(obj2, [<span class="string">'a1'</span>, <span class="string">'a2'</span>])  <span class="comment">// 打印 2</span></div><div class="line">obj.testThis.call(obj2, <span class="string">'a1'</span>, <span class="string">'a2'</span>)  <span class="comment">// 打印 2</span></div></pre></td></tr></table></figure>
+<p>a1, a2 为 <code>obj1.testThis</code> 的参数。可以看到 <code>apply()</code> 的将参数以数组（<code>apply()</code> 的第二个参数）方式传入，而 <code>call()</code> 将第一个参数之后的参数直接传入作为参数列表。</p>
+<h3 id="forEach"><a href="#forEach" class="headerlink" title="forEach()"></a>forEach()</h3><p><code>forEach()</code> 方法在 ECMAScript 5.1 首次被引入，语法如下：</p>
+<p><code>arr.forEach(callback[, thisArg])</code></p>
+<p>可以看到第一个参数是回调函数，而第二个参数是可选的，指定 <code>this</code> 的指代。值得注意的是，如果在此处不特别指定 <code>this</code> 的指代，<code>this</code> 将回落为指代全局对象。示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>，<span class="number">2</span>]</div><div class="line"></div><div class="line">a.forEach(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.toString())  <span class="comment">// 打印 [object global] 两次</span></div><div class="line">    &#125;)</div></pre></td></tr></table></figure>
+<h2 id="特别感谢与更多参考"><a href="#特别感谢与更多参考" class="headerlink" title="特别感谢与更多参考"></a>特别感谢与更多参考</h2><p>MDN 上 <code>forEach()</code> 方法的文档：<br><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach" target="_blank" rel="external">Array.prototype.forEach()</a></p>
+<p>阮一峰老师关于 <code>this</code> 的解释：<br><a href="http://www.ruanyifeng.com/blog/2010/04/using_this_keyword_in_javascript.html" target="_blank" rel="external">Javascript 的 this 用法</a></p>
+<p>Maplewing 在英特尔开发人员专区关于 <code>this</code> 的解释：<br><a href="https://software.intel.com/zh-cn/blogs/2013/10/09/javascript-this" target="_blank" rel="external">#Javascript：this 用法整理</a></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/javascript/">javascript</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="/2017/05/01/javascript-what-this-is/#comment">Comments</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
   <article>
 
   
@@ -736,84 +825,6 @@ A solution set is:
         <i class="icon-comments"></i>
         <span>
           <a href="/2017/03/17/valid-palindrome/#comment">Comments</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/03/16/count-primes/"><span>204. Count Primes</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/03/16/count-primes/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-03-16T15:07:28.000Z">
-          2017-03-16
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong> (Which I do not agree AT ALL.)</p>
-<p></p><p><b>Description:</b></p><br><p>Count the number of prime numbers less than a non-negative number, <b><i>n</i></b>.</p>
-
-<p><b>题意:</b><br><br>输入一个数，输出小于这个数的所有正整数中有多少个质数。</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>很多数的素性检测。时间复杂度是关键。<br>最简单的想法是遍历每个数，检查每个数的素性。尽管检查素性的函数效率不低，但是总体效率还是非常低</p>
-<p>一番查找之后，我选择了埃拉托斯特尼筛法。这是一个古老而简单的算法，用来找出一定范围内所有素数，流程如下：</p>
-<ul>
-<li>初始化两个数列 nums 和 status，nums 储存从 2 开始所有待查的数（因为 1 不是素数），status 储存 nums 中每个数是否为素数，初始化为 True。</li>
-<li>从第一个元素 2 开始，将 nums 中每一个该元素（这里为 2） 的倍数标记为合数，方法是将 status 数组对应位置赋值 False。</li>
-<li>当最近检查出的素数的平方已经大于 nums 中最大的数时，认为之后所有未标记为合数的数都是质数，算法结束。<br>代码如下<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">countPrimes</span><span class="params">(self, n)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type n: int</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        <span class="comment"># base cases</span></div><div class="line">        <span class="keyword">if</span> n &gt;= <span class="number">0</span> <span class="keyword">and</span> n &lt;= <span class="number">1</span>:</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span></div><div class="line">        <span class="keyword">elif</span> n &lt;= <span class="number">4</span>:</div><div class="line">            <span class="keyword">return</span> n - <span class="number">2</span></div><div class="line">    </div><div class="line">        nums = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>, n)]  <span class="comment"># all the numbers</span></div><div class="line">        status = [<span class="keyword">True</span>] * len(nums)      <span class="comment"># whether a number in nums a prime</span></div><div class="line">        last_prime = <span class="number">0</span>                   <span class="comment"># store the last prime found</span></div><div class="line">        <span class="keyword">for</span> elem <span class="keyword">in</span> enumerate(nums):     <span class="comment"># elem: (position, value)</span></div><div class="line">            <span class="keyword">if</span> (last_prime ** <span class="number">2</span>) &gt; n - <span class="number">1</span>:</div><div class="line">                <span class="keyword">break</span></div><div class="line">            <span class="keyword">if</span> status[elem[<span class="number">0</span>]] <span class="keyword">is</span> <span class="keyword">False</span>:</div><div class="line">                <span class="keyword">continue</span></div><div class="line">    </div><div class="line">            last_prime = elem[<span class="number">1</span>]</div><div class="line">            <span class="keyword">for</span> p <span class="keyword">in</span> range(elem[<span class="number">0</span>] + <span class="number">1</span>, len(nums)):</div><div class="line">                <span class="keyword">if</span> nums[p] % elem[<span class="number">1</span>] == <span class="number">0</span>:</div><div class="line">                    status[p] = <span class="keyword">False</span></div><div class="line">    </div><div class="line">        total = <span class="number">0</span></div><div class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> status:</div><div class="line">            <span class="keyword">if</span> j <span class="keyword">is</span> <span class="keyword">True</span>:</div><div class="line">                total += <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> total</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>然而，令人难以置信的是，这个算法，在输入值为六位数时，依然超过了时间限制（具体来说执行时间达到了十秒以上）。</p>
-<p>于是我不甘心地点开了这道题的 hint 部分。这道题的 hint，锦囊一般，层层嵌套，一个问题引出另一个问题，なんと、有整整八个 hint！前半部分也引导使用每个数的素性检测，之后说只需要检测前 n／2 的数，更进一步发现只需要检测前 n^(1/2) 的数。之后也引出了我之前提到的埃拉托斯特尼筛法，该方法确实是检测大批量数是否为素的好方法。我按照 hint 的引导优化了算法，再次实验。</p>
-<p>随着不断修改，最终我将步长改为动态，优化了一系列事件与内存复杂度。最终能在 1s 内执行。<br>因为进行了许多优化，最终答案中也包含许多注释，更多的优化内容在注释中说明。<br>当然，我看答案了，但是最终的算法完全是我根据之前写的 8s 的答案独立修改而来的。<br>代码如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">countPrimes</span><span class="params">(self, n)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type n: int</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        <span class="comment"># base cases</span></div><div class="line">        <span class="keyword">if</span> n &gt;= <span class="number">0</span> <span class="keyword">and</span> n &lt;= <span class="number">1</span>:</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span></div><div class="line">        <span class="keyword">elif</span> n &lt;= <span class="number">4</span>:</div><div class="line">            <span class="keyword">return</span> n - <span class="number">2</span></div><div class="line">        </div><div class="line">        <span class="comment"># all the nums = [i for i in xrange(n)]</span></div><div class="line">        <span class="comment"># but, as rank and value of nums are the same</span></div><div class="line">        <span class="comment"># as a matter of fact,</span></div><div class="line">        <span class="comment"># they all equal to the natural number of that position</span></div><div class="line">        <span class="comment"># so there\'s no need to actually create that list</span></div><div class="line">        </div><div class="line">        <span class="comment"># every nums\' status, True for prime</span></div><div class="line">        status = [<span class="keyword">True</span>] * n</div><div class="line">        <span class="comment"># 0 and 1 are not primes</span></div><div class="line">        status[<span class="number">0</span>], status[<span class="number">1</span>] = <span class="keyword">False</span>, <span class="keyword">False</span></div><div class="line">        <span class="comment"># without list(nums)</span></div><div class="line">        <span class="comment"># I can still do this step</span></div><div class="line">        <span class="comment"># thanks to the natural number</span></div><div class="line">        <span class="comment"># in the range of [2, sqrt(n - 1)]</span></div><div class="line">        <span class="keyword">for</span> elem <span class="keyword">in</span> xrange(<span class="number">2</span>, int((n - <span class="number">1</span>) ** <span class="number">0.5</span>) + <span class="number">1</span>):</div><div class="line">            <span class="comment"># if this num is a prime</span></div><div class="line">            <span class="keyword">if</span> status[elem]:</div><div class="line">                <span class="comment"># from position num ^ 2</span></div><div class="line">                p = elem ** <span class="number">2</span></div><div class="line">                <span class="comment"># every step num</span></div><div class="line">                <span class="comment"># set status False</span></div><div class="line">                <span class="keyword">while</span> p &lt; n:</div><div class="line">                    status[p] = <span class="keyword">False</span></div><div class="line">                    p += elem</div><div class="line">        <span class="comment"># return number of Tures</span></div><div class="line">        <span class="keyword">return</span> sum(status)</div></pre></td></tr></table></figure>
-<p>鉴于 hint 过多，之前写的脚本又没能抓回来，现将网址贴出：<br><a href="https://leetcode.com/problems/count-primes/" target="_blank" rel="external">204. Count Primes</a></p>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/algorithm/">algorithm</a>
-    </span>
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/03/16/count-primes/#comment">Comments</a>
         </span>
       </span>
     </div>
