@@ -69,6 +69,144 @@
 
   
     
+    <h3 class="article-title"><a href="/2017/06/13/coupons/"><span>Coupons</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/06/13/coupons/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-06-13T07:17:30.000Z">
+          2017-06-13
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>有两段音频，每段音频是一个表示音高的序列。现在想要在第二段音频中找出与第一段音频最相近的部分。</p>
+<p>具体地说，就是在第二段音频中找到一个长度和第一段音频相等且是连续的子序列，使得它们的 difference 最小。两段等长音频的 difference 定义为：<br>difference = SUM(a[i] - b[i])2 (1 ≤ i ≤ n),其中SUM()表示求和<br>其中 n 表示序列长度，a[i], b[i]分别表示两段音频的音高。现在袋鼠先生想要知道，difference的最小值是多少？数据保证第一段音频的长度小于等于第二段音频的长度。</p>
+<p>输入描述:<br>第一行一个整数n(1 ≤ n ≤ 1000)，表示第一段音频的长度。<br>第二行n个整数表示第一段音频的音高（0 ≤ 音高 ≤ 1000）。<br>第三行一个整数m(1 ≤ n ≤ m ≤ 1000)，表示第二段音频的长度。<br>第四行m个整数表示第二段音频的音高（0 ≤ 音高 ≤ 1000）。</p>
+<p>输出描述:<br>输出difference的最小值</p>
+<p>输入例子:<br>2<br>1 2<br>4<br>3 1 2 4</p>
+<p>输出例子:<br>0</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>使用字典 log_dic 储存已经遍历的条目。主函数 check() 用来检查当前条目是否合法：<br>如果是输入，检测字典中是否已有相同未输出的输入，有则报错；<br>如果是输出，检测字典中是否有相应未输出的输入，没有则报错；<br>每个 “?” 可以抵消一个错误。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding = utf-8</span></div><div class="line"><span class="keyword">import</span> sys</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">check</span><span class="params">(log)</span>:</span></div><div class="line">    err_line = <span class="number">-1</span></div><div class="line">    log_dic = &#123;&#125;</div><div class="line">    whatever = <span class="number">0</span></div><div class="line"></div><div class="line">    <span class="keyword">for</span> i, elem <span class="keyword">in</span> enumerate(log):</div><div class="line">        <span class="keyword">if</span> elem[<span class="number">0</span>] == <span class="string">'I'</span>:</div><div class="line">            <span class="keyword">try</span>:</div><div class="line">                status = log_dic[elem[<span class="number">1</span>]]</div><div class="line">            <span class="keyword">except</span> KeyError:</div><div class="line">                log_dic[elem[<span class="number">1</span>]] = <span class="keyword">False</span>  <span class="comment"># Inport not exist, GOOD</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                <span class="keyword">if</span> status <span class="keyword">is</span> <span class="keyword">True</span>:        <span class="comment"># Import exists, but already outputed, GOOD</span></div><div class="line">                    log_dic[elem[<span class="number">1</span>]] = <span class="keyword">False</span></div><div class="line">                <span class="keyword">else</span>:                     <span class="comment"># Import exists, haven't been outputed, BAD</span></div><div class="line">                    <span class="keyword">if</span> whatever &gt; <span class="number">0</span>:      <span class="comment"># maybe because of hd error, GOOD</span></div><div class="line">                        whatever -= <span class="number">1</span></div><div class="line">                    <span class="keyword">else</span>:</div><div class="line">                        err_line = i + <span class="number">1</span></div><div class="line">                        <span class="keyword">break</span></div><div class="line">        <span class="keyword">elif</span> elem[<span class="number">0</span>] == <span class="string">'O'</span>:</div><div class="line">            <span class="keyword">try</span>:</div><div class="line">                status = log_dic[elem[<span class="number">1</span>]]</div><div class="line">            <span class="keyword">except</span> KeyError:</div><div class="line">                <span class="keyword">if</span> whatever &gt; <span class="number">0</span>:</div><div class="line">                    whatever -= <span class="number">1</span></div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    err_line = i + <span class="number">1</span></div><div class="line">                    <span class="keyword">break</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                <span class="keyword">if</span> status <span class="keyword">is</span> <span class="keyword">False</span>:</div><div class="line">                    log_dic[elem[<span class="number">1</span>]] = <span class="keyword">True</span></div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    <span class="keyword">if</span> whatever &gt; <span class="number">0</span>:</div><div class="line">                        whatever -= <span class="number">1</span></div><div class="line">                    <span class="keyword">else</span>:</div><div class="line">                        err_line = i + <span class="number">1</span></div><div class="line">                        <span class="keyword">break</span></div><div class="line">        <span class="keyword">elif</span> elem[<span class="number">0</span>] == <span class="string">'?'</span>:</div><div class="line">            whatever += <span class="number">1</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> err_line</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">        length = int(sys.stdin.readline().strip())</div><div class="line">        <span class="comment"># if not length:</span></div><div class="line">        <span class="comment">#     break</span></div><div class="line">        log = []</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(length):</div><div class="line">            line = sys.stdin.readline().strip().split(<span class="string">' '</span>)</div><div class="line">            log.append(line)</div><div class="line">        print(check(log))</div><div class="line"></div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="/2017/06/13/coupons/#comment">Comments</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/06/13/music-study/"><span>Music Study</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/06/13/music-study/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-06-13T07:07:45.000Z">
+          2017-06-13
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>有两段音频，每段音频是一个表示音高的序列。现在想要在第二段音频中找出与第一段音频最相近的部分。</p>
+<p>具体地说，就是在第二段音频中找到一个长度和第一段音频相等且是连续的子序列，使得它们的 difference 最小。两段等长音频的 difference 定义为：<br>difference = SUM(a[i] - b[i])2 (1 ≤ i ≤ n),其中 SUM() 表示求和<br>其中 n 表示序列长度，a[i], b[i] 分别表示两段音频的音高。现在袋鼠先生想要知道，difference 的最小值是多少？数据保证第一段音频的长度小于等于第二段音频的长度。</p>
+<p>输入描述:<br>第一行一个整数 n (1 ≤ n ≤ 1000)，表示第一段音频的长度。<br>第二行 n 个整数表示第一段音频的音高（0 ≤ 音高 ≤ 1000）。<br>第三行一个整数 m (1 ≤ n ≤ m ≤ 1000)，表示第二段音频的长度。<br>第四行 m 个整数表示第二段音频的音高（0 ≤ 音高 ≤ 1000）。</p>
+<p>输出描述:<br>输出 difference 的最小值</p>
+<p>输入例子:<br>2<br>1 2<br>4<br>3 1 2 4</p>
+<p>输出例子:<br>0</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>题目思路很直接，calculate_diff() 计算两个等长数组的 “difference”，针对每一对等长数组，计算这个值即可。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding = utf-8</span></div><div class="line"><span class="keyword">import</span> sys</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">calculate_diff</span><span class="params">(lst1, lst2, length1)</span>:</span></div><div class="line">    sum_diff = <span class="number">0</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(length1):</div><div class="line">        sum_diff += ((lst1[i] - lst2[i]) ** <span class="number">2</span>)</div><div class="line">    <span class="keyword">return</span> sum_diff</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    length1 = int(sys.stdin.readline().strip())</div><div class="line">    audio1 = map(int, sys.stdin.readline().strip().split())</div><div class="line">    length2 = int(sys.stdin.readline().strip())</div><div class="line">    audio2 = map(int, sys.stdin.readline().strip().split())</div><div class="line"></div><div class="line">    min_diff = float(<span class="string">'inf'</span>);</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(length2 - length1 + <span class="number">1</span>):</div><div class="line">        min_diff = min(min_diff, calculate_diff(audio1, audio2[i:i + length1], length1))</div><div class="line"></div><div class="line">    print(min_diff)</div><div class="line"></div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="/2017/06/13/music-study/#comment">Comments</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
     <h3 class="article-title"><a href="/2017/05/09/merge-k-sorted-lists/"><span>23. Merge k Sorted Lists</span></a></h3>
     
   
@@ -671,155 +809,6 @@ A solution set is:
         <i class="icon-comments"></i>
         <span>
           <a href="/2017/04/10/container-with-most-water/#comment">Comments</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/04/03/longest-palindromic-substring/"><span>5. Longest Palindromic Substring</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/04/03/longest-palindromic-substring/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-04-03T09:09:34.000Z">
-          2017-04-03
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Medium</strong></p>
-<p></p><p>Given a string <b>s</b>, find the longest palindromic substring in <b>s</b>. You may assume that the maximum length of <b>s</b> is 1000.</p>
-
-<p></p><p><b>Example:</b><br></p><pre><br><b>Input:</b> “babad”<p></p>
-<p><b>Output:</b> “bab”</p>
-<p><b>Note:</b> “aba” is also a valid answer.<br></p></pre><p></p>
-<p></p><p><b>Example:</b><br></p><pre><br><b>Input:</b> “cbbd”<p></p>
-<p><b>Output:</b> “bb”<br></p></pre><p></p>
-<p><b>题意:</b><br><br>找到给定字符串中最长的（连续）回文子字符串</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>首先想到的方法是设置一个 len(s) 到 1 的窗口，在字符串上滑动，因为是倒序，所以一旦找到就是最长，可以直接返回。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestPalindrome</span><span class="params">(self, s)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type s: str</div><div class="line">        :rtype: str</div><div class="line">        """</div><div class="line">        length = len(s)</div><div class="line">        <span class="keyword">if</span> length &lt;= <span class="number">1</span>:</div><div class="line">            <span class="keyword">return</span> s</div><div class="line">        max_range = (<span class="number">0</span>, <span class="number">0</span>)</div><div class="line">        found = <span class="keyword">False</span></div><div class="line">        <span class="keyword">for</span> win <span class="keyword">in</span> xrange(length, <span class="number">0</span>, <span class="number">-1</span>):</div><div class="line">            <span class="keyword">for</span> head <span class="keyword">in</span> xrange(<span class="number">0</span>, length - win + <span class="number">1</span>):</div><div class="line">                cur_str = s[head:head + win]</div><div class="line">                <span class="keyword">if</span> win % <span class="number">2</span> == <span class="number">0</span>:  <span class="comment"># even</span></div><div class="line">                    l_half, r_half = cur_str[:win / <span class="number">2</span>], cur_str[win / <span class="number">2</span>:]</div><div class="line">                <span class="keyword">elif</span> win % <span class="number">2</span> == <span class="number">1</span>:  <span class="comment"># odd</span></div><div class="line">                    l_half, r_half = cur_str[:win // <span class="number">2</span>], cur_str[win // <span class="number">2</span> + <span class="number">1</span>:]</div><div class="line">                <span class="keyword">if</span> l_half == r_half[::<span class="number">-1</span>]:</div><div class="line">                    max_range = (head, head + win)</div><div class="line">                    found = <span class="keyword">True</span></div><div class="line">                    <span class="keyword">break</span></div><div class="line">            <span class="keyword">if</span> found:</div><div class="line">                <span class="keyword">break</span></div><div class="line">        <span class="keyword">return</span> s[max_range[<span class="number">0</span>]:max_range[<span class="number">1</span>]]</div></pre></td></tr></table></figure></p>
-<p>一点 tip：本来对比窗口内整个字符串与其反向是否相等，未能满足实验复杂度要求；后来选择将字符串切成两半，对比前一半与后一半的反转，时间复杂度要求即可满足。</p>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/algorithm/">algorithm</a>
-    </span>
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/04/03/longest-palindromic-substring/#comment">Comments</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/03/17/maximum-subarray/"><span>53. Maximum Subarray</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/03/17/maximum-subarray/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-03-17T07:00:18.000Z">
-          2017-03-17
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
-<p></p><p><br>Find the contiguous subarray within an array (containing at least one number) which has the largest sum.<br></p><br><p><br>For example, given the array <code>[-2,1,-3,4,-1,2,1,-5,4]</code>,<br><br>the contiguous subarray <code>[4,-1,2,1]</code> has the largest sum = <code>6</code>.<br></p>
-
-<p class="showspoilers"><a href="#" onclick="showSpoilers(this); return false;">click to show more practice.</a></p>
-
-<div class="spoilers"><b>More practice:</b><br><br><p>If you have figured out the O(<i>n</i>) solution, try coding another solution using the divide and conquer approach, which is more subtle.</p><br></div>
-
-<p><b>题意:</b><br><br>给出一数组 nums，求数组中和最大的连续子序列。</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>最简单的想法自然是枚举所有大小的窗口，从 len(nums) 到 1；滑动窗口到每个可能的位置，求和，记录和的最大值。<br>代码如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxSubArray</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type nums: List[int]</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        <span class="comment"># base cases</span></div><div class="line">        <span class="keyword">if</span> len(nums) == <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span></div><div class="line">        <span class="keyword">elif</span> len(nums) == <span class="number">1</span>:</div><div class="line">            <span class="keyword">return</span> nums[<span class="number">0</span>]</div><div class="line">        </div><div class="line">        <span class="comment"># window size init as len(nums) - 1</span></div><div class="line">        window = len(nums) - <span class="number">1</span></div><div class="line">        <span class="comment"># window position init as right</span></div><div class="line">        start = len(nums) - window</div><div class="line">        <span class="comment"># this is the case when window size = len(nums)</span></div><div class="line">        <span class="comment"># and this will store the max of sums</span></div><div class="line">        sum_max = sum(nums)</div><div class="line">        </div><div class="line">        <span class="comment"># every possible window size: [1, len(nums) - 1]</span></div><div class="line">        <span class="keyword">while</span> window &gt; <span class="number">0</span>:</div><div class="line">            <span class="comment"># every possible position of this window</span></div><div class="line">            <span class="keyword">while</span> start &gt;= <span class="number">0</span>:</div><div class="line">                sum_curr = sum(nums[start:start+window])</div><div class="line">                sum_max = max(sum_curr, sum_max)</div><div class="line">                <span class="comment"># window slides left</span></div><div class="line">                start -= <span class="number">1</span></div><div class="line">            <span class="comment"># window size minus 1</span></div><div class="line">            window -= <span class="number">1</span></div><div class="line">            <span class="comment"># reset window position to the very right</span></div><div class="line">            start = len(nums) - window</div><div class="line">        <span class="keyword">return</span> sum_max</div></pre></td></tr></table></figure>
-<p>不用说，这么 virgin 这么 naive 的算法当然是无法满足时间复杂度要求的。<br>之后，我考虑窗口从 1 开始，用字典储存所有算过的 sum，下次使用时直接读取而不用再算一遍。<br>代码如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">maxSubArray</span><span class="params">(nums)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    :type nums: List[int]</div><div class="line">    :rtype: int</div><div class="line">    """</div><div class="line">    <span class="comment"># base cases</span></div><div class="line">    length = len(nums)</div><div class="line">    <span class="keyword">if</span> length == <span class="number">0</span>:</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span></div><div class="line">    <span class="keyword">elif</span> length == <span class="number">1</span>:</div><div class="line">        <span class="keyword">return</span> nums[<span class="number">0</span>]</div><div class="line"></div><div class="line">    <span class="comment"># all possible window sizes in [1, length - 1]</span></div><div class="line">    window = <span class="number">1</span></div><div class="line">    <span class="comment"># all possible positions from right</span></div><div class="line">    start = len(nums) - window</div><div class="line">    <span class="comment"># stroe the max of sums</span></div><div class="line">    sum_max = sum(nums)</div><div class="line">    <span class="comment"># store all sums for every position of every window sizes</span></div><div class="line">    sum_set = &#123;&#125;</div><div class="line">    <span class="keyword">while</span> window &lt; length:</div><div class="line">        <span class="keyword">while</span> start &gt;= <span class="number">0</span>:</div><div class="line">            <span class="comment"># store all single "sums"</span></div><div class="line">            <span class="keyword">if</span> window == <span class="number">1</span>:</div><div class="line">                sum_curr = nums[start]</div><div class="line">            <span class="comment"># get current sum by last round sum + single "sum"</span></div><div class="line">            <span class="keyword">elif</span> window &gt; <span class="number">1</span>:</div><div class="line">                sum_curr = sum_set[(start, start + window - <span class="number">1</span>)] + nums[start + window - <span class="number">1</span>]</div><div class="line">            <span class="comment"># store current sum</span></div><div class="line">            sum_set[(start, start+window)] = sum_curr</div><div class="line"></div><div class="line">            <span class="comment"># print(nums[start:start+window], sum_curr, sum_max)</span></div><div class="line"></div><div class="line">            <span class="comment"># store current max sum</span></div><div class="line">            sum_max = max(sum_curr, sum_max)</div><div class="line">            <span class="comment"># slide the window</span></div><div class="line">            start -= <span class="number">1</span></div><div class="line">        <span class="comment"># enlarge the window size</span></div><div class="line">        window += <span class="number">1</span></div><div class="line">        <span class="comment"># and reset the position of the window</span></div><div class="line">        start = len(nums) - window</div><div class="line">    <span class="keyword">return</span> sum_max</div></pre></td></tr></table></figure>
-<p>这个算法则将执行时间从原来的 2.5s 优化到了 1s 以内。<br>但是时间复杂度依然是 O(n^2)</p>
-<p>这道题是可以用动态规划的。遍历到每个节点时都有两个选择：选择上一个 sum 加当前数，或者选择当前数作为新的 sum。<br>算法如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">maxSubArray</span><span class="params">(A)</span>:</span></div><div class="line">    <span class="keyword">if</span> <span class="keyword">not</span> A:</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span></div><div class="line"></div><div class="line">    curSum = maxSum = A[<span class="number">0</span>]</div><div class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> A[<span class="number">1</span>:]:</div><div class="line">        curSum = max(num, curSum + num)</div><div class="line">        maxSum = max(maxSum, curSum)</div><div class="line"></div><div class="line">    <span class="keyword">return</span> maxSum</div></pre></td></tr></table></figure>
-<p>P.S 写这道题的时候 LeetCode 挂了…… 🤦</p>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/algorithm/">algorithm</a>
-    </span>
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/03/17/maximum-subarray/#comment">Comments</a>
         </span>
       </span>
     </div>

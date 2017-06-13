@@ -1,0 +1,184 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Coupons | 之言片语</title>
+
+  
+  <meta name="author" content="4faramita">
+  
+
+  
+  <meta name="description" content="Buried alive.">
+  
+
+  
+  
+  <meta name="keywords" content="algorithm">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="Coupons"/>
+
+  <meta property="og:site_name" content="之言片语"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="之言片语" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">之言片语</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/tags/algorithm">Algorithms</a></li>
+      
+        <li><a href="/tags/javascript">JavaScript</a></li>
+      
+        <li><a href="/tags/thinking">Thoughts</a></li>
+      
+        <li><a href="/tags/works">Works</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>Coupons</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/06/13/coupons/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-06-13T07:17:30.000Z">
+          2017-06-13
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>有两段音频，每段音频是一个表示音高的序列。现在想要在第二段音频中找出与第一段音频最相近的部分。</p>
+<p>具体地说，就是在第二段音频中找到一个长度和第一段音频相等且是连续的子序列，使得它们的 difference 最小。两段等长音频的 difference 定义为：<br>difference = SUM(a[i] - b[i])2 (1 ≤ i ≤ n),其中SUM()表示求和<br>其中 n 表示序列长度，a[i], b[i]分别表示两段音频的音高。现在袋鼠先生想要知道，difference的最小值是多少？数据保证第一段音频的长度小于等于第二段音频的长度。</p>
+<p>输入描述:<br>第一行一个整数n(1 ≤ n ≤ 1000)，表示第一段音频的长度。<br>第二行n个整数表示第一段音频的音高（0 ≤ 音高 ≤ 1000）。<br>第三行一个整数m(1 ≤ n ≤ m ≤ 1000)，表示第二段音频的长度。<br>第四行m个整数表示第二段音频的音高（0 ≤ 音高 ≤ 1000）。</p>
+<p>输出描述:<br>输出difference的最小值</p>
+<p>输入例子:<br>2<br>1 2<br>4<br>3 1 2 4</p>
+<p>输出例子:<br>0</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>使用字典 log_dic 储存已经遍历的条目。主函数 check() 用来检查当前条目是否合法：<br>如果是输入，检测字典中是否已有相同未输出的输入，有则报错；<br>如果是输出，检测字典中是否有相应未输出的输入，没有则报错；<br>每个 “?” 可以抵消一个错误。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding = utf-8</span></div><div class="line"><span class="keyword">import</span> sys</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">check</span><span class="params">(log)</span>:</span></div><div class="line">    err_line = <span class="number">-1</span></div><div class="line">    log_dic = &#123;&#125;</div><div class="line">    whatever = <span class="number">0</span></div><div class="line"></div><div class="line">    <span class="keyword">for</span> i, elem <span class="keyword">in</span> enumerate(log):</div><div class="line">        <span class="keyword">if</span> elem[<span class="number">0</span>] == <span class="string">'I'</span>:</div><div class="line">            <span class="keyword">try</span>:</div><div class="line">                status = log_dic[elem[<span class="number">1</span>]]</div><div class="line">            <span class="keyword">except</span> KeyError:</div><div class="line">                log_dic[elem[<span class="number">1</span>]] = <span class="keyword">False</span>  <span class="comment"># Inport not exist, GOOD</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                <span class="keyword">if</span> status <span class="keyword">is</span> <span class="keyword">True</span>:        <span class="comment"># Import exists, but already outputed, GOOD</span></div><div class="line">                    log_dic[elem[<span class="number">1</span>]] = <span class="keyword">False</span></div><div class="line">                <span class="keyword">else</span>:                     <span class="comment"># Import exists, haven't been outputed, BAD</span></div><div class="line">                    <span class="keyword">if</span> whatever &gt; <span class="number">0</span>:      <span class="comment"># maybe because of hd error, GOOD</span></div><div class="line">                        whatever -= <span class="number">1</span></div><div class="line">                    <span class="keyword">else</span>:</div><div class="line">                        err_line = i + <span class="number">1</span></div><div class="line">                        <span class="keyword">break</span></div><div class="line">        <span class="keyword">elif</span> elem[<span class="number">0</span>] == <span class="string">'O'</span>:</div><div class="line">            <span class="keyword">try</span>:</div><div class="line">                status = log_dic[elem[<span class="number">1</span>]]</div><div class="line">            <span class="keyword">except</span> KeyError:</div><div class="line">                <span class="keyword">if</span> whatever &gt; <span class="number">0</span>:</div><div class="line">                    whatever -= <span class="number">1</span></div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    err_line = i + <span class="number">1</span></div><div class="line">                    <span class="keyword">break</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                <span class="keyword">if</span> status <span class="keyword">is</span> <span class="keyword">False</span>:</div><div class="line">                    log_dic[elem[<span class="number">1</span>]] = <span class="keyword">True</span></div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    <span class="keyword">if</span> whatever &gt; <span class="number">0</span>:</div><div class="line">                        whatever -= <span class="number">1</span></div><div class="line">                    <span class="keyword">else</span>:</div><div class="line">                        err_line = i + <span class="number">1</span></div><div class="line">                        <span class="keyword">break</span></div><div class="line">        <span class="keyword">elif</span> elem[<span class="number">0</span>] == <span class="string">'?'</span>:</div><div class="line">            whatever += <span class="number">1</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> err_line</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">        length = int(sys.stdin.readline().strip())</div><div class="line">        <span class="comment"># if not length:</span></div><div class="line">        <span class="comment">#     break</span></div><div class="line">        log = []</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(length):</div><div class="line">            line = sys.stdin.readline().strip().split(<span class="string">' '</span>)</div><div class="line">            log.append(line)</div><div class="line">        print(check(log))</div><div class="line"></div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+	<section id="comments" class="comment">
+	  <div id="disqus_thread">
+	  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	  </div>
+	</section>
+
+	<script type="text/javascript">
+	var disqus_shortname = 'zhi-yan-pian-yu';
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	</script>
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2017 4faramita
+    
+  </p>
+</footer>
+    
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-93516577-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+  </div>
+</div>
+</body>
+</html>

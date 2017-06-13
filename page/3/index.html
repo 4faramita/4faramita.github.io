@@ -69,6 +69,148 @@
 
   
     
+    <h3 class="article-title"><a href="/2017/03/14/valid-parentheses/"><span>20. Valid Parentheses</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/03/14/valid-parentheses/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-03-14T06:35:45.000Z">
+          2017-03-14
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
+<p></p><p>Given a string containing just the characters <code>‘(‘</code>, <code>‘)’</code>, <code>‘{‘</code>, <code>‘}’</code>, <code>‘[‘</code> and <code>‘]’</code>, determine if the input string is valid.</p>
+
+<p>The brackets must close in the correct order, <code>“()”</code> and <code>“()[]{}”</code> are all valid but <code>“(]”</code> and <code>“([)]”</code> are not.</p>
+
+<p><b>题意:</b><br><br>输入一列括号组合，数出是否合法，即括号是否先打开后关闭并且以正确顺序关闭。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>实际上就是实现一个 stack。<br>这里使用 dict 类型来判断左右括号是否对应。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isValid</span><span class="params">(self, s)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type s: str</div><div class="line">        :rtype: bool</div><div class="line">        """</div><div class="line">        left = &#123;<span class="string">'('</span>: <span class="number">0</span>, <span class="string">'['</span>: <span class="number">1</span>, <span class="string">'&#123;'</span>: <span class="number">2</span>&#125;    <span class="comment"># left dict</span></div><div class="line">        right = &#123;<span class="string">')'</span>: <span class="number">0</span>, <span class="string">']'</span>: <span class="number">1</span>, <span class="string">'&#125;'</span>: <span class="number">2</span>&#125;   <span class="comment"># right dict</span></div><div class="line">        stack = []                         <span class="comment"># working stack</span></div><div class="line">    </div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> s:                        <span class="comment"># every element in s</span></div><div class="line">            <span class="keyword">if</span> i <span class="keyword">in</span> left:                  <span class="comment"># if it's one of the lefts</span></div><div class="line">                stack.append(i)            <span class="comment"># stack push</span></div><div class="line">            <span class="keyword">elif</span> i <span class="keyword">in</span> right:               <span class="comment"># if it's one of the rights</span></div><div class="line">                <span class="keyword">try</span>:                       <span class="comment"># try to pop</span></div><div class="line">                    tmp = stack.pop()</div><div class="line">                <span class="keyword">except</span> IndexError:         <span class="comment"># if nothing to pop, return False</span></div><div class="line">                    <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">                <span class="keyword">if</span> left[tmp] != right[i]:  <span class="comment"># if they do not match, return False</span></div><div class="line">                    <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">        <span class="keyword">if</span> stack == []:                    <span class="comment"># stack must be empty</span></div><div class="line">            <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">False</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="/2017/03/14/valid-parentheses/#comment">Comments</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/03/14/count-and-say/"><span>38. Count and Say</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/03/14/count-and-say/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-03-14T06:23:48.000Z">
+          2017-03-14
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
+<p></p><p>The count-and-say sequence is the sequence of integers beginning as follows:<br><br><code>1, 11, 21, 1211, 111221, …</code><br></p>
+
+<p><br><code>1</code> is read off as <code>“one 1”</code> or <code>11</code>.<br><br><code>11</code> is read off as <code>“two 1s”</code> or <code>21</code>.<br><br><code>21</code> is read off as <code>“one 2</code>, then <code>one 1”</code> or <code>1211</code>.<br><br></p>
+
+<p><br>Given an integer <i>n</i>, generate the <i>n</i><sup>th</sup> sequence.<br></p>
+
+<p><br>Note: The sequence of integers will be represented as a string.<br></p>
+
+<p><b>题意:</b><br><br>有这样一个数列，下一个元素是由上一个元素按照（元素个数，元素）的方法组成的。<br>求这个数列的第 n 个元素。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>迭代：把数列的上一个元素在元素变化的点切分，然后数出每一块的长度即可。<br>_loop 函数用来迭代。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">_loop</span><span class="params">(s)</span>:</span></div><div class="line">    <span class="keyword">if</span> len(s) == <span class="number">1</span>:</div><div class="line">        <span class="keyword">return</span> <span class="string">'11'</span></div><div class="line">    head, tail = <span class="number">1</span>, <span class="number">0</span></div><div class="line">    rslt = []</div><div class="line">    rslt_s = <span class="string">''</span></div><div class="line">    scanning = <span class="keyword">False</span></div><div class="line">    <span class="keyword">while</span> max(head, tail) &lt; len(s):</div><div class="line">        <span class="keyword">if</span> s[head] == s[tail] <span class="keyword">and</span> <span class="keyword">not</span> scanning:</div><div class="line">            scanning = <span class="keyword">True</span></div><div class="line">        <span class="keyword">elif</span> s[head] != s[tail]:</div><div class="line">            rslt.append(s[tail:head])</div><div class="line">            tail = head</div><div class="line">            <span class="keyword">if</span> scanning:</div><div class="line">                scanning = <span class="keyword">False</span></div><div class="line">        head += <span class="number">1</span></div><div class="line">    <span class="comment"># if scanning:</span></div><div class="line">    rslt.append(s[tail:])</div><div class="line">    <span class="keyword">for</span> sub <span class="keyword">in</span> rslt:</div><div class="line">        rslt_s = rslt_s + str(len(sub)) + sub[<span class="number">0</span>]</div><div class="line">    <span class="keyword">return</span> rslt_s</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">countAndSay</span><span class="params">(self, n)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type n: int</div><div class="line">        :rtype: str</div><div class="line">        """</div><div class="line">        rslt = <span class="string">'1'</span></div><div class="line"></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n):</div><div class="line">            rslt = _loop(rslt)</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> rslt</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="/2017/03/14/count-and-say/#comment">Comments</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
     <h3 class="article-title"><a href="/2017/03/14/factorial-trailing-zeroes/"><span>172. Factorial Trailing Zeroes</span></a></h3>
     
   
@@ -203,6 +345,71 @@
 
   
     
+    <h3 class="article-title"><a href="/2017/03/14/reverse-string/"><span>344. Reverse String</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/03/14/reverse-string/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-03-14T03:28:00.000Z">
+          2017-03-14
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
+<p>Write a function that takes a string as input and returns the string reversed.</p>
+<p><strong>Example1</strong><br>Given s = “hello”, return “olleh”.</p>
+<p>反转字符串。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reverseString</span><span class="params">(self, s)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type s: str</div><div class="line">        :rtype: str</div><div class="line">        """</div><div class="line">        <span class="keyword">return</span> s[::<span class="number">-1</span>]</div></pre></td></tr></table></figure>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="/2017/03/14/reverse-string/#comment">Comments</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
     <h3 class="article-title"><a href="/2017/03/14/median-of-two-sorted-arrays/"><span>4. Median of Two Sorted Arrays</span></a></h3>
     
   
@@ -259,71 +466,6 @@
         <i class="icon-comments"></i>
         <span>
           <a href="/2017/03/14/median-of-two-sorted-arrays/#comment">Comments</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/03/14/reverse-string/"><span>344. Reverse String</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/03/14/reverse-string/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-03-14T03:28:00.000Z">
-          2017-03-14
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
-<p>Write a function that takes a string as input and returns the string reversed.</p>
-<p><strong>Example1</strong><br>Given s = “hello”, return “olleh”.</p>
-<p>反转字符串。</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reverseString</span><span class="params">(self, s)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type s: str</div><div class="line">        :rtype: str</div><div class="line">        """</div><div class="line">        <span class="keyword">return</span> s[::<span class="number">-1</span>]</div></pre></td></tr></table></figure>
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/algorithm/">algorithm</a>
-    </span>
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/03/14/reverse-string/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -602,145 +744,6 @@
         <i class="icon-comments"></i>
         <span>
           <a href="/2017/03/13/a-tool-for-homework-v2.1/#comment">Comments</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/03/13/symmetric-tree/"><span>101. Symmetric Tree</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/03/13/symmetric-tree/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-03-13T11:20:39.000Z">
-          2017-03-13
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
-<p></p><p>Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).</p>
-
-<p><br>For example, this binary tree <code>[1,2,2,3,4,4,3]</code> is symmetric:<br></p><pre><br>    1<br>   / \<br>  2   2<br> / \ / \<br>3  4 4  3<br></pre><br><br><p><br>But the following <code>[1,2,2,null,3,null,3]</code>  is not:<br><br></p><pre><br>    1<br>   / \<br>  2   2<br>   \   \<br>   3    3<br></pre><br><br><br><p><br><b>Note:</b><br><br>Bonus points if you could solve it both recursively and iteratively.<br></p>
-
-<p><strong>题意：</strong><br>输入一棵二叉树，判断是否纵向轴对称（与镜像相同）。</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>只需要判断跟节点的左右子树是否镜像对称。<br>也就是说只需要判断右子树翻转后是否与左子树相同即可。<br>也就是以相同方式遍历左子树与翻转后的右子树，生成的值的数组相同即可。</p>
-<p>方法 revrs_bt 用于反转二叉树；<br>方法 mlr_walk 用于前序遍历二叉树；<br>返回生成的两数组是否相等。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Definition for a binary tree node.</span></div><div class="line"><span class="comment"># class TreeNode(object):</span></div><div class="line"><span class="comment">#     def __init__(self, x):</span></div><div class="line"><span class="comment">#         self.val = x</span></div><div class="line"><span class="comment">#         self.left = None</span></div><div class="line"><span class="comment">#         self.right = None</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">revrs_bt</span><span class="params">(node)</span>:</span></div><div class="line">    head = node</div><div class="line">    <span class="keyword">if</span> node:</div><div class="line">        node.left, node.right = revrs_bt(node.right), revrs_bt(node.left)</div><div class="line">    <span class="keyword">return</span> head</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">mlr_walk</span><span class="params">(rslt, node)</span>:</span></div><div class="line">    <span class="keyword">if</span> node:</div><div class="line">        rslt.append(node.val)</div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        mlr_walk(rslt, node.left)</div><div class="line">    <span class="keyword">except</span> AttributeError:</div><div class="line">        rslt.append(<span class="keyword">None</span>)</div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        mlr_walk(rslt, node.right)</div><div class="line">    <span class="keyword">except</span> AttributeError:</div><div class="line">        rslt.append(<span class="keyword">None</span>)</div><div class="line">    <span class="keyword">return</span> rslt</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isSymmetric</span><span class="params">(self, root)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type root: TreeNode</div><div class="line">        :rtype: bool</div><div class="line">        """</div><div class="line">        <span class="keyword">if</span> root == <span class="keyword">None</span> <span class="keyword">or</span> (root.left, root.right) == (<span class="keyword">None</span>, <span class="keyword">None</span>):</div><div class="line">            <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">    </div><div class="line">        t_l = root.left        <span class="comment"># left tree</span></div><div class="line">        t_r = root.right       <span class="comment"># right tree</span></div><div class="line">        t_r_r = revrs_bt(t_r)  <span class="comment"># reversed right tree</span></div><div class="line">    </div><div class="line">        rslt_l, rslt_r = [], []</div><div class="line">        rslt_l = mlr_walk(rslt_l, t_l)</div><div class="line">        rslt_r = mlr_walk(rslt_r, t_r_r)</div><div class="line">    </div><div class="line">        <span class="keyword">return</span> rslt_l == rslt_r</div></pre></td></tr></table></figure>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/algorithm/">algorithm</a>
-    </span>
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/03/13/symmetric-tree/#comment">Comments</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/03/13/house-robber/"><span>198. House Robber</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/03/13/house-robber/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-03-13T04:30:07.000Z">
-          2017-03-13
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
-<p></p><p>You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security system connected and <b>it will automatically contact the police if two adjacent houses were broken into on the same night</b>.</p>
-
-<p>Given a list of non-negative integers representing the amount of money of each house, determine the maximum amount of money you can rob tonight <b>without alerting the police</b>.</p>
-
-<p>一个数组，每个元素是这家藏的钱，不能连续抢两家的钱，要求抢到尽量多的钱，求能抢到的最多的钱数。</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>又一道动态规划的问题，当数组遍历至 i 位置时，pre2 表示 i - 2 位置的和, pre1 表示 i - 1 位置的和, curr 用于保存本轮结果。对于每个 i（i &gt; 3）都要做出这样一个选择：要 pre2 + nums[i] 还是要 pre1.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">rob</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type nums: List[int]</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        <span class="keyword">if</span> len(nums) == <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span></div><div class="line">        <span class="keyword">elif</span> len(nums) == <span class="number">1</span>:</div><div class="line">            <span class="keyword">return</span> nums[<span class="number">0</span>]</div><div class="line">        <span class="keyword">elif</span> len(nums) == <span class="number">2</span>:</div><div class="line">            <span class="keyword">return</span> max(nums[<span class="number">0</span>], nums[<span class="number">1</span>])</div><div class="line">            </div><div class="line">        prev1,prev2,curr = <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span></div><div class="line"></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> nums:</div><div class="line">            curr = max(i + prev2, prev1);</div><div class="line">            prev2 = prev1;</div><div class="line">            prev1 = curr;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> curr</div></pre></td></tr></table></figure>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/algorithm/">algorithm</a>
-    </span>
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/03/13/house-robber/#comment">Comments</a>
         </span>
       </span>
     </div>

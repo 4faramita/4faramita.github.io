@@ -1,0 +1,184 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Music Study | 之言片语</title>
+
+  
+  <meta name="author" content="4faramita">
+  
+
+  
+  <meta name="description" content="Buried alive.">
+  
+
+  
+  
+  <meta name="keywords" content="algorithm">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="Music Study"/>
+
+  <meta property="og:site_name" content="之言片语"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="之言片语" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">之言片语</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/tags/algorithm">Algorithms</a></li>
+      
+        <li><a href="/tags/javascript">JavaScript</a></li>
+      
+        <li><a href="/tags/thinking">Thoughts</a></li>
+      
+        <li><a href="/tags/works">Works</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>Music Study</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/06/13/music-study/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-06-13T07:07:45.000Z">
+          2017-06-13
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>有两段音频，每段音频是一个表示音高的序列。现在想要在第二段音频中找出与第一段音频最相近的部分。</p>
+<p>具体地说，就是在第二段音频中找到一个长度和第一段音频相等且是连续的子序列，使得它们的 difference 最小。两段等长音频的 difference 定义为：<br>difference = SUM(a[i] - b[i])2 (1 ≤ i ≤ n),其中 SUM() 表示求和<br>其中 n 表示序列长度，a[i], b[i] 分别表示两段音频的音高。现在袋鼠先生想要知道，difference 的最小值是多少？数据保证第一段音频的长度小于等于第二段音频的长度。</p>
+<p>输入描述:<br>第一行一个整数 n (1 ≤ n ≤ 1000)，表示第一段音频的长度。<br>第二行 n 个整数表示第一段音频的音高（0 ≤ 音高 ≤ 1000）。<br>第三行一个整数 m (1 ≤ n ≤ m ≤ 1000)，表示第二段音频的长度。<br>第四行 m 个整数表示第二段音频的音高（0 ≤ 音高 ≤ 1000）。</p>
+<p>输出描述:<br>输出 difference 的最小值</p>
+<p>输入例子:<br>2<br>1 2<br>4<br>3 1 2 4</p>
+<p>输出例子:<br>0</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>题目思路很直接，calculate_diff() 计算两个等长数组的 “difference”，针对每一对等长数组，计算这个值即可。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding = utf-8</span></div><div class="line"><span class="keyword">import</span> sys</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">calculate_diff</span><span class="params">(lst1, lst2, length1)</span>:</span></div><div class="line">    sum_diff = <span class="number">0</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(length1):</div><div class="line">        sum_diff += ((lst1[i] - lst2[i]) ** <span class="number">2</span>)</div><div class="line">    <span class="keyword">return</span> sum_diff</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    length1 = int(sys.stdin.readline().strip())</div><div class="line">    audio1 = map(int, sys.stdin.readline().strip().split())</div><div class="line">    length2 = int(sys.stdin.readline().strip())</div><div class="line">    audio2 = map(int, sys.stdin.readline().strip().split())</div><div class="line"></div><div class="line">    min_diff = float(<span class="string">'inf'</span>);</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(length2 - length1 + <span class="number">1</span>):</div><div class="line">        min_diff = min(min_diff, calculate_diff(audio1, audio2[i:i + length1], length1))</div><div class="line"></div><div class="line">    print(min_diff)</div><div class="line"></div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+	<section id="comments" class="comment">
+	  <div id="disqus_thread">
+	  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	  </div>
+	</section>
+
+	<script type="text/javascript">
+	var disqus_shortname = 'zhi-yan-pian-yu';
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	</script>
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2017 4faramita
+    
+  </p>
+</footer>
+    
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-93516577-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+  </div>
+</div>
+</body>
+</html>
