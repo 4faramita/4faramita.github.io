@@ -69,15 +69,15 @@
 
   
     
-    <h3 class="article-title"><a href="/2017/03/13/symmetric-tree/"><span>101. Symmetric Tree</span></a></h3>
+    <h3 class="article-title"><a href="/2017/03/15/merge-sorted-array/"><span>88. Merge Sorted Array</span></a></h3>
     
   
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/2017/03/13/symmetric-tree/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-03-13T11:20:39.000Z">
-          2017-03-13
+      <a href="/2017/03/15/merge-sorted-array/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-03-15T08:31:03.000Z">
+          2017-03-15
         </time>
       </a>
     </span>
@@ -90,14 +90,13 @@
     <div class="entry">
       
         <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
-<p></p><p>Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).</p>
+<p></p><p>Given two sorted integer arrays <i>nums1</i> and <i>nums2</i>, merge <i>nums2</i> into <i>nums1</i> as one sorted array.</p>
 
-<p><br>For example, this binary tree <code>[1,2,2,3,4,4,3]</code> is symmetric:<br></p><pre><br>    1<br>   / \<br>  2   2<br> / \ / \<br>3  4 4  3<br></pre><br><br><p><br>But the following <code>[1,2,2,null,3,null,3]</code>  is not:<br><br></p><pre><br>    1<br>   / \<br>  2   2<br>   \   \<br>   3    3<br></pre><br><br><br><p><br><b>Note:</b><br><br>Bonus points if you could solve it both recursively and iteratively.<br></p>
+<p><br><b>Note:</b><br><br>You may assume that <i>nums1</i> has enough space (size that is greater or equal to <i>m</i> + <i>n</i>) to hold additional elements from <i>nums2</i>. The number of elements initialized in <i>nums1</i> and <i>nums2</i> are <i>m</i> and <i>n</i> respectively.</p>
 
-<p><strong>题意：</strong><br>输入一棵二叉树，判断是否纵向轴对称（与镜像相同）。</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>只需要判断跟节点的左右子树是否镜像对称。<br>也就是说只需要判断右子树翻转后是否与左子树相同即可。<br>也就是以相同方式遍历左子树与翻转后的右子树，生成的值的数组相同即可。</p>
-<p>方法 revrs_bt 用于反转二叉树；<br>方法 mlr_walk 用于前序遍历二叉树；<br>返回生成的两数组是否相等。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Definition for a binary tree node.</span></div><div class="line"><span class="comment"># class TreeNode(object):</span></div><div class="line"><span class="comment">#     def __init__(self, x):</span></div><div class="line"><span class="comment">#         self.val = x</span></div><div class="line"><span class="comment">#         self.left = None</span></div><div class="line"><span class="comment">#         self.right = None</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">revrs_bt</span><span class="params">(node)</span>:</span></div><div class="line">    head = node</div><div class="line">    <span class="keyword">if</span> node:</div><div class="line">        node.left, node.right = revrs_bt(node.right), revrs_bt(node.left)</div><div class="line">    <span class="keyword">return</span> head</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">mlr_walk</span><span class="params">(rslt, node)</span>:</span></div><div class="line">    <span class="keyword">if</span> node:</div><div class="line">        rslt.append(node.val)</div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        mlr_walk(rslt, node.left)</div><div class="line">    <span class="keyword">except</span> AttributeError:</div><div class="line">        rslt.append(<span class="keyword">None</span>)</div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        mlr_walk(rslt, node.right)</div><div class="line">    <span class="keyword">except</span> AttributeError:</div><div class="line">        rslt.append(<span class="keyword">None</span>)</div><div class="line">    <span class="keyword">return</span> rslt</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isSymmetric</span><span class="params">(self, root)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type root: TreeNode</div><div class="line">        :rtype: bool</div><div class="line">        """</div><div class="line">        <span class="keyword">if</span> root == <span class="keyword">None</span> <span class="keyword">or</span> (root.left, root.right) == (<span class="keyword">None</span>, <span class="keyword">None</span>):</div><div class="line">            <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">    </div><div class="line">        t_l = root.left        <span class="comment"># left tree</span></div><div class="line">        t_r = root.right       <span class="comment"># right tree</span></div><div class="line">        t_r_r = revrs_bt(t_r)  <span class="comment"># reversed right tree</span></div><div class="line">    </div><div class="line">        rslt_l, rslt_r = [], []</div><div class="line">        rslt_l = mlr_walk(rslt_l, t_l)</div><div class="line">        rslt_r = mlr_walk(rslt_r, t_r_r)</div><div class="line">    </div><div class="line">        <span class="keyword">return</span> rslt_l == rslt_r</div></pre></td></tr></table></figure>
+<p><b>题意:</b><br><br>给两个有序数组 nums1、nums2，将两个数组原地合并到 nums1，保持 nums1 有序。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>与归并排序类似，但是从头部开始归并的成本太高，而 nums1 又有足够的长度，因此从两数组的尾部开始归并，放在 nums1 尾部（从 m + n - 1 开始）。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(self, nums1, m, nums2, n)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type nums1: List[int]</div><div class="line">        :type m: int</div><div class="line">        :type nums2: List[int]</div><div class="line">        :type n: int</div><div class="line">        :rtype: void Do not return anything, modify nums1 in-place instead.</div><div class="line">        """</div><div class="line">        <span class="keyword">if</span> n == <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span></div><div class="line"></div><div class="line">        p1, p2 = m - <span class="number">1</span>, n - <span class="number">1</span>  <span class="comment"># 2 working pointers init at the ends</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(m + n - <span class="number">1</span>, <span class="number">-1</span>, <span class="number">-1</span>):</div><div class="line">            <span class="keyword">if</span> p1 &lt; <span class="number">0</span>:</div><div class="line">                nums1[i] = nums2[p2]</div><div class="line">                p2 -= <span class="number">1</span></div><div class="line">            <span class="keyword">elif</span> p2 &lt; <span class="number">0</span>:</div><div class="line">                nums1[i] = nums1[p1]</div><div class="line">                p1 -= <span class="number">1</span></div><div class="line">            <span class="keyword">elif</span> nums1[p1] &gt; nums2[p2]:</div><div class="line">                nums1[i] = nums1[p1]</div><div class="line">                p1 -= <span class="number">1</span></div><div class="line">            <span class="keyword">elif</span> nums1[p1] &lt;= nums2[p2]:</div><div class="line">                nums1[i] = nums2[p2]</div><div class="line">                p2 -= <span class="number">1</span></div></pre></td></tr></table></figure>
 
       
     </div>
@@ -125,7 +124,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/13/symmetric-tree/#comment">Comments</a>
+          <a href="/2017/03/15/merge-sorted-array/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -139,15 +138,15 @@
 
   
     
-    <h3 class="article-title"><a href="/2017/03/13/house-robber/"><span>198. House Robber</span></a></h3>
+    <h3 class="article-title"><a href="/2017/03/14/min-stack/"><span>155. Min Stack</span></a></h3>
     
   
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/2017/03/13/house-robber/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-03-13T04:30:07.000Z">
-          2017-03-13
+      <a href="/2017/03/14/min-stack/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-03-14T10:29:32.000Z">
+          2017-03-14
         </time>
       </a>
     </span>
@@ -160,13 +159,15 @@
     <div class="entry">
       
         <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
-<p></p><p>You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security system connected and <b>it will automatically contact the police if two adjacent houses were broken into on the same night</b>.</p>
-
-<p>Given a list of non-negative integers representing the amount of money of each house, determine the maximum amount of money you can rob tonight <b>without alerting the police</b>.</p>
-
-<p>一个数组，每个元素是这家藏的钱，不能连续抢两家的钱，要求抢到尽量多的钱，求能抢到的最多的钱数。</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>又一道动态规划的问题，当数组遍历至 i 位置时，pre2 表示 i - 2 位置的和, pre1 表示 i - 1 位置的和, curr 用于保存本轮结果。对于每个 i（i &gt; 3）都要做出这样一个选择：要 pre2 + nums[i] 还是要 pre1.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">rob</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type nums: List[int]</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        <span class="keyword">if</span> len(nums) == <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span></div><div class="line">        <span class="keyword">elif</span> len(nums) == <span class="number">1</span>:</div><div class="line">            <span class="keyword">return</span> nums[<span class="number">0</span>]</div><div class="line">        <span class="keyword">elif</span> len(nums) == <span class="number">2</span>:</div><div class="line">            <span class="keyword">return</span> max(nums[<span class="number">0</span>], nums[<span class="number">1</span>])</div><div class="line">            </div><div class="line">        prev1,prev2,curr = <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span></div><div class="line"></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> nums:</div><div class="line">            curr = max(i + prev2, prev1);</div><div class="line">            prev2 = prev1;</div><div class="line">            prev1 = curr;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> curr</div></pre></td></tr></table></figure>
+<p></p><p></p><p><br>Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.<br></p><ul><p></p>
+<p><li><br>push(x) – Push element x onto stack.<br></li></p>
+<p><li><br>pop() – Removes the element on top of the stack.<br></li></p>
+<p><li><br>top() – Get the top element.<br></li></p>
+<p><li><br>getMin() – Retrieve the minimum element in the stack.<br></li><br></p></ul><p></p>
+<p></p><p><b>Example:</b><br><br></p><pre><br>MinStack minStack = new MinStack();<br>minStack.push(-2);<br>minStack.push(0);<br>minStack.push(-3);<br>minStack.getMin();   –&gt; Returns -3.<br>minStack.pop();<br>minStack.top();      –&gt; Returns 0.<br>minStack.getMin();   –&gt; Returns -2.<br></pre><p></p>
+<p><b>题意:</b><br><br>自己实现一个栈，除了推、弹、查看栈顶以外还要求常数时间找到栈中最小值。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>基本思路是使用 list 结构，自带 push（append）与 pop 方法。top 只需要返回最后一个元素。<br>对于最小值，最单纯的思路是用自带方法返回 min(list)，但是时间复杂度不允许。<br>因此维护一个最小值 stack，在每次 push 的时顺便在最小值 stack 中 push 当前最小值（包括输入值），每次 pop 时最小值栈也随之 pop。需要获取最小值时只需要获取最小值 stack 的最后一个元素即可。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MinStack</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        initialize your data structure here.</div><div class="line">        """</div><div class="line">        self.stack = []</div><div class="line">        self.min_q = []</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span><span class="params">(self, x)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type x: int</div><div class="line">        :rtype: void</div><div class="line">        """</div><div class="line">        self.stack.append(x)</div><div class="line">        <span class="keyword">if</span> self.min_q == []:</div><div class="line">            self.min_q.append(x)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            self.min_q.append(min(x, self.min_q[<span class="number">-1</span>]))</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :rtype: void</div><div class="line">        """</div><div class="line">        self.stack.pop()</div><div class="line">        self.min_q.pop()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">top</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        <span class="keyword">return</span> self.stack[<span class="number">-1</span>]</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getMin</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        <span class="keyword">return</span> self.min_q[<span class="number">-1</span>]</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># Your MinStack object will be instantiated and called as such:</span></div><div class="line"><span class="comment"># obj = MinStack()</span></div><div class="line"><span class="comment"># obj.push(x)</span></div><div class="line"><span class="comment"># obj.pop()</span></div><div class="line"><span class="comment"># param_3 = obj.top()</span></div><div class="line"><span class="comment"># param_4 = obj.getMin()</span></div></pre></td></tr></table></figure>
 
       
     </div>
@@ -194,7 +195,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/13/house-robber/#comment">Comments</a>
+          <a href="/2017/03/14/min-stack/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -208,14 +209,285 @@
 
   
     
-    <h3 class="article-title"><a href="/2017/03/10/climbing-stairs/"><span>70. Climbing Stairs</span></a></h3>
+    <h3 class="article-title"><a href="/2017/03/13/missing-number/"><span>268. Missing Number</span></a></h3>
     
   
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/2017/03/10/climbing-stairs/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-03-10T02:00:59.000Z">
+      <a href="/2017/03/13/missing-number/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-03-13T12:46:00.000Z">
+          2017-03-13
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
+<p>Given an array containing n distinct numbers taken from 0, 1, 2, …, n, find the one that is missing from the array.</p>
+<p>For example,<br>Given nums = [0, 1, 3] return 2.</p>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note:"></a>Note:</h3><p>Your algorithm should run in linear runtime complexity. Could you implement it using only constant extra space complexity?</p>
+<p>给一数组，给出数组与 [0,1,2,3,4,…,n] 相比缺少的<strong>一个</strong>数。所给数组可为任意顺序。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>先排序。<br>分析一下情况：<br>数组长度为 0：缺 1<br>数组长度为 1：有两种情况（因为只能缺一个数）[0], [1]；分别返回 1, 0<br>数组更长：若第一个元素不是 0，则返回 0；设两个指针从开头遍历，若后一个减前一个大于 1，则返回前一个 + 1；若一直连续，这返回最后一个元素 + 1</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">missingNumber</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type nums: List[int]</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        nums.sort()</div><div class="line">        <span class="keyword">if</span> len(nums) == <span class="number">0</span> <span class="keyword">or</span> nums[<span class="number">0</span>] != <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span></div><div class="line">        <span class="keyword">elif</span> nums == [<span class="number">0</span>]:</div><div class="line">            <span class="keyword">return</span> <span class="number">1</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(nums) - <span class="number">1</span>):</div><div class="line">                <span class="keyword">if</span> nums[i + <span class="number">1</span>] - nums[i] &gt; <span class="number">1</span>:</div><div class="line">                    <span class="keyword">return</span> nums[i] + <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> nums[<span class="number">-1</span>] + <span class="number">1</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="/2017/03/13/missing-number/#comment">Comments</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/03/13/a-tool-for-homework-v2.1/"><span>一个交作业的小工具 v2.1</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/03/13/a-tool-for-homework-v2.1/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-03-13T11:40:32.000Z">
+          2017-03-13
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>update:<br>网页结构稍有变化，修改以适应；<br>文件名获取方式更加可靠。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/python3</span></div><div class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> sys</div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line"><span class="keyword">from</span> pyquery <span class="keyword">import</span> PyQuery <span class="keyword">as</span> pq</div><div class="line"></div><div class="line">tmp = <span class="string">'''---</span></div><div class="line">title: &#123;title&#125;</div><div class="line">tag: algorithm</div><div class="line">date: &#123;date&#125;</div><div class="line">---</div><div class="line">## Description</div><div class="line"></div><div class="line">**Difficulty: &#123;difficulty&#125;**</div><div class="line"></div><div class="line">&#123;contents&#125;</div><div class="line"></div><div class="line">&lt;b&gt;题意:&lt;/b&gt;&lt;br&gt;</div><div class="line"></div><div class="line">## Solution</div><div class="line"></div><div class="line">&#123;% codeblock lang:text %&#125;</div><div class="line"></div><div class="line">&#123;% endcodeblock %&#125;</div><div class="line"></div><div class="line">'''</div><div class="line"></div><div class="line">url = sys.argv[<span class="number">1</span>]</div><div class="line"></div><div class="line">d = pq(url)</div><div class="line"></div><div class="line">get_title = d(<span class="string">'.question-title h3'</span>).text()</div><div class="line">get_difficulty = d(<span class="string">'.question-info li strong'</span>).eq(<span class="number">2</span>).text()</div><div class="line">get_filename = url.lstrip(<span class="string">'https://'</span>).split(<span class="string">'/'</span>)[<span class="number">2</span>] + <span class="string">'.md'</span></div><div class="line">get_contents = (d(<span class="string">'.question-content'</span>).html(method=<span class="string">'html'</span>)</div><div class="line">                .split(<span class="string">'&lt;p&gt;&lt;a href="/subscribe/"&gt;Subscribe&lt;/a&gt;'</span>)[<span class="number">0</span>].rstrip().rstrip(<span class="string">'&lt;div&gt;'</span>)</div><div class="line">                .split(<span class="string">'&lt;p&gt;&lt;b&gt;Credits:&lt;/b&gt;'</span>)[<span class="number">0</span>].strip())</div><div class="line"></div><div class="line">tmp = tmp.format(</div><div class="line">    title=get_title,</div><div class="line">    difficulty=get_difficulty,</div><div class="line">    contents=get_contents,</div><div class="line">    date=time.strftime(<span class="string">"%F %H:%M:%S"</span>, time.localtime()))</div><div class="line"></div><div class="line"></div><div class="line">file = open(get_filename, <span class="string">'w'</span>)</div><div class="line">file.write(tmp)</div><div class="line">file.close()</div><div class="line"><span class="comment"># call(['vim', get_filename])</span></div><div class="line">print(<span class="string">'Show time:\n'</span>, get_filename)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>人生苦短，我用 Python。</p>
+</blockquote>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/works/">works</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="/2017/03/13/a-tool-for-homework-v2.1/#comment">Comments</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/03/12/palindrome-linked-list/"><span>234. Palindrome Linked List</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/03/12/palindrome-linked-list/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-03-12T08:18:22.000Z">
+          2017-03-12
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
+<p></p><p>Given a singly linked list, determine if it is a palindrome.</p>
+
+<p><b>Follow up:</b><br><br>Could you do it in O(n) time and O(1) space?</p>
+
+<p><b>题意:</b><br><br>判断一个链表是否回文。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>最简单的想法是把链表的值按顺序输出到一个数组，在判断数组是否回文；<br>判断数组是否回文，也就是判断前一半的逆序是否与后一半相等。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Definition for singly-linked list.</span></div><div class="line"><span class="comment"># class ListNode(object):</span></div><div class="line"><span class="comment">#     def __init__(self, x):</span></div><div class="line"><span class="comment">#         self.val = x</span></div><div class="line"><span class="comment">#         self.next = None</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isPalindrome</span><span class="params">(self, head)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type head: ListNode</div><div class="line">        :rtype: bool</div><div class="line">        """</div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> head:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">        link_list = []</div><div class="line">        p = head</div><div class="line">        <span class="keyword">while</span> p:</div><div class="line">            link_list.append(p.val)</div><div class="line">            p = p.next</div><div class="line">    </div><div class="line">        length = len(link_list)</div><div class="line">        <span class="keyword">if</span> length % <span class="number">2</span> == <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> link_list[:(length / <span class="number">2</span>)] == link_list[(length / <span class="number">2</span>):][::<span class="number">-1</span>]</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> link_list[:(length / <span class="number">2</span>)] == link_list[(length / <span class="number">2</span>) + <span class="number">1</span>:][::<span class="number">-1</span>]</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="/2017/03/12/palindrome-linked-list/#comment">Comments</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/03/11/pascals-triangle/"><span>118. Pascal&#39;s Triangle</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/03/11/pascals-triangle/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-03-11T15:31:29.000Z">
+          2017-03-11
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
+<p></p><p>Given <i>numRows</i>, generate the first <i>numRows</i> of Pascal’s triangle.</p>
+
+<p></p><p><br>For example, given <i>numRows</i> = 5,<br><br>Return<br></p><pre><br>[<br>     [1],<br>    [1,1],<br>   [1,2,1],<br>  [1,3,3,1],<br> [1,4,6,4,1]<br>]<br></pre><p></p>
+<p><b>题意:</b><br><br>给出行数，生成相应行帕斯卡三角。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>帕斯卡三角的下一行的某元素是上一行的相邻两元素的和。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">generate</span><span class="params">(self, numRows)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type numRows: int</div><div class="line">        :rtype: List[List[int]]</div><div class="line">        """</div><div class="line">        <span class="keyword">if</span> numRows == <span class="number">0</span>:</div><div class="line">            rslt = []</div><div class="line">        <span class="keyword">elif</span> numRows == <span class="number">1</span>:</div><div class="line">            rslt = [[<span class="number">1</span>]]</div><div class="line">        <span class="keyword">elif</span> numRows == <span class="number">2</span>:</div><div class="line">            rslt = [[<span class="number">1</span>], [<span class="number">1</span>, <span class="number">1</span>]]</div><div class="line">        <span class="keyword">elif</span> numRows &gt; <span class="number">2</span>:</div><div class="line">            rslt = [[<span class="number">1</span>], [<span class="number">1</span>, <span class="number">1</span>]]</div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">2</span>, numRows):</div><div class="line">                now = [<span class="number">1</span>]</div><div class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> xrange(<span class="number">1</span>, i):</div><div class="line">                    now.append(rslt[i<span class="number">-1</span>][j<span class="number">-1</span>] + rslt[i<span class="number">-1</span>][j])</div><div class="line">                now.append(<span class="number">1</span>)</div><div class="line">                rslt.append(now)</div><div class="line">        <span class="keyword">return</span> rslt</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="/2017/03/11/pascals-triangle/#comment">Comments</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/03/10/plus-one/"><span>66. Plus One</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/03/10/plus-one/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-03-10T15:13:18.000Z">
           2017-03-10
         </time>
       </a>
@@ -229,21 +501,15 @@
     <div class="entry">
       
         <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
-<p></p><p>You are climbing a stair case. It takes <i>n</i> steps to reach to the top.</p>
+<p></p><p>Given a non-negative integer represented as a <b>non-empty</b> array of digits, plus one to the integer.</p>
 
-<p>Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?<br></p>
+<p>You may assume the integer do not contain any leading zero, except the number 0 itself.</p>
 
-<p><b>Note:</b> Given <i>n</i> will be a positive integer.<br></p>
+<p>The digits are stored such that the most significant digit is at the head of the list.</p>
 
-<p>n 阶楼梯，每次可以爬一阶或者两阶，问有多少种方法。</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>由于包含动态规划的两个特征：</p>
-<ul>
-<li>最优子结构</li>
-<li>重复的子问题</li>
-</ul>
-<p>因此可用动态规划。</p>
-<p>核心算法：为了到达第 i 阶（i &gt;= 3)，可以从 i - 1 阶上一阶，也可以从 i - 2 阶上两阶。递归这个算法即可。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">climbStairs</span><span class="params">(self, n)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type n: int</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        stor = &#123;<span class="number">1</span>: <span class="number">1</span>, <span class="number">2</span>: <span class="number">2</span>&#125;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">3</span>, n+<span class="number">1</span>):</div><div class="line">            stor[i] = stor[i<span class="number">-1</span>] + stor[i<span class="number">-2</span>]</div><div class="line">        <span class="keyword">return</span> stor[n]</div></pre></td></tr></table></figure>
+<p><b>题意:</b><br><br>给一个数组，每个元素表示一个数字的每一位，要求以相同形式给出这个数字加一的结果。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>难点在于进位，特别是由 n 位数变为 n + 1 位数时，如果每一位都移动代价太太。<br>这里先将数组逆置，然后从头部（即末位）加一，进位完成后在逆置回来。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">plusOne</span><span class="params">(self, digits)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type digits: List[int]</div><div class="line">        :rtype: List[int]</div><div class="line">        """</div><div class="line">        digits_r = digits[::<span class="number">-1</span>]</div><div class="line">        added = <span class="keyword">False</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(digits)):</div><div class="line">            <span class="keyword">if</span> digits_r[i] + <span class="number">1</span> &lt; <span class="number">10</span>:</div><div class="line">                digits_r[i] += <span class="number">1</span></div><div class="line">                added = <span class="keyword">True</span></div><div class="line">                <span class="keyword">break</span></div><div class="line">            <span class="keyword">elif</span> digits_r[i] + <span class="number">1</span> == <span class="number">10</span>:</div><div class="line">                digits_r[i] = <span class="number">0</span></div><div class="line">        <span class="keyword">if</span> added == <span class="keyword">False</span>:</div><div class="line">            digits_r.append(<span class="number">1</span>)</div><div class="line">        <span class="keyword">return</span> digits_r[::<span class="number">-1</span>]</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -271,7 +537,80 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/10/climbing-stairs/#comment">Comments</a>
+          <a href="/2017/03/10/plus-one/#comment">Comments</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/03/09/remove-duplicates-from-sorted-array/"><span>26. Remove Duplicates from Sorted Array</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/03/09/remove-duplicates-from-sorted-array/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-03-08T17:09:00.000Z">
+          2017-03-09
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
+<p></p><p><br>Given a sorted array, remove the duplicates in place such that each element appear only <i>once</i> and return the new length.</p>
+
+<p><br>Do not allocate extra space for another array, you must do this in place with constant memory.<br></p>
+
+<p><br>For example,<br><br>Given input array <i>nums</i> = <code>[1,1,2]</code>,<br></p><br><p><br>Your function should return length = <code>2</code>, with the first two elements of <i>nums</i> being <code>1</code> and <code>2</code> respectively. It doesn’t matter what you leave beyond the new length.<br></p>
+
+<p><b>题意:</b><br><br>原地为一个数组去重，返回不重复的数组长度 n 并且仅需保持该数组前 n 位为不重复的数组。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>虽然效率偏低，但是重复的删掉就好。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeDuplicates</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type nums: List[int]</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        <span class="keyword">if</span> len(nums) &lt;= <span class="number">1</span>:</div><div class="line">            <span class="keyword">return</span> len(nums)</div><div class="line">        <span class="keyword">elif</span> len(nums) == <span class="number">2</span>:</div><div class="line">            <span class="keyword">if</span> nums[<span class="number">0</span>] == nums[<span class="number">1</span>]:</div><div class="line">                <span class="keyword">return</span> <span class="number">1</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                <span class="keyword">return</span> <span class="number">2</span></div><div class="line">                </div><div class="line">        <span class="comment"># now,it has at least the length of 3</span></div><div class="line">        i = <span class="number">1</span></div><div class="line">        <span class="keyword">while</span> i &lt; len(nums):</div><div class="line">            <span class="comment"># if nums[tail] != nums[i]:</span></div><div class="line">            <span class="comment">#     tail += 1</span></div><div class="line">            <span class="keyword">if</span> nums[i<span class="number">-1</span>] == nums[i]:</div><div class="line">                <span class="keyword">del</span>(nums[i])</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                i += <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> len(nums)</div></pre></td></tr></table></figure>
+<p>update：<br>讨论中展示了一种简洁而优美的写法：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="comment"># @param a list of integers</span></div><div class="line">    <span class="comment"># @return an integer</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeDuplicates</span><span class="params">(self, A)</span>:</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> A:</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span></div><div class="line"></div><div class="line">        newTail = <span class="number">0</span></div><div class="line"></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(A)):</div><div class="line">            <span class="keyword">if</span> A[i] != A[newTail]:</div><div class="line">                newTail += <span class="number">1</span></div><div class="line">                A[newTail] = A[i]</div><div class="line"></div><div class="line">        <span class="keyword">return</span> newTail + <span class="number">1</span></div></pre></td></tr></table></figure></p>
+<p>也就是将每一个不同的元素复制到 newTail 位置。</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="/2017/03/09/remove-duplicates-from-sorted-array/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -352,79 +691,6 @@
 
   
     
-    <h3 class="article-title"><a href="/2017/03/08/happy-number/"><span>202. Happy Number</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/03/08/happy-number/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-03-08T13:27:07.000Z">
-          2017-03-08
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
-<p></p><p>Write an algorithm to determine if a number is “happy”.</p>
-
-<p>A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy numbers.</p>
-
-<p><b>Example: </b>19 is a happy number</p>
-
-<ul style="list-style: none;"><br><li>1<sup>2</sup> + 9<sup>2</sup> = 82</li><br><li>8<sup>2</sup> + 2<sup>2</sup> = 68</li><br><li>6<sup>2</sup> + 8<sup>2</sup> = 100</li><br><li>1<sup>2</sup> + 0<sup>2</sup> + 0<sup>2</sup> = 1</li><br></ul>
-
-<p>返回输入数字是否是「快乐数」，即重复计算各位数字平方和，如果最终等于 1 则「快乐」。</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>递归运算，直到算出一位数结果。<br>一位数中只有 1，7 满足条件。<br>为了减少计算量，直接删去数字中的 0。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">happy</span><span class="params">(n)</span>:</span></div><div class="line">    <span class="keyword">if</span> n &lt;= <span class="number">0</span>:</div><div class="line">        <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">    </div><div class="line">    sum = <span class="number">0</span></div><div class="line">    </div><div class="line">    <span class="keyword">if</span> n &lt;= <span class="number">10</span>:</div><div class="line">        <span class="keyword">if</span> n == <span class="number">1</span> <span class="keyword">or</span> n == <span class="number">7</span> <span class="keyword">or</span> n == <span class="number">10</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">            <span class="comment"># return False</span></div><div class="line">    </div><div class="line">    <span class="keyword">elif</span> n &gt; <span class="number">10</span>:</div><div class="line">        s = str(n).strip(<span class="string">'0'</span>)</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> s:</div><div class="line">            sum += (int(i) ** <span class="number">2</span>)</div><div class="line">        <span class="keyword">return</span> happy(sum)</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isHappy</span><span class="params">(self, n)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type n: int</div><div class="line">        :rtype: bool</div><div class="line">        """</div><div class="line">        <span class="keyword">return</span> happy(n)</div></pre></td></tr></table></figure>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/algorithm/">algorithm</a>
-    </span>
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/03/08/happy-number/#comment">Comments</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
     <h3 class="article-title"><a href="/2017/03/08/a-tool-for-homework/"><span>一个交作业的小工具</span></a></h3>
     
   
@@ -479,270 +745,6 @@
         <i class="icon-comments"></i>
         <span>
           <a href="/2017/03/08/a-tool-for-homework/#comment">Comments</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/03/08/best-time-to-buy-and-sell-stock/"><span>121. Best Time to Buy and Sell Stock</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/03/08/best-time-to-buy-and-sell-stock/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-03-08T08:51:32.000Z">
-          2017-03-08
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
-<p>Say you have an array for which the ith element is the price of a given stock on day i.</p>
-<p>If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), design an algorithm to find the maximum profit.</p>
-<h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1:"></a>Example 1:</h3><p>Input: [7, 1, 5, 3, 6, 4]<br>Output: 5</p>
-<p>max. difference = 6-1 = 5 (not 7-1 = 6, as selling price needs to be larger than buying price)</p>
-<h2 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2:"></a>Example 2:</h2><p>Input: [7, 6, 4, 3, 1]<br>Output: 0</p>
-<p>In this case, no transaction is done, i.e. max profit = 0.</p>
-<p>给出一数组，代表每天的股价。要求只能买卖一次，求最大利润。</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>实际上是求数组中后面的数与前面的数的最大差值。<br>最简单的方法自然是两个循环，但是时间复杂度为 O(n^2)，很不理想。</p>
-<p>思路：由于在每个单调区间中对答案有意义的元素只有区间两端的值而已。<br>因此构建两个新数组，分别只包含每个单调区间的最大值与最小值。<br>之后，针对最小值数组中每个元素，找最大值数组相应位置及之后的最大元素即可算出最大差值（利润）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxProfit</span><span class="params">(self, prices)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type prices: List[int]</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        max_profit = <span class="number">0</span></div><div class="line">    </div><div class="line">        <span class="keyword">if</span> len(prices) == <span class="number">2</span>:</div><div class="line">            <span class="keyword">return</span> max(prices[<span class="number">1</span>] - prices[<span class="number">0</span>], <span class="number">0</span>)</div><div class="line">    </div><div class="line">        <span class="keyword">elif</span> len(prices) &gt; <span class="number">2</span>:</div><div class="line">            low = prices[<span class="number">0</span>]</div><div class="line">            high = prices[<span class="number">0</span>]</div><div class="line">            profit = <span class="number">0</span></div><div class="line">            list_low = [prices[<span class="number">0</span>]]</div><div class="line">            list_high = []</div><div class="line">            up = <span class="keyword">True</span></div><div class="line">        </div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(prices) - <span class="number">1</span>):</div><div class="line">                <span class="keyword">if</span> prices[i + <span class="number">1</span>] &gt;= prices[i]:  <span class="comment"># going up</span></div><div class="line">                    high = prices[i + <span class="number">1</span>]</div><div class="line">                    <span class="keyword">if</span> up == <span class="keyword">False</span>:</div><div class="line">                        low = prices[i]</div><div class="line">                        list_low.append(low)</div><div class="line">                        up = <span class="keyword">True</span></div><div class="line">                <span class="keyword">elif</span> prices[i + <span class="number">1</span>] &lt; prices[i]:  <span class="comment"># going down</span></div><div class="line">                    low = prices[i + <span class="number">1</span>]</div><div class="line">                    <span class="keyword">if</span> up == <span class="keyword">True</span>:</div><div class="line">                        high = prices[i]</div><div class="line">                        list_high.append(high)</div><div class="line">                        up = <span class="keyword">False</span></div><div class="line">            <span class="keyword">if</span> len(list_high) &lt; len(list_low):</div><div class="line">                list_high.append(prices[<span class="number">-1</span>])</div><div class="line">    </div><div class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> xrange(len(list_low)):</div><div class="line">                max_profit = max(max_profit, max(list_high[j:]) - list_low[j])</div><div class="line">        <span class="keyword">return</span> max_profit</div></pre></td></tr></table></figure>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/algorithm/">algorithm</a>
-    </span>
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/03/08/best-time-to-buy-and-sell-stock/#comment">Comments</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/03/08/sdsdsd/"><span></span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/03/08/sdsdsd/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-03-08T08:02:24.000Z">
-          2017-03-08
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>example.md</p>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/03/08/sdsdsd/#comment">Comments</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/03/07/missing-number/"><span>268. Missing Number</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/03/07/missing-number/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-03-07T12:46:00.000Z">
-          2017-03-07
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
-<p>Given an array containing n distinct numbers taken from 0, 1, 2, …, n, find the one that is missing from the array.</p>
-<p>For example,<br>Given nums = [0, 1, 3] return 2.</p>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note:"></a>Note:</h3><p>Your algorithm should run in linear runtime complexity. Could you implement it using only constant extra space complexity?</p>
-<p>给一数组，给出数组与 [0,1,2,3,4,…,n] 相比缺少的<strong>一个</strong>数。所给数组可为任意顺序。</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>先排序。<br>分析一下情况：<br>数组长度为 0：缺 1<br>数组长度为 1：有两种情况（因为只能缺一个数）[0], [1]；分别返回 1, 0<br>数组更长：若第一个元素不是 0，则返回 0；设两个指针从开头遍历，若后一个减前一个大于 1，则返回前一个 + 1；若一直连续，这返回最后一个元素 + 1</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">missingNumber</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type nums: List[int]</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        nums.sort()</div><div class="line">        <span class="keyword">if</span> len(nums) == <span class="number">0</span> <span class="keyword">or</span> nums[<span class="number">0</span>] != <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span></div><div class="line">        <span class="keyword">elif</span> nums == [<span class="number">0</span>]:</div><div class="line">            <span class="keyword">return</span> <span class="number">1</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(nums) - <span class="number">1</span>):</div><div class="line">                <span class="keyword">if</span> nums[i + <span class="number">1</span>] - nums[i] &gt; <span class="number">1</span>:</div><div class="line">                    <span class="keyword">return</span> nums[i] + <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> nums[<span class="number">-1</span>] + <span class="number">1</span></div></pre></td></tr></table></figure>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/algorithm/">algorithm</a>
-    </span>
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/03/07/missing-number/#comment">Comments</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/03/07/intersection-of-two-arrays-ii/"><span>350. Intersection of Two Arrays II</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/03/07/intersection-of-two-arrays-ii/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-03-07T12:26:00.000Z">
-          2017-03-07
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
-<p>Given two arrays, write a function to compute their intersection.</p>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example:"></a>Example:</h3><p>Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2, 2].</p>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note:"></a>Note:</h3><p>Each element in the result should appear as many times as it shows in both arrays.<br>The result can be in any order.</p>
-<h3 id="Follow-up"><a href="#Follow-up" class="headerlink" title="Follow up:"></a>Follow up:</h3><p>What if the given array is already sorted? How would you optimize your algorithm?<br>What if nums1’s size is small compared to nums2’s size? Which algorithm is better?<br>What if elements of nums2 are stored on disk, and the memory is limited such that you cannot load all elements into the memory at once?</p>
-<p>求两个数组交集。</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>鉴于结果的顺序不限，依然使用我最喜欢的字典类型来实现。（字典类型实际上是哈希表，因此效率喜人）<br>将两个数组转化为字典：<br>key：数组中元素<br>value：元素出现次数<br>然后根据较短的字典构建数组：每个在短数组出现过的元素，若在长数组中也存在，则在结果数组中添加数个该元素，添加的数量为该元素在两个字典中各自出现次数中较小的一个次数。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">to_set</span><span class="params">(nums)</span>:</span></div><div class="line">    nums_set = &#123;&#125;</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> nums:</div><div class="line">        <span class="keyword">try</span>:</div><div class="line">            nums_set[i] += <span class="number">1</span></div><div class="line">        <span class="keyword">except</span> KeyError:</div><div class="line">            nums_set[i] = <span class="number">1</span></div><div class="line">    <span class="keyword">return</span> nums_set</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">intersect</span><span class="params">(self, nums1, nums2)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type nums1: List[int]</div><div class="line">        :type nums2: List[int]</div><div class="line">        :rtype: List[int]</div><div class="line">        """</div><div class="line">        nums1_set = to_set(nums1)</div><div class="line">        nums2_set = to_set(nums2)</div><div class="line">        intersection = []</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> len(nums1_set) &gt; len(nums2_set):</div><div class="line">            nums1_set, nums2_set = nums2_set, nums1_set  <span class="comment"># 1 &lt; 2</span></div><div class="line">        </div><div class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> nums1_set:</div><div class="line">            <span class="keyword">if</span> j <span class="keyword">in</span> nums2_set:</div><div class="line">                intersection = intersection + ([j] * min(nums1_set[j], nums2_set[j]))</div><div class="line">                </div><div class="line">        <span class="keyword">return</span> intersection</div></pre></td></tr></table></figure>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/algorithm/">algorithm</a>
-    </span>
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/03/07/intersection-of-two-arrays-ii/#comment">Comments</a>
         </span>
       </span>
     </div>
