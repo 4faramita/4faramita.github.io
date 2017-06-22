@@ -94,9 +94,7 @@
         <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>从数列A[0], A[1], A[2], …, A[N-1]中选若干个数，要求相邻的数不能都选，也就是说如果选了A[i], 就不能选A[i-1]和A[i+1]. 求能选出的最大和.</p>
 <p>1 &lt;= N &lt;= 100000, 1 &lt;= A[i] &lt;= 1000</p>
 <p>请为下面的Solution类实现解决上述问题的函数maxSum，函数参数A是给出的数列，返回值为所求的最大和.</p>
-<p>class Solution {<br>public:<br>    int maxSum(vector<int>&amp; A) {</int></p>
-<pre><code>}
-</code></pre><p>};</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxSum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A)</span> </span>&#123;</div><div class="line">          </div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>例1：A = {2, 5, 2}，答案为5.</p>
 <p>例2：A = {2, 5, 4}，答案为6.</p>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>动态规划：每个点只有两种可能，选或不选。</p>

@@ -92,9 +92,7 @@
         <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>定义超级和函数F如下：</p>
 <p>F(0, n) = n，对于所有的正整数n..<br>F(k, n) = F(k – 1, 1) + F(k – 1, 2) + … + F(k – 1, n)，对于所有的正整数k和n.</p>
 <p>请实现下面Solution类中计算F(k, n)的函数（1 &lt;= k, n &lt;= 14）.</p>
-<p>class Solution {<br>public:<br>       int F(int k, int n) {</p>
-<pre><code>}
-</code></pre><p>};</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">       <span class="function"><span class="keyword">int</span> <span class="title">F</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">             </div><div class="line">       &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>例1：F(1, 3) = 6</p>
 <p>例2：F(2, 3) = 10</p>
 <p>例3：F(10, 10) = 167960</p>
@@ -165,10 +163,7 @@
 <p>给出两个二叉树p和q，判断它们是否等价.</p>
 <p>p和q的结点数不多于100000，每个结点的数值在1和1000000000之间.</p>
 <p>请为下面的Solution类实现解决上述问题的isEqual函数，函数的两个参数p和q分别代表两个二叉树的根节点，如果以p和q为根的二叉树等价则函数返回true，否则返回false.</p>
-<p>/<em>*<br>  Definition for a binary tree node.<br>  struct TreeNode {<br>      int val;<br>      TreeNode </em>left;<br>      TreeNode <em>right;<br>      TreeNode(int x) : val(x), left(NULL), right(NULL) {}<br>  };
- </em>/<br>class Solution {<br>public:<br>       bool isEqual(TreeNode<em> p, TreeNode</em> q) {</p>
-<pre><code>}
-</code></pre><p>};</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">  Definition for a binary tree node.</div><div class="line">  struct TreeNode &#123;</div><div class="line">      int val;</div><div class="line">      TreeNode *left;</div><div class="line">      TreeNode *right;</div><div class="line">      TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</div><div class="line">  &#125;;</div><div class="line"> */</div><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">       <span class="function"><span class="keyword">bool</span> <span class="title">isEqual</span><span class="params">(TreeNode* p, TreeNode* q)</span> </span>&#123;</div><div class="line">             </div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>递归地比较两棵树的根结点、左右节点。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"> <span class="keyword">public</span>:</div><div class="line">  <span class="function"><span class="keyword">bool</span> <span class="title">isEqual</span><span class="params">(TreeNode* p, TreeNode* q)</span> </span>&#123;</div><div class="line">    <span class="keyword">bool</span> result = <span class="literal">false</span>;</div><div class="line">    <span class="keyword">if</span> (p == <span class="literal">NULL</span> &amp;&amp; q == <span class="literal">NULL</span>) &#123;</div><div class="line">      result = <span class="literal">true</span>;</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (p != <span class="literal">NULL</span> &amp;&amp; q != <span class="literal">NULL</span>)&#123;</div><div class="line">      <span class="keyword">if</span> (p-&gt;val == q-&gt;val) &#123;</div><div class="line">        result = <span class="literal">true</span> &amp;&amp; isEqual(p-&gt;left, q-&gt;left) &amp;&amp; isEqual(p-&gt;right, q-&gt;right);</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
       
@@ -234,9 +229,7 @@
         <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>N个会议要同时举行，参会人数分别为A[0], A[1], …, A[N-1]. 现有M个会议室，会议室可容纳人数分别为B[0], B[1], …, B[M-1]. 当A[i]&lt;=B[j]时，可以把会议i安排在会议室j，每间会议室最多安排一个会议，每个会议最多只能安排一个会议室. 求最多安排多少个会议.</p>
 <p>1 &lt;= N, M &lt;= 100000, 每个会议的参会人数和每间会议室的容纳人数均在1和1000之间.</p>
 <p>请为下面的Solution类实现解决上述问题的函数assignConferenceRoom. 函数参数A和B的意义如上，返回值为最多可安排的会议数.</p>
-<p>class Solution {<br>public:<br>    int assignConferenceRoom(vector<int>&amp; A, vector<int>&amp; B) {</int></int></p>
-<pre><code>}
-</code></pre><p>};</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">assignConferenceRoom</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; B)</span> </span>&#123;</div><div class="line">             </div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>例1：A={2, 3}, B={1, 2}，答案为1.</p>
 <p>例2：A={3, 4, 5}，B={10, 3, 2}，答案为2.</p>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>两个数组排序；先丢弃超过最大会议室容量的会议，然后最大的屋子匹配人数最多的会议。</p>
@@ -304,9 +297,7 @@
         <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>从数列A[0], A[1], A[2], …, A[N-1]中选若干个数，要求相邻的数不能都选，也就是说如果选了A[i], 就不能选A[i-1]和A[i+1]. 求能选出的最大和.</p>
 <p>1 &lt;= N &lt;= 100000, 1 &lt;= A[i] &lt;= 1000</p>
 <p>请为下面的Solution类实现解决上述问题的函数maxSum，函数参数A是给出的数列，返回值为所求的最大和.</p>
-<p>class Solution {<br>public:<br>    int maxSum(vector<int>&amp; A) {</int></p>
-<pre><code>}
-</code></pre><p>};</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxSum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A)</span> </span>&#123;</div><div class="line">          </div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>例1：A = {2, 5, 2}，答案为5.</p>
 <p>例2：A = {2, 5, 4}，答案为6.</p>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>动态规划：每个点只有两种可能，选或不选。</p>
@@ -374,9 +365,7 @@
         <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>在图论中，如果一个有向图从任意顶点出发无法经过若干条边回到该点，则这个图是一个有向无环图（Directed Acyclic Graph，DAG）. 对于一个n个节点的有向图（节点编号从0到n-1），请判断其是否为有向无环图.</p>
 <p>图的节点数和边数均不多于100000.</p>
 <p>请为下面的Solution类实现解决上述问题的isDAG函数，函数参数中n为图的节点数，edges是边集，edges[i]表示第i条边从edges[i].first指向edge[i].second. 如果是有向无环图返回true，否则返回false.</p>
-<p>class Solution {<br>public:<br>       bool isDAG(int n, vector<pair<int, int="">&gt;&amp; edges) {</pair<int,></p>
-<pre><code>}
-</code></pre><p>};</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">       <span class="function"><span class="keyword">bool</span> <span class="title">isDAG</span><span class="params">(<span class="keyword">int</span> n, <span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt;&amp; edges)</span> </span>&#123;</div><div class="line">          </div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>例1：<br>n = 3，edges = {(0, 1), (0, 2)}，函数应返回true.</p>
 <p>例2：<br>n = 2，edges = {(0, 1), (1, 0)}，函数应返回false.</p>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>使用 Khan 算法，循环搜索入度为 0 的节点，删除其点与出发的边；当无点可删时，若图中还有点，即为有环。</p>

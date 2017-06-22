@@ -94,9 +94,7 @@
         <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>N个会议要同时举行，参会人数分别为A[0], A[1], …, A[N-1]. 现有M个会议室，会议室可容纳人数分别为B[0], B[1], …, B[M-1]. 当A[i]&lt;=B[j]时，可以把会议i安排在会议室j，每间会议室最多安排一个会议，每个会议最多只能安排一个会议室. 求最多安排多少个会议.</p>
 <p>1 &lt;= N, M &lt;= 100000, 每个会议的参会人数和每间会议室的容纳人数均在1和1000之间.</p>
 <p>请为下面的Solution类实现解决上述问题的函数assignConferenceRoom. 函数参数A和B的意义如上，返回值为最多可安排的会议数.</p>
-<p>class Solution {<br>public:<br>    int assignConferenceRoom(vector<int>&amp; A, vector<int>&amp; B) {</int></int></p>
-<pre><code>}
-</code></pre><p>};</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">assignConferenceRoom</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; B)</span> </span>&#123;</div><div class="line">             </div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>例1：A={2, 3}, B={1, 2}，答案为1.</p>
 <p>例2：A={3, 4, 5}，B={10, 3, 2}，答案为2.</p>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>两个数组排序；先丢弃超过最大会议室容量的会议，然后最大的屋子匹配人数最多的会议。</p>
