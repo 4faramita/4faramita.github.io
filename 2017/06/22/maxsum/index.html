@@ -1,0 +1,185 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>1005. 最大和 | 之言片语</title>
+
+  
+  <meta name="author" content="4faramita">
+  
+
+  
+  <meta name="description" content="Buried alive.">
+  
+
+  
+  
+  <meta name="keywords" content="algorithm">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="1005. 最大和"/>
+
+  <meta property="og:site_name" content="之言片语"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="之言片语" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">之言片语</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/tags/algorithm">Algorithms</a></li>
+      
+        <li><a href="/tags/javascript">JavaScript</a></li>
+      
+        <li><a href="/tags/thinking">Thoughts</a></li>
+      
+        <li><a href="/tags/works">Works</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>1005. 最大和</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/06/22/maxsum/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-06-22T08:56:24.000Z">
+          2017-06-22
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>从数列A[0], A[1], A[2], …, A[N-1]中选若干个数，要求相邻的数不能都选，也就是说如果选了A[i], 就不能选A[i-1]和A[i+1]. 求能选出的最大和.</p>
+<p>1 &lt;= N &lt;= 100000, 1 &lt;= A[i] &lt;= 1000</p>
+<p>请为下面的Solution类实现解决上述问题的函数maxSum，函数参数A是给出的数列，返回值为所求的最大和.</p>
+<p>class Solution {<br>public:<br>    int maxSum(vector<int>&amp; A) {</int></p>
+<pre><code>}
+</code></pre><p>};</p>
+<p>例1：A = {2, 5, 2}，答案为5.</p>
+<p>例2：A = {2, 5, 4}，答案为6.</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>动态规划：每个点只有两种可能，选或不选。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">private</span>:</div><div class="line">  <span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; save;</div><div class="line">  <span class="keyword">int</span> size;</div><div class="line">  <span class="keyword">bool</span> changed;</div><div class="line"></div><div class="line"><span class="keyword">public</span>:</div><div class="line">  Solution() &#123;</div><div class="line">    changed = <span class="literal">false</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span>:</div><div class="line">  <span class="function"><span class="keyword">int</span> <span class="title">doRealJob</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator begin, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator end, <span class="keyword">int</span> currSize)</span> </span>&#123;</div><div class="line">    <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line">    <span class="keyword">int</span> result = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> position = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (!changed) &#123;</div><div class="line">      size = currSize;</div><div class="line">      changed = <span class="literal">true</span>;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      position = size - currSize;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;::iterator mit;</div><div class="line">    mit = save.find(position);</div><div class="line">    <span class="keyword">if</span> (mit != save.end()) &#123;</div><div class="line">      result = mit-&gt;second;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator tmp = begin;</div><div class="line">      <span class="keyword">if</span> (begin != end) &#123;</div><div class="line">        <span class="keyword">if</span> (++tmp == end) &#123; <span class="comment">// only 1 element remaining</span></div><div class="line">          result = *begin;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">          <span class="keyword">int</span> first = *begin;</div><div class="line">          begin++;</div><div class="line">          tmp = begin;</div><div class="line">          <span class="keyword">if</span> (++tmp == end) &#123; <span class="comment">// 2 elements remaining</span></div><div class="line">            result = first &gt; *begin ? first : *begin;</div><div class="line">          &#125; <span class="keyword">else</span> &#123; <span class="comment">// at least 3 elements remaining</span></div><div class="line">            <span class="keyword">int</span> orNot = doRealJob(begin, end, currSize - <span class="number">1</span>);</div><div class="line">            begin++;</div><div class="line">            <span class="keyword">int</span> now = first + doRealJob(begin, end, currSize - <span class="number">2</span>);</div><div class="line">            result = now &gt; orNot ? now : orNot;</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">        save[position] = result;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">  &#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span>:</div><div class="line">  <span class="function"><span class="keyword">int</span> <span class="title">maxSum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;A)</span> </span>&#123;</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator begin = A.begin();</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator end = A.end();</div><div class="line">    <span class="keyword">int</span> originSize = A.size();</div><div class="line"></div><div class="line">    <span class="keyword">return</span> doRealJob(begin, end, originSize);</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+	<section id="comments" class="comment">
+	  <div id="disqus_thread">
+	  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	  </div>
+	</section>
+
+	<script type="text/javascript">
+	var disqus_shortname = 'zhi-yan-pian-yu';
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	</script>
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2017 4faramita
+    
+  </p>
+</footer>
+    
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-93516577-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+  </div>
+</div>
+</body>
+</html>

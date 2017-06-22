@@ -1,0 +1,186 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>1002. 等价二叉树 | 之言片语</title>
+
+  
+  <meta name="author" content="4faramita">
+  
+
+  
+  <meta name="description" content="Buried alive.">
+  
+
+  
+  
+  <meta name="keywords" content="algorithm">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="1002. 等价二叉树"/>
+
+  <meta property="og:site_name" content="之言片语"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="之言片语" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">之言片语</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/tags/algorithm">Algorithms</a></li>
+      
+        <li><a href="/tags/javascript">JavaScript</a></li>
+      
+        <li><a href="/tags/thinking">Thoughts</a></li>
+      
+        <li><a href="/tags/works">Works</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>1002. 等价二叉树</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/06/22/trees-are-equal/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-06-22T09:04:48.000Z">
+          2017-06-22
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong><br>两个二叉树结构相同，且对应结点的值相同，我们称这两个二叉树等价.</p>
+<p>例如：以下两个二叉树等价<br>        1           1<br>       /  \         /  \<br>      2   3       2   3<br>而以下两个则不等价<br>        1           1<br>       /  \         /  \<br>      2   3       3   2<br>以下两个也不等价<br>        1           1<br>       /  \         /  \<br>      2   3       2   2</p>
+<p>给出两个二叉树p和q，判断它们是否等价.</p>
+<p>p和q的结点数不多于100000，每个结点的数值在1和1000000000之间.</p>
+<p>请为下面的Solution类实现解决上述问题的isEqual函数，函数的两个参数p和q分别代表两个二叉树的根节点，如果以p和q为根的二叉树等价则函数返回true，否则返回false.</p>
+<p>/<em>*<br>  Definition for a binary tree node.<br>  struct TreeNode {<br>      int val;<br>      TreeNode </em>left;<br>      TreeNode <em>right;<br>      TreeNode(int x) : val(x), left(NULL), right(NULL) {}<br>  };
+ </em>/<br>class Solution {<br>public:<br>       bool isEqual(TreeNode<em> p, TreeNode</em> q) {</p>
+<pre><code>}
+</code></pre><p>};</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>递归地比较两棵树的根结点、左右节点。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"> <span class="keyword">public</span>:</div><div class="line">  <span class="function"><span class="keyword">bool</span> <span class="title">isEqual</span><span class="params">(TreeNode* p, TreeNode* q)</span> </span>&#123;</div><div class="line">    <span class="keyword">bool</span> result = <span class="literal">false</span>;</div><div class="line">    <span class="keyword">if</span> (p == <span class="literal">NULL</span> &amp;&amp; q == <span class="literal">NULL</span>) &#123;</div><div class="line">      result = <span class="literal">true</span>;</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (p != <span class="literal">NULL</span> &amp;&amp; q != <span class="literal">NULL</span>)&#123;</div><div class="line">      <span class="keyword">if</span> (p-&gt;val == q-&gt;val) &#123;</div><div class="line">        result = <span class="literal">true</span> &amp;&amp; isEqual(p-&gt;left, q-&gt;left) &amp;&amp; isEqual(p-&gt;right, q-&gt;right);</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+	<section id="comments" class="comment">
+	  <div id="disqus_thread">
+	  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	  </div>
+	</section>
+
+	<script type="text/javascript">
+	var disqus_shortname = 'zhi-yan-pian-yu';
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	(function(){
+	  var dsq = document.createElement('script');
+	  dsq.type = 'text/javascript';
+	  dsq.async = true;
+	  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+	  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	}());
+	</script>
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2017 4faramita
+    
+  </p>
+</footer>
+    
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-93516577-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+  </div>
+</div>
+</body>
+</html>

@@ -69,6 +69,358 @@
 
   
     
+    <h3 class="article-title"><a href="/2017/06/22/super-addition/"><span>1000. 函数求值</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/06/22/super-addition/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-06-22T09:06:30.000Z">
+          2017-06-22
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong><br>定义超级和函数F如下：</p>
+<p>F(0, n) = n，对于所有的正整数n..<br>F(k, n) = F(k – 1, 1) + F(k – 1, 2) + … + F(k – 1, n)，对于所有的正整数k和n.</p>
+<p>请实现下面Solution类中计算F(k, n)的函数（1 &lt;= k, n &lt;= 14）.</p>
+<p>class Solution {<br>public:<br>       int F(int k, int n) {</p>
+<pre><code>}
+</code></pre><p>};</p>
+<p>例1：F(1, 3) = 6</p>
+<p>例2：F(2, 3) = 10</p>
+<p>例3：F(10, 10) = 167960</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>递归求解，翻译成代码即可。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"> <span class="keyword">public</span>:</div><div class="line">  <span class="function"><span class="keyword">int</span> <span class="title">F</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (k == <span class="number">0</span>) &#123;</div><div class="line">      <span class="keyword">return</span> n;</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (k &gt; <span class="number">0</span>) &#123;</div><div class="line">      <span class="keyword">int</span> subsum = <span class="number">0</span>;</div><div class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</div><div class="line">        subsum += F(k - <span class="number">1</span>, i);</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">return</span> subsum;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="/2017/06/22/super-addition/#comment">Comments</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/06/22/trees-are-equal/"><span>1002. 等价二叉树</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/06/22/trees-are-equal/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-06-22T09:04:48.000Z">
+          2017-06-22
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong><br>两个二叉树结构相同，且对应结点的值相同，我们称这两个二叉树等价.</p>
+<p>例如：以下两个二叉树等价<br>        1           1<br>       /  \         /  \<br>      2   3       2   3<br>而以下两个则不等价<br>        1           1<br>       /  \         /  \<br>      2   3       3   2<br>以下两个也不等价<br>        1           1<br>       /  \         /  \<br>      2   3       2   2</p>
+<p>给出两个二叉树p和q，判断它们是否等价.</p>
+<p>p和q的结点数不多于100000，每个结点的数值在1和1000000000之间.</p>
+<p>请为下面的Solution类实现解决上述问题的isEqual函数，函数的两个参数p和q分别代表两个二叉树的根节点，如果以p和q为根的二叉树等价则函数返回true，否则返回false.</p>
+<p>/<em>*<br>  Definition for a binary tree node.<br>  struct TreeNode {<br>      int val;<br>      TreeNode </em>left;<br>      TreeNode <em>right;<br>      TreeNode(int x) : val(x), left(NULL), right(NULL) {}<br>  };
+ </em>/<br>class Solution {<br>public:<br>       bool isEqual(TreeNode<em> p, TreeNode</em> q) {</p>
+<pre><code>}
+</code></pre><p>};</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>递归地比较两棵树的根结点、左右节点。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"> <span class="keyword">public</span>:</div><div class="line">  <span class="function"><span class="keyword">bool</span> <span class="title">isEqual</span><span class="params">(TreeNode* p, TreeNode* q)</span> </span>&#123;</div><div class="line">    <span class="keyword">bool</span> result = <span class="literal">false</span>;</div><div class="line">    <span class="keyword">if</span> (p == <span class="literal">NULL</span> &amp;&amp; q == <span class="literal">NULL</span>) &#123;</div><div class="line">      result = <span class="literal">true</span>;</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (p != <span class="literal">NULL</span> &amp;&amp; q != <span class="literal">NULL</span>)&#123;</div><div class="line">      <span class="keyword">if</span> (p-&gt;val == q-&gt;val) &#123;</div><div class="line">        result = <span class="literal">true</span> &amp;&amp; isEqual(p-&gt;left, q-&gt;left) &amp;&amp; isEqual(p-&gt;right, q-&gt;right);</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="/2017/06/22/trees-are-equal/#comment">Comments</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/06/22/assign-conference-room/"><span>1001. 会议安排</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/06/22/assign-conference-room/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-06-22T09:02:03.000Z">
+          2017-06-22
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong><br>N个会议要同时举行，参会人数分别为A[0], A[1], …, A[N-1]. 现有M个会议室，会议室可容纳人数分别为B[0], B[1], …, B[M-1]. 当A[i]&lt;=B[j]时，可以把会议i安排在会议室j，每间会议室最多安排一个会议，每个会议最多只能安排一个会议室. 求最多安排多少个会议.</p>
+<p>1 &lt;= N, M &lt;= 100000, 每个会议的参会人数和每间会议室的容纳人数均在1和1000之间.</p>
+<p>请为下面的Solution类实现解决上述问题的函数assignConferenceRoom. 函数参数A和B的意义如上，返回值为最多可安排的会议数.</p>
+<p>class Solution {<br>public:<br>    int assignConferenceRoom(vector<int>&amp; A, vector<int>&amp; B) {</int></int></p>
+<pre><code>}
+</code></pre><p>};</p>
+<p>例1：A={2, 3}, B={1, 2}，答案为1.</p>
+<p>例2：A={3, 4, 5}，B={10, 3, 2}，答案为2.</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>两个数组排序；先丢弃超过最大会议室容量的会议，然后最大的屋子匹配人数最多的会议。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">  <span class="function"><span class="keyword">int</span> <span class="title">assignConferenceRoom</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;A, <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;B)</span> </span>&#123;</div><div class="line">    <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> arrangements = <span class="number">0</span>;</div><div class="line"></div><div class="line">    sort(A.begin(), A.end());</div><div class="line">    sort(B.begin(), B.end());</div><div class="line">    reverse(A.begin(), A.end());</div><div class="line">    reverse(B.begin(), B.end());</div><div class="line"></div><div class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator p = A.begin();</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator q = B.begin();</div><div class="line">    <span class="keyword">while</span> (*p &gt; *q) &#123;</div><div class="line">      p++;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">while</span> (p != A.end() &amp;&amp; q != B.end()) &#123;</div><div class="line">      <span class="keyword">if</span> (*p &lt;= *q) &#123;</div><div class="line">        arrangements += <span class="number">1</span>;</div><div class="line">        p++;</div><div class="line">        q++;</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">        p++;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> arrangements;</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="/2017/06/22/assign-conference-room/#comment">Comments</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/06/22/maxsum/"><span>1005. 最大和</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/06/22/maxsum/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-06-22T08:56:24.000Z">
+          2017-06-22
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>从数列A[0], A[1], A[2], …, A[N-1]中选若干个数，要求相邻的数不能都选，也就是说如果选了A[i], 就不能选A[i-1]和A[i+1]. 求能选出的最大和.</p>
+<p>1 &lt;= N &lt;= 100000, 1 &lt;= A[i] &lt;= 1000</p>
+<p>请为下面的Solution类实现解决上述问题的函数maxSum，函数参数A是给出的数列，返回值为所求的最大和.</p>
+<p>class Solution {<br>public:<br>    int maxSum(vector<int>&amp; A) {</int></p>
+<pre><code>}
+</code></pre><p>};</p>
+<p>例1：A = {2, 5, 2}，答案为5.</p>
+<p>例2：A = {2, 5, 4}，答案为6.</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>动态规划：每个点只有两种可能，选或不选。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">private</span>:</div><div class="line">  <span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; save;</div><div class="line">  <span class="keyword">int</span> size;</div><div class="line">  <span class="keyword">bool</span> changed;</div><div class="line"></div><div class="line"><span class="keyword">public</span>:</div><div class="line">  Solution() &#123;</div><div class="line">    changed = <span class="literal">false</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span>:</div><div class="line">  <span class="function"><span class="keyword">int</span> <span class="title">doRealJob</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator begin, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator end, <span class="keyword">int</span> currSize)</span> </span>&#123;</div><div class="line">    <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line">    <span class="keyword">int</span> result = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> position = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (!changed) &#123;</div><div class="line">      size = currSize;</div><div class="line">      changed = <span class="literal">true</span>;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      position = size - currSize;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;::iterator mit;</div><div class="line">    mit = save.find(position);</div><div class="line">    <span class="keyword">if</span> (mit != save.end()) &#123;</div><div class="line">      result = mit-&gt;second;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator tmp = begin;</div><div class="line">      <span class="keyword">if</span> (begin != end) &#123;</div><div class="line">        <span class="keyword">if</span> (++tmp == end) &#123; <span class="comment">// only 1 element remaining</span></div><div class="line">          result = *begin;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">          <span class="keyword">int</span> first = *begin;</div><div class="line">          begin++;</div><div class="line">          tmp = begin;</div><div class="line">          <span class="keyword">if</span> (++tmp == end) &#123; <span class="comment">// 2 elements remaining</span></div><div class="line">            result = first &gt; *begin ? first : *begin;</div><div class="line">          &#125; <span class="keyword">else</span> &#123; <span class="comment">// at least 3 elements remaining</span></div><div class="line">            <span class="keyword">int</span> orNot = doRealJob(begin, end, currSize - <span class="number">1</span>);</div><div class="line">            begin++;</div><div class="line">            <span class="keyword">int</span> now = first + doRealJob(begin, end, currSize - <span class="number">2</span>);</div><div class="line">            result = now &gt; orNot ? now : orNot;</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">        save[position] = result;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">  &#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span>:</div><div class="line">  <span class="function"><span class="keyword">int</span> <span class="title">maxSum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;A)</span> </span>&#123;</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator begin = A.begin();</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator end = A.end();</div><div class="line">    <span class="keyword">int</span> originSize = A.size();</div><div class="line"></div><div class="line">    <span class="keyword">return</span> doRealJob(begin, end, originSize);</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="/2017/06/22/maxsum/#comment">Comments</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/06/22/dag/"><span>1004. 无环图</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/06/22/dag/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-06-22T08:50:42.000Z">
+          2017-06-22
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>在图论中，如果一个有向图从任意顶点出发无法经过若干条边回到该点，则这个图是一个有向无环图（Directed Acyclic Graph，DAG）. 对于一个n个节点的有向图（节点编号从0到n-1），请判断其是否为有向无环图.</p>
+<p>图的节点数和边数均不多于100000.</p>
+<p>请为下面的Solution类实现解决上述问题的isDAG函数，函数参数中n为图的节点数，edges是边集，edges[i]表示第i条边从edges[i].first指向edge[i].second. 如果是有向无环图返回true，否则返回false.</p>
+<p>class Solution {<br>public:<br>       bool isDAG(int n, vector<pair<int, int="">&gt;&amp; edges) {</pair<int,></p>
+<pre><code>}
+</code></pre><p>};</p>
+<p>例1：<br>n = 3，edges = {(0, 1), (0, 2)}，函数应返回true.</p>
+<p>例2：<br>n = 2，edges = {(0, 1), (1, 0)}，函数应返回false.</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>使用 Khan 算法，循环搜索入度为 0 的节点，删除其点与出发的边；当无点可删时，若图中还有点，即为有环。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isDAG</span><span class="params">(<span class="keyword">int</span> n, <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; &amp;edges)</span> </span>&#123;</div><div class="line">        <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; inDegree(n, <span class="number">0</span>);</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; outs(n);</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="built_in">stack</span>;</div><div class="line">        <span class="keyword">int</span> remainingV = n;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt;::iterator edgeIterator = edges.begin();</div><div class="line">             edgeIterator != edges.end(); edgeIterator++) &#123;</div><div class="line">            <span class="keyword">int</span> head = edgeIterator-&gt;first;</div><div class="line">            <span class="keyword">int</span> tail = edgeIterator-&gt;second;</div><div class="line"></div><div class="line">            inDegree[tail] += <span class="number">1</span>;</div><div class="line"></div><div class="line">            outs[head].push_back(tail);</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (inDegree[i] == <span class="number">0</span>) &#123;</div><div class="line">                <span class="built_in">stack</span>.push_back(i);</div><div class="line">                inDegree[i] = <span class="number">-1</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">while</span> (<span class="built_in">stack</span>.size() &gt; <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">int</span> start = *(--<span class="built_in">stack</span>.end());</div><div class="line">            <span class="built_in">stack</span>.pop_back();</div><div class="line">            remainingV -= <span class="number">1</span>;</div><div class="line"></div><div class="line">            <span class="keyword">for</span> (<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator edgeTail = outs.at(start).begin();</div><div class="line">                 edgeTail != outs.at(start).end(); edgeTail++) &#123;</div><div class="line">                <span class="keyword">if</span> (inDegree[*edgeTail] &gt; <span class="number">0</span>) &#123;</div><div class="line">                    inDegree[*edgeTail] -= <span class="number">1</span>;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span> (inDegree[*edgeTail] == <span class="number">0</span>) &#123;</div><div class="line">                    <span class="built_in">stack</span>.push_back(*edgeTail);</div><div class="line">                    inDegree[*edgeTail] = <span class="number">-1</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (<span class="built_in">stack</span>.size() == <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> (remainingV == <span class="number">0</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="/2017/06/22/dag/#comment">Comments</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
     <h3 class="article-title"><a href="/2017/06/13/coupons/"><span>Coupons</span></a></h3>
     
   
@@ -89,12 +441,18 @@
   <div class="article-content">
     <div class="entry">
       
-        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>有两段音频，每段音频是一个表示音高的序列。现在想要在第二段音频中找出与第一段音频最相近的部分。</p>
-<p>具体地说，就是在第二段音频中找到一个长度和第一段音频相等且是连续的子序列，使得它们的 difference 最小。两段等长音频的 difference 定义为：<br>difference = SUM(a[i] - b[i])2 (1 ≤ i ≤ n),其中SUM()表示求和<br>其中 n 表示序列长度，a[i], b[i]分别表示两段音频的音高。现在袋鼠先生想要知道，difference的最小值是多少？数据保证第一段音频的长度小于等于第二段音频的长度。</p>
-<p>输入描述:<br>第一行一个整数n(1 ≤ n ≤ 1000)，表示第一段音频的长度。<br>第二行n个整数表示第一段音频的音高（0 ≤ 音高 ≤ 1000）。<br>第三行一个整数m(1 ≤ n ≤ m ≤ 1000)，表示第二段音频的长度。<br>第四行m个整数表示第二段音频的音高（0 ≤ 音高 ≤ 1000）。</p>
-<p>输出描述:<br>输出difference的最小值</p>
-<p>输入例子:<br>2<br>1 2<br>4<br>3 1 2 4</p>
-<p>输出例子:<br>0</p>
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>美团点评上有很多餐馆优惠券，用户可以在美团点评App上购买。每张优惠券有一个唯一的正整数编号。当用户在相应餐馆就餐时，可以在餐馆使用优惠券进行消费。优惠券的购买和使用按照时间顺序逐行记录在日志文件中，运营人员会定期抽查日志文件看业务是否正确。业务正确的定义为：一个优惠券必须先被购买，然后才能被使用。</p>
+<p>某次抽查时，发现有硬盘故障，历史日志中有部分行损坏，这些行的存在是已知的，但是行的内容读不出来。假设损坏的行可以是任意的优惠券的购买或者使用。</p>
+<p>现在问这次抽查中业务是否正确。若有错，输出最早出现错误的那一行，即求出最大s，使得记录1到s-1满足要求；若没有错误，输出-1。</p>
+<p>输入描述:<br>m 分别表示 m (1 ≤ m ≤ 5 * 10^5) 条记录。</p>
+<p>下面有m行，格式为：</p>
+<p>I x （I为Input的缩写，表示购买优惠券x）；</p>
+<p>O x（O为Output的缩写，表示使用优惠券x）；</p>
+<p>? （表示这条记录不知道）。</p>
+<p>这里x为正整数，且x ≤ 10^5 。</p>
+<p>输出描述:<br>-1 或 x(1 ≤ x ≤ m) 其中x为使得1到x-1这些记录合法的最大行号。</p>
+<p>输入例子:<br>0<br>1<br>O 1<br>2<br>？<br>O 1<br>3<br>I 1<br>？<br>O 1<br>2<br>I 2<br>O 1</p>
+<p>输出例子:<br>-1<br>1<br>-1<br>-1<br>2</p>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>使用字典 log_dic 储存已经遍历的条目。主函数 check() 用来检查当前条目是否合法：<br>如果是输入，检测字典中是否已有相同未输出的输入，有则报错；<br>如果是输出，检测字典中是否有相应未输出的输入，没有则报错；<br>每个 “?” 可以抵消一个错误。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding = utf-8</span></div><div class="line"><span class="keyword">import</span> sys</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">check</span><span class="params">(log)</span>:</span></div><div class="line">    err_line = <span class="number">-1</span></div><div class="line">    log_dic = &#123;&#125;</div><div class="line">    whatever = <span class="number">0</span></div><div class="line"></div><div class="line">    <span class="keyword">for</span> i, elem <span class="keyword">in</span> enumerate(log):</div><div class="line">        <span class="keyword">if</span> elem[<span class="number">0</span>] == <span class="string">'I'</span>:</div><div class="line">            <span class="keyword">try</span>:</div><div class="line">                status = log_dic[elem[<span class="number">1</span>]]</div><div class="line">            <span class="keyword">except</span> KeyError:</div><div class="line">                log_dic[elem[<span class="number">1</span>]] = <span class="keyword">False</span>  <span class="comment"># Inport not exist, GOOD</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                <span class="keyword">if</span> status <span class="keyword">is</span> <span class="keyword">True</span>:        <span class="comment"># Import exists, but already outputed, GOOD</span></div><div class="line">                    log_dic[elem[<span class="number">1</span>]] = <span class="keyword">False</span></div><div class="line">                <span class="keyword">else</span>:                     <span class="comment"># Import exists, haven't been outputed, BAD</span></div><div class="line">                    <span class="keyword">if</span> whatever &gt; <span class="number">0</span>:      <span class="comment"># maybe because of hd error, GOOD</span></div><div class="line">                        whatever -= <span class="number">1</span></div><div class="line">                    <span class="keyword">else</span>:</div><div class="line">                        err_line = i + <span class="number">1</span></div><div class="line">                        <span class="keyword">break</span></div><div class="line">        <span class="keyword">elif</span> elem[<span class="number">0</span>] == <span class="string">'O'</span>:</div><div class="line">            <span class="keyword">try</span>:</div><div class="line">                status = log_dic[elem[<span class="number">1</span>]]</div><div class="line">            <span class="keyword">except</span> KeyError:</div><div class="line">                <span class="keyword">if</span> whatever &gt; <span class="number">0</span>:</div><div class="line">                    whatever -= <span class="number">1</span></div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    err_line = i + <span class="number">1</span></div><div class="line">                    <span class="keyword">break</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                <span class="keyword">if</span> status <span class="keyword">is</span> <span class="keyword">False</span>:</div><div class="line">                    log_dic[elem[<span class="number">1</span>]] = <span class="keyword">True</span></div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    <span class="keyword">if</span> whatever &gt; <span class="number">0</span>:</div><div class="line">                        whatever -= <span class="number">1</span></div><div class="line">                    <span class="keyword">else</span>:</div><div class="line">                        err_line = i + <span class="number">1</span></div><div class="line">                        <span class="keyword">break</span></div><div class="line">        <span class="keyword">elif</span> elem[<span class="number">0</span>] == <span class="string">'?'</span>:</div><div class="line">            whatever += <span class="number">1</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> err_line</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">        length = int(sys.stdin.readline().strip())</div><div class="line">        <span class="comment"># if not length:</span></div><div class="line">        <span class="comment">#     break</span></div><div class="line">        log = []</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(length):</div><div class="line">            line = sys.stdin.readline().strip().split(<span class="string">' '</span>)</div><div class="line">            log.append(line)</div><div class="line">        print(check(log))</div><div class="line"></div></pre></td></tr></table></figure>
 
@@ -416,384 +774,6 @@ A solution set is:
         <i class="icon-comments"></i>
         <span>
           <a href="/2017/05/23/letter-combinations-of-a-phone-number/#comment">Comments</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/05/16/longest-palindromic-substring/"><span>5. Longest Palindromic Substring</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/05/16/longest-palindromic-substring/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-05-16T09:09:34.000Z">
-          2017-05-16
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Medium</strong></p>
-<p></p><p>Given a string <b>s</b>, find the longest palindromic substring in <b>s</b>. You may assume that the maximum length of <b>s</b> is 1000.</p>
-
-<p></p><p><b>Example:</b><br></p><pre><br><b>Input:</b> “babad”<p></p>
-<p><b>Output:</b> “bab”</p>
-<p><b>Note:</b> “aba” is also a valid answer.<br></p></pre><p></p>
-<p></p><p><b>Example:</b><br></p><pre><br><b>Input:</b> “cbbd”<p></p>
-<p><b>Output:</b> “bb”<br></p></pre><p></p>
-<p><b>题意:</b><br><br>找到给定字符串中最长的（连续）回文子字符串</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>首先想到的方法是设置一个 len(s) 到 1 的窗口，在字符串上滑动，因为是倒序，所以一旦找到就是最长，可以直接返回。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestPalindrome</span><span class="params">(self, s)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type s: str</div><div class="line">        :rtype: str</div><div class="line">        """</div><div class="line">        length = len(s)</div><div class="line">        <span class="keyword">if</span> length &lt;= <span class="number">1</span>:</div><div class="line">            <span class="keyword">return</span> s</div><div class="line">        max_range = (<span class="number">0</span>, <span class="number">0</span>)</div><div class="line">        found = <span class="keyword">False</span></div><div class="line">        <span class="keyword">for</span> win <span class="keyword">in</span> xrange(length, <span class="number">0</span>, <span class="number">-1</span>):</div><div class="line">            <span class="keyword">for</span> head <span class="keyword">in</span> xrange(<span class="number">0</span>, length - win + <span class="number">1</span>):</div><div class="line">                cur_str = s[head:head + win]</div><div class="line">                <span class="keyword">if</span> win % <span class="number">2</span> == <span class="number">0</span>:  <span class="comment"># even</span></div><div class="line">                    l_half, r_half = cur_str[:win / <span class="number">2</span>], cur_str[win / <span class="number">2</span>:]</div><div class="line">                <span class="keyword">elif</span> win % <span class="number">2</span> == <span class="number">1</span>:  <span class="comment"># odd</span></div><div class="line">                    l_half, r_half = cur_str[:win // <span class="number">2</span>], cur_str[win // <span class="number">2</span> + <span class="number">1</span>:]</div><div class="line">                <span class="keyword">if</span> l_half == r_half[::<span class="number">-1</span>]:</div><div class="line">                    max_range = (head, head + win)</div><div class="line">                    found = <span class="keyword">True</span></div><div class="line">                    <span class="keyword">break</span></div><div class="line">            <span class="keyword">if</span> found:</div><div class="line">                <span class="keyword">break</span></div><div class="line">        <span class="keyword">return</span> s[max_range[<span class="number">0</span>]:max_range[<span class="number">1</span>]]</div></pre></td></tr></table></figure></p>
-<p>一点 tip：本来对比窗口内整个字符串与其反向是否相等，未能满足实验复杂度要求；后来选择将字符串切成两半，对比前一半与后一半的反转，时间复杂度要求即可满足。</p>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/algorithm/">algorithm</a>
-    </span>
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/05/16/longest-palindromic-substring/#comment">Comments</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/05/09/remove-nth-node-from-end-of-list/"><span>19. Remove Nth Node From End of List</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/05/09/remove-nth-node-from-end-of-list/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-05-09T12:35:55.000Z">
-          2017-05-09
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Medium</strong></p>
-<p></p><p>Given a linked list, remove the <i>n</i><sup>th</sup> node from the end of list and return its head.</p>
-
-<p><br>For example,</p>
-
-<pre>
-   Given linked list: <b>1-&gt;2-&gt;3-&gt;4-&gt;5</b>, and <b><i>n</i> = 2</b>.
-
-   After removing the second node from the end, the linked list becomes <b>1-&gt;2-&gt;3-&gt;5</b>.
-</pre>
-
-<p><br><b>Note:</b><br><br>Given <i>n</i> will always be valid.<br><br>Try to do this in one pass.<br></p>
-
-<p><b>题意:</b><br><br>删除链表倒数第 n 个节点。<br>要求仅遍历一遍。</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>最简单的方法：快慢指针。<br>快指针领先慢指针 n - 1，快指针到达末尾时，删除慢指针指向元素。<br>为了删除方便，再定义 slow_p 指向慢指针之前元素。<br>顺便，可以判断一些边际状况：<br>fast, slow 与 slow_p 都初始化为 head，因此：</p>
-<ol>
-<li>若 fast == slow == slow_p，则原链表只有一个节点，并且删除这个节点，返回 []</li>
-<li>若 slow == slow_p，则需要删除第一个元素，返回 head.next</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Definition for singly-linked list.</span></div><div class="line"><span class="comment"># class ListNode(object):</span></div><div class="line"><span class="comment">#     def __init__(self, x):</span></div><div class="line"><span class="comment">#         self.val = x</span></div><div class="line"><span class="comment">#         self.next = None</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeNthFromEnd</span><span class="params">(self, head, n)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type head: ListNode</div><div class="line">        :type n: int</div><div class="line">        :rtype: ListNode</div><div class="line">        """</div><div class="line">        fast, slow, slow_p = head, head, head</div><div class="line">        n_copy = n - <span class="number">1</span></div><div class="line"></div><div class="line">        <span class="keyword">while</span> n_copy &gt; <span class="number">0</span>:</div><div class="line">            fast = fast.next</div><div class="line">            n_copy -= <span class="number">1</span></div><div class="line"></div><div class="line">        <span class="keyword">while</span> fast.next:</div><div class="line">            fast = fast.next</div><div class="line">            slow_p = slow</div><div class="line">            slow = slow.next</div><div class="line"></div><div class="line">        <span class="keyword">if</span> fast == slow == slow_p:</div><div class="line">            <span class="keyword">return</span> []</div><div class="line">        <span class="keyword">elif</span> slow == slow_p:</div><div class="line">            <span class="keyword">return</span> head.next</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            slow_p.next = slow.next</div><div class="line">            <span class="keyword">return</span> head</div></pre></td></tr></table></figure>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/algorithm/">algorithm</a>
-    </span>
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/05/09/remove-nth-node-from-end-of-list/#comment">Comments</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/05/02/merge-k-sorted-lists/"><span>23. Merge k Sorted Lists</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/05/02/merge-k-sorted-lists/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-05-02T13:35:48.000Z">
-          2017-05-02
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Hard</strong></p>
-<p></p><p><br>Merge <i>k</i> sorted linked lists and return it as one sorted list. Analyze and describe its complexity.<br></p>
-
-<p><b>题意:</b><br><br>合并 k 个有序链表</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>算法有如下几个要点：</p>
-<ol>
-<li>去除空链表</li>
-<li>k 个指针指向每个链表当前最小元素</li>
-<li>维护一个当前最小值数组，其中只包含每个链表当前最小值或 None</li>
-<li>每次抽走最小值，更新最小值数组。</li>
-</ol>
-<p>单独使用一个最小值数组的原因，也是本算法一个小想法：主循环的判断条件是：<code>while eval(&#39; or &#39;.join(curr)) is not None:</code>，其中 <code>curr</code> 是最小值数组。<br>用一个 <code>eval()</code> 来判断是否所有链表都遍历完毕。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Definition for singly-linked list.</span></div><div class="line"><span class="comment"># class ListNode(object):</span></div><div class="line"><span class="comment">#     def __init__(self, x):</span></div><div class="line"><span class="comment">#         self.val = x</span></div><div class="line"><span class="comment">#         self.next = None</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">mergeKLists</span><span class="params">(self, lists)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type lists: List[ListNode]</div><div class="line">        :rtype: ListNode</div><div class="line">        """</div><div class="line"></div><div class="line">        <span class="comment"># copy lists</span></div><div class="line">        pts = []</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> lists:</div><div class="line">            pts.append(i)</div><div class="line">        </div><div class="line">        length = len(lists)</div><div class="line">        copy_index, copy_length = <span class="number">0</span>, length</div><div class="line">        <span class="keyword">while</span> copy_length &gt; <span class="number">0</span> <span class="keyword">and</span> copy_index &lt; copy_length:</div><div class="line">            <span class="keyword">if</span> pts[copy_index] <span class="keyword">is</span> <span class="keyword">None</span>:</div><div class="line">                <span class="keyword">del</span>(pts[copy_index])</div><div class="line">                copy_length -= <span class="number">1</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                copy_index += <span class="number">1</span></div><div class="line">                </div><div class="line">        length = len(pts)</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> length == <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">None</span></div><div class="line">        <span class="keyword">elif</span> length == <span class="number">1</span>:</div><div class="line">            <span class="keyword">return</span> pts[<span class="number">0</span>]</div><div class="line">            </div><div class="line">        head = ListNode(<span class="string">'head'</span>)</div><div class="line">        <span class="comment"># working pointer</span></div><div class="line">        p = head</div><div class="line"></div><div class="line">        curr = []</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> pts:</div><div class="line">            <span class="keyword">if</span> i <span class="keyword">and</span> (i.val <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>):</div><div class="line">                curr.append(str(i.val))</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                curr.append(<span class="string">'None'</span>)</div><div class="line">        <span class="keyword">while</span> eval(<span class="string">' or '</span>.join(curr)) <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</div><div class="line">            min_val, min_index = float(<span class="string">'inf'</span>), <span class="number">-1</span></div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> xrange(length):</div><div class="line">                <span class="keyword">if</span> pts[i] <span class="keyword">and</span> (pts[i].val <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>) <span class="keyword">and</span> pts[i].val &lt; min_val:</div><div class="line">                    min_val, min_index = pts[i].val, i</div><div class="line">            p.next = pts[min_index]</div><div class="line">            p = p.next</div><div class="line">            <span class="keyword">if</span> pts[min_index]:</div><div class="line">                pts[min_index] = pts[min_index].next</div><div class="line">                <span class="keyword">if</span> pts[min_index]:</div><div class="line">                    curr[min_index] = str(pts[min_index].val)</div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    curr[min_index] = <span class="string">'None'</span></div><div class="line">                </div><div class="line">            </div><div class="line">        <span class="keyword">return</span> head.next</div></pre></td></tr></table></figure>
-<p>这个算法很不幸还没有 AC，最后一个测试用例运行时间无法满足。我会继续更新。但我觉得这个算法很有趣，特此记录。</p>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/algorithm/">algorithm</a>
-    </span>
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/05/02/merge-k-sorted-lists/#comment">Comments</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/05/01/javascript-what-this-is/"><span>JavaScript: this, 这个到底是哪个？</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/05/01/javascript-what-this-is/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-05-01T14:25:59.000Z">
-          2017-05-01
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>最近做项目过程中，遇到了一个问题：因为需要解析 JavaScript 代码，所以会需要解析 <code>this</code> 指的是什么。经过一番实验查询，现在有了一个初步的结果，特此记录。</p>
-<p><code>this</code> 一般来说只存在于方法体中，而其指代，说白了就三种情况。</p>
-<h2 id="一般情况"><a href="#一般情况" class="headerlink" title="一般情况"></a>一般情况</h2><p>一般情况下，<code>this</code> 指代调用所在方法的对象。示例：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">testThis</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.x)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> obj = &#123;&#125;</div><div class="line">obj.x = <span class="number">1</span></div><div class="line">obj.testThis = testThis</div><div class="line"></div><div class="line">obj.testThis()  <span class="comment">// 打印 1</span></div></pre></td></tr></table></figure>
-<p>当 <code>obj</code> 调用 <code>testThis</code> 时，<code>this</code> 指向调用者 <code>obj</code>。</p>
-<p>需要注意的是，这里 <code>this</code> 只与方法调用位置有关，与方法定义位置无关。示例：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> obj1 = &#123;&#125;</div><div class="line">obj1.x = <span class="number">1</span></div><div class="line">obj1.testThis = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.x)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> obj2 = &#123;&#125;</div><div class="line">obj2.x = <span class="number">2</span></div><div class="line">obj2.testThis = obj1.testThis</div><div class="line">obj2.testThis()  <span class="comment">// 打印 2</span></div></pre></td></tr></table></figure>
-<h3 id="全局调用"><a href="#全局调用" class="headerlink" title="全局调用"></a>全局调用</h3><p>特别地，若直接调用这个方法，这个方法的调用者为默认全局对象，如浏览器中的 <code>[Object Window]</code>，或是 node 中的 <code>[object global]</code>。示例如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">testThis</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.x)</div><div class="line">&#125;</div><div class="line"></div><div class="line">global.x = <span class="number">2</span></div><div class="line"></div><div class="line">testThis()  <span class="comment">// 打印 2</span></div></pre></td></tr></table></figure>
-<h3 id="类调用"><a href="#类调用" class="headerlink" title="类调用"></a>类调用</h3><p>在类定义的代码块（包括构造方法）中，<code>this</code> 默认指代这个类本身（或者说在类被实例化之后指这个实例）。示例如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestThis</span> </span>&#123;</div><div class="line">    <span class="keyword">constructor</span> () &#123;</div><div class="line">        <span class="keyword">this</span>.x = <span class="number">3</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    printThis () &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.x)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">test = <span class="keyword">new</span> TestThis()</div><div class="line"><span class="built_in">console</span>.log(test.x)  <span class="comment">// 打印 3</span></div><div class="line">test.printThis()  <span class="comment">// 打印 3</span></div></pre></td></tr></table></figure>
-<h2 id="特殊情况"><a href="#特殊情况" class="headerlink" title="特殊情况"></a>特殊情况</h2><p>说完了一般情况，下面是有一点特殊的情况。</p>
-<h3 id="apply-与-call"><a href="#apply-与-call" class="headerlink" title="apply() 与 call()"></a>apply() 与 call()</h3><p>关于 <code>apply()</code>，我无法比阮一峰老师解释的更清楚了，这里引用他的解释：</p>
-<blockquote>
-<p><code>apply()</code> 是函数对象的一个方法，它的作用是改变函数的调用对象，它的第一个参数就表示改变后的调用这个函数的对象。因此，<code>this</code> 指的就是这第一个参数。</p>
-</blockquote>
-<p>而 <code>call()</code> 于 <code>apply()</code> 的区别仅在于参数传入方式，示例：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> obj1 = &#123;&#125;</div><div class="line"><span class="keyword">let</span> obj2 = &#123;&#125;</div><div class="line"></div><div class="line">obj1.x = <span class="number">1</span></div><div class="line">obj2.x = <span class="number">2</span></div><div class="line"></div><div class="line">obj1.testThis = <span class="function"><span class="keyword">function</span> (<span class="params">a1, a2</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.x)</div><div class="line">&#125;</div><div class="line"></div><div class="line">obj.testThis.apply(obj2, [<span class="string">'a1'</span>, <span class="string">'a2'</span>])  <span class="comment">// 打印 2</span></div><div class="line">obj.testThis.call(obj2, <span class="string">'a1'</span>, <span class="string">'a2'</span>)  <span class="comment">// 打印 2</span></div></pre></td></tr></table></figure>
-<p>a1, a2 为 <code>obj1.testThis</code> 的参数。可以看到 <code>apply()</code> 的将参数以数组（<code>apply()</code> 的第二个参数）方式传入，而 <code>call()</code> 将第一个参数之后的参数直接传入作为参数列表。</p>
-<h3 id="forEach"><a href="#forEach" class="headerlink" title="forEach()"></a>forEach()</h3><p><code>forEach()</code> 方法在 ECMAScript 5.1 首次被引入，语法如下：</p>
-<p><code>arr.forEach(callback[, thisArg])</code></p>
-<p>可以看到第一个参数是回调函数，而第二个参数是可选的，指定 <code>this</code> 的指代。值得注意的是，如果在此处不特别指定 <code>this</code> 的指代，<code>this</code> 将回落为指代全局对象。示例：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>，<span class="number">2</span>]</div><div class="line"></div><div class="line">a.forEach(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.toString())  <span class="comment">// 打印 [object global] 两次</span></div><div class="line">    &#125;)</div></pre></td></tr></table></figure>
-<h2 id="特别感谢与更多参考"><a href="#特别感谢与更多参考" class="headerlink" title="特别感谢与更多参考"></a>特别感谢与更多参考</h2><p>MDN 上 <code>forEach()</code> 方法的文档：<br><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach" target="_blank" rel="external">Array.prototype.forEach()</a></p>
-<p>阮一峰老师关于 <code>this</code> 的解释：<br><a href="http://www.ruanyifeng.com/blog/2010/04/using_this_keyword_in_javascript.html" target="_blank" rel="external">Javascript 的 this 用法</a></p>
-<p>Maplewing 在英特尔开发人员专区关于 <code>this</code> 的解释：<br><a href="https://software.intel.com/zh-cn/blogs/2013/10/09/javascript-this" target="_blank" rel="external">#Javascript：this 用法整理</a></p>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/javascript/">javascript</a>
-    </span>
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/05/01/javascript-what-this-is/#comment">Comments</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/04/27/a-update-of-the-template-tool-for-my-blog/"><span>A Update Of The Template Tool For My Blog</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/04/27/a-update-of-the-template-tool-for-my-blog/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-04-27T04:37:09.000Z">
-          2017-04-27
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>博客模板工具再次更新！<br>毕竟这个博客并不只是为了记录题目（虽然这是一个主要用途），那么写作其他内容时需要一个简单的模板，只包含标题，标签和时间。<br>于是有了这次更新。<br>同时，我把这个小脚本放在了 GitHub 上，虽然我几乎确定这个轮子已经被造了无数遍了，但是自己用还是自己写比较方便。</p>
-<p>地址：<a href="https://github.com/4faramita/Hexo-Template-Generator" target="_blank" rel="external">https://github.com/4faramita/Hexo-Template-Generator</a></p>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/works/">works</a>
-    </span>
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/04/27/a-update-of-the-template-tool-for-my-blog/#comment">Comments</a>
         </span>
       </span>
     </div>
