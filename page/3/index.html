@@ -69,6 +69,79 @@
 
   
     
+    <h3 class="article-title"><a href="/2017/04/04/count-and-say/"><span>38. Count and Say</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/04/04/count-and-say/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-04-04T06:23:48.000Z">
+          2017-04-04
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
+<p></p><p>The count-and-say sequence is the sequence of integers beginning as follows:<br><br><code>1, 11, 21, 1211, 111221, …</code><br></p>
+
+<p><br><code>1</code> is read off as <code>“one 1”</code> or <code>11</code>.<br><br><code>11</code> is read off as <code>“two 1s”</code> or <code>21</code>.<br><br><code>21</code> is read off as <code>“one 2</code>, then <code>one 1”</code> or <code>1211</code>.<br><br></p>
+
+<p><br>Given an integer <i>n</i>, generate the <i>n</i><sup>th</sup> sequence.<br></p>
+
+<p><br>Note: The sequence of integers will be represented as a string.<br></p>
+
+<p><b>题意:</b><br><br>有这样一个数列，下一个元素是由上一个元素按照（元素个数，元素）的方法组成的。<br>求这个数列的第 n 个元素。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>迭代：把数列的上一个元素在元素变化的点切分，然后数出每一块的长度即可。<br>_loop 函数用来迭代。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">_loop</span><span class="params">(s)</span>:</span></div><div class="line">    <span class="keyword">if</span> len(s) == <span class="number">1</span>:</div><div class="line">        <span class="keyword">return</span> <span class="string">'11'</span></div><div class="line">    head, tail = <span class="number">1</span>, <span class="number">0</span></div><div class="line">    rslt = []</div><div class="line">    rslt_s = <span class="string">''</span></div><div class="line">    scanning = <span class="keyword">False</span></div><div class="line">    <span class="keyword">while</span> max(head, tail) &lt; len(s):</div><div class="line">        <span class="keyword">if</span> s[head] == s[tail] <span class="keyword">and</span> <span class="keyword">not</span> scanning:</div><div class="line">            scanning = <span class="keyword">True</span></div><div class="line">        <span class="keyword">elif</span> s[head] != s[tail]:</div><div class="line">            rslt.append(s[tail:head])</div><div class="line">            tail = head</div><div class="line">            <span class="keyword">if</span> scanning:</div><div class="line">                scanning = <span class="keyword">False</span></div><div class="line">        head += <span class="number">1</span></div><div class="line">    <span class="comment"># if scanning:</span></div><div class="line">    rslt.append(s[tail:])</div><div class="line">    <span class="keyword">for</span> sub <span class="keyword">in</span> rslt:</div><div class="line">        rslt_s = rslt_s + str(len(sub)) + sub[<span class="number">0</span>]</div><div class="line">    <span class="keyword">return</span> rslt_s</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">countAndSay</span><span class="params">(self, n)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type n: int</div><div class="line">        :rtype: str</div><div class="line">        """</div><div class="line">        rslt = <span class="string">'1'</span></div><div class="line"></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n):</div><div class="line">            rslt = _loop(rslt)</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> rslt</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="/2017/04/04/count-and-say/#comment">Comments</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
     <h3 class="article-title"><a href="/2017/03/30/count-primes/"><span>204. Count Primes</span></a></h3>
     
   
@@ -684,80 +757,6 @@
         <i class="icon-comments"></i>
         <span>
           <a href="/2017/03/22/intersection-of-two-arrays-ii/#comment">Comments</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/03/21/intersection-of-two-linked-lists/"><span>160. Intersection of Two Linked Lists</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/03/21/intersection-of-two-linked-lists/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-03-21T09:18:58.000Z">
-          2017-03-21
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
-<p></p><p>Write a program to find the node at which the intersection of two singly linked lists begins.</p>
-
-<p>For example, the following two linked lists: </p><br><pre><br>A:          a1 → a2<br>                   ↘<br>                     c1 → c2 → c3<br>                   ↗<br>B:     b1 → b2 → b3<br></pre><br><p>begin to intersect at node c1.</p>
-
-<p></p><p><b>Notes:</b><br></p><ul><p></p>
-<p><li>If the two linked lists have no intersection at all, return <code>null</code>.</li></p>
-<p><li>The linked lists must retain their original structure after the function returns. </li></p>
-<p><li>You may assume there are no cycles anywhere in the entire linked structure.</li></p>
-<p><li>Your code should preferably run in O(n) time and use only O(1) memory.</li><br></p></ul><p></p>
-<p><b>题意:</b><br><br>两个链表，要求返回交叉点。</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>先遍历一遍，确定二者的长度。<br>从较长的一个开始遍历，直到二者长度相同，然后两个链表同时向后遍历，检测每一个点是不是点是不是相等<br>遍历两次，时间复杂度 O(n),；<br>新建四个指针，空间复杂度 O(1)。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Definition for singly-linked list.</span></div><div class="line"><span class="comment"># class ListNode(object):</span></div><div class="line"><span class="comment">#     def __init__(self, x):</span></div><div class="line"><span class="comment">#         self.val = x</span></div><div class="line"><span class="comment">#         self.next = None</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getIntersectionNode</span><span class="params">(self, headA, headB)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type head1, head1: ListNode</div><div class="line">        :rtype: ListNode</div><div class="line">        """</div><div class="line">        pt_a, pt_b = headA, headB</div><div class="line">        len_a, len_b = <span class="number">0</span>, <span class="number">0</span></div><div class="line">        </div><div class="line">        <span class="keyword">while</span> pt_a:</div><div class="line">            len_a += <span class="number">1</span></div><div class="line">            pt_a = pt_a.next</div><div class="line">        <span class="keyword">while</span> pt_b:</div><div class="line">            len_b += <span class="number">1</span></div><div class="line">            pt_b = pt_b.next</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> len_a &gt; len_b:</div><div class="line">            long, short = headA, headB</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            long, short = headB, headA</div><div class="line">        </div><div class="line">        <span class="keyword">for</span> diff <span class="keyword">in</span> range(abs(len_a - len_b)):</div><div class="line">            long = long.next</div><div class="line">        </div><div class="line">        common = <span class="keyword">None</span></div><div class="line">        <span class="keyword">while</span> long:</div><div class="line">            <span class="keyword">if</span> long == short:</div><div class="line">                common = long</div><div class="line">                <span class="keyword">break</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                long, short = long.next, short.next</div><div class="line">        <span class="keyword">return</span> common</div></pre></td></tr></table></figure>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/algorithm/">algorithm</a>
-    </span>
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/03/21/intersection-of-two-linked-lists/#comment">Comments</a>
         </span>
       </span>
     </div>
