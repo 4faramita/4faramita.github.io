@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>第 3 页 | 之言片语</title>
+  <title>Page 3 | 之言片语</title>
 
   
   <meta name="author" content="4faramita">
@@ -47,7 +47,7 @@
   <nav class="site-navigation">
     <ul>
       
-        <li><a href="/">主页</a></li>
+        <li><a href="/">Home</a></li>
       
         <li><a href="/tags/algorithm">Algorithms</a></li>
       
@@ -57,7 +57,7 @@
       
         <li><a href="/tags/works">Works</a></li>
       
-        <li><a href="/archives">归档</a></li>
+        <li><a href="/archives">Archives</a></li>
       
     </ul>
   </nav>
@@ -65,6 +65,83 @@
 
     <main class="site-main posts-loop">
     
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/04/11/climbing-stairs/"><span>70. Climbing Stairs</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/04/11/climbing-stairs/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-04-11T02:00:59.000Z">
+          2017-04-11
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
+<p></p><p>You are climbing a stair case. It takes <i>n</i> steps to reach to the top.</p>
+
+<p>Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?<br></p>
+
+<p><b>Note:</b> Given <i>n</i> will be a positive integer.<br></p>
+
+<p>n 阶楼梯，每次可以爬一阶或者两阶，问有多少种方法。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>由于包含动态规划的两个特征：</p>
+<ul>
+<li>最优子结构</li>
+<li>重复的子问题</li>
+</ul>
+<p>因此可用动态规划。</p>
+<p>核心算法：为了到达第 i 阶（i &gt;= 3)，可以从 i - 1 阶上一阶，也可以从 i - 2 阶上两阶。递归这个算法即可。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">climbStairs</span><span class="params">(self, n)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type n: int</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        stor = &#123;<span class="number">1</span>: <span class="number">1</span>, <span class="number">2</span>: <span class="number">2</span>&#125;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">3</span>, n+<span class="number">1</span>):</div><div class="line">            stor[i] = stor[i<span class="number">-1</span>] + stor[i<span class="number">-2</span>]</div><div class="line">        <span class="keyword">return</span> stor[n]</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="/2017/04/11/climbing-stairs/#comment">Comments</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
   <article>
 
   
@@ -128,7 +205,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/04/04/count-and-say/#comment">评论</a>
+          <a href="/2017/04/04/count-and-say/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -206,7 +283,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/30/count-primes/#comment">评论</a>
+          <a href="/2017/03/30/count-primes/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -272,7 +349,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/29/excel-sheet-column-number/#comment">评论</a>
+          <a href="/2017/03/29/excel-sheet-column-number/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -341,7 +418,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/28/factorial-trailing-zeroes/#comment">评论</a>
+          <a href="/2017/03/28/factorial-trailing-zeroes/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -409,7 +486,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/27/first-unique-character-in-a-string/#comment">评论</a>
+          <a href="/2017/03/27/first-unique-character-in-a-string/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -475,7 +552,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/26/fizz-buzz/#comment">评论</a>
+          <a href="/2017/03/26/fizz-buzz/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -545,7 +622,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/25/hamming-distance/#comment">评论</a>
+          <a href="/2017/03/25/hamming-distance/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -618,7 +695,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/24/happy-number/#comment">评论</a>
+          <a href="/2017/03/24/happy-number/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -687,76 +764,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/03/23/house-robber/#comment">评论</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/03/22/intersection-of-two-arrays-ii/"><span>350. Intersection of Two Arrays II</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/03/22/intersection-of-two-arrays-ii/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-03-22T12:26:00.000Z">
-          2017-03-22
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
-<p>Given two arrays, write a function to compute their intersection.</p>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example:"></a>Example:</h3><p>Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2, 2].</p>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note:"></a>Note:</h3><p>Each element in the result should appear as many times as it shows in both arrays.<br>The result can be in any order.</p>
-<h3 id="Follow-up"><a href="#Follow-up" class="headerlink" title="Follow up:"></a>Follow up:</h3><p>What if the given array is already sorted? How would you optimize your algorithm?<br>What if nums1’s size is small compared to nums2’s size? Which algorithm is better?<br>What if elements of nums2 are stored on disk, and the memory is limited such that you cannot load all elements into the memory at once?</p>
-<p>求两个数组交集。</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>鉴于结果的顺序不限，依然使用我最喜欢的字典类型来实现。（字典类型实际上是哈希表，因此效率喜人）<br>将两个数组转化为字典：<br>key：数组中元素<br>value：元素出现次数<br>然后根据较短的字典构建数组：每个在短数组出现过的元素，若在长数组中也存在，则在结果数组中添加数个该元素，添加的数量为该元素在两个字典中各自出现次数中较小的一个次数。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">to_set</span><span class="params">(nums)</span>:</span></div><div class="line">    nums_set = &#123;&#125;</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> nums:</div><div class="line">        <span class="keyword">try</span>:</div><div class="line">            nums_set[i] += <span class="number">1</span></div><div class="line">        <span class="keyword">except</span> KeyError:</div><div class="line">            nums_set[i] = <span class="number">1</span></div><div class="line">    <span class="keyword">return</span> nums_set</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">intersect</span><span class="params">(self, nums1, nums2)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type nums1: List[int]</div><div class="line">        :type nums2: List[int]</div><div class="line">        :rtype: List[int]</div><div class="line">        """</div><div class="line">        nums1_set = to_set(nums1)</div><div class="line">        nums2_set = to_set(nums2)</div><div class="line">        intersection = []</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> len(nums1_set) &gt; len(nums2_set):</div><div class="line">            nums1_set, nums2_set = nums2_set, nums1_set  <span class="comment"># 1 &lt; 2</span></div><div class="line">        </div><div class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> nums1_set:</div><div class="line">            <span class="keyword">if</span> j <span class="keyword">in</span> nums2_set:</div><div class="line">                intersection = intersection + ([j] * min(nums1_set[j], nums2_set[j]))</div><div class="line">                </div><div class="line">        <span class="keyword">return</span> intersection</div></pre></td></tr></table></figure>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/algorithm/">algorithm</a>
-    </span>
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/03/22/intersection-of-two-arrays-ii/#comment">评论</a>
+          <a href="/2017/03/23/house-robber/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -769,10 +777,10 @@
 
 <nav class="pagination">
   
-  <a href="/page/2/" class="pagination-prev">上一页</a>
+  <a href="/page/2/" class="pagination-prev">Prev</a>
   
   
-  <a href="/page/4/" class="pagination-next">下一页</a>
+  <a href="/page/4/" class="pagination-next">Next</a>
   
 </nav>
     </main>

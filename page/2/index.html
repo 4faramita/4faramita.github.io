@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>第 2 页 | 之言片语</title>
+  <title>Page 2 | 之言片语</title>
 
   
   <meta name="author" content="4faramita">
@@ -47,7 +47,7 @@
   <nav class="site-navigation">
     <ul>
       
-        <li><a href="/">主页</a></li>
+        <li><a href="/">Home</a></li>
       
         <li><a href="/tags/algorithm">Algorithms</a></li>
       
@@ -57,7 +57,7 @@
       
         <li><a href="/tags/works">Works</a></li>
       
-        <li><a href="/archives">归档</a></li>
+        <li><a href="/archives">Archives</a></li>
       
     </ul>
   </nav>
@@ -65,6 +65,73 @@
 
     <main class="site-main posts-loop">
     
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/05/30/container-with-most-water/"><span>11. Container With Most Water</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/05/30/container-with-most-water/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-05-30T15:16:59.000Z">
+          2017-05-30
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Medium</strong></p>
+<p></p><p>Given <i>n</i> non-negative integers <i>a<sub>1</sub></i>, <i>a<sub>2</sub></i>, …, <i>a<sub>n</sub></i>, where each represents a point at coordinate (<i>i</i>, <i>a<sub>i</sub></i>). <i>n</i> vertical lines are drawn such that the two endpoints of line <i>i</i> is at (<i>i</i>, <i>a<sub>i</sub></i>) and (<i>i</i>, 0). Find two lines, which together with x-axis forms a container, such that the container contains the most water.<br></p><br><p>Note: You may not slant the container and <i>n</i> is at least 2.<br></p>
+
+<p><b>题意:</b><br><br>给出一堆整数坐标点，每个点的高度相当于对应挡板的高度；选出两个挡板，与 x 轴组成水桶，求最大容量。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>容量由短板和宽度（两个点在 x 上的投影距离）决定。<br>设两个指针，一头一尾。<br>vol 函数计算给出两个指针形成的容积。<br>max_vol 储存最大容积。<br>每算完一次，较短的板子向对方移动一次。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">vol</span><span class="params">(height, x, y)</span>:</span></div><div class="line">    <span class="keyword">return</span> (height[x] <span class="keyword">if</span> height[x] &lt; height[y] <span class="keyword">else</span> height[y]) * (y - x)</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxArea</span><span class="params">(self, height)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type height: List[int]</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        </div><div class="line">        max_vol = <span class="number">0</span></div><div class="line">        length = len(height)</div><div class="line">        head, tail = <span class="number">0</span>, length - <span class="number">1</span></div><div class="line">        <span class="keyword">while</span> tail &gt; head:</div><div class="line">            cur_vol = vol(height, head, tail)</div><div class="line">            max_vol = cur_vol <span class="keyword">if</span> cur_vol &gt; max_vol <span class="keyword">else</span> max_vol</div><div class="line">            </div><div class="line">            <span class="keyword">if</span> height[head] &lt; height[tail]:</div><div class="line">                head += <span class="number">1</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                tail -= <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> max_vol</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+    
+
+    </div>
+
+    
+    <div class="article-meta pull-right">
+      <span>
+        <i class="icon-comments"></i>
+        <span>
+          <a href="/2017/05/30/container-with-most-water/#comment">Comments</a>
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</article>
+
+
+
   <article>
 
   
@@ -131,7 +198,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/05/23/letter-combinations-of-a-phone-number/#comment">评论</a>
+          <a href="/2017/05/23/letter-combinations-of-a-phone-number/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -203,7 +270,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/05/16/longest-palindromic-substring/#comment">评论</a>
+          <a href="/2017/05/16/longest-palindromic-substring/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -284,7 +351,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/05/09/remove-nth-node-from-end-of-list/#comment">评论</a>
+          <a href="/2017/05/09/remove-nth-node-from-end-of-list/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -359,7 +426,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/05/02/merge-k-sorted-lists/#comment">评论</a>
+          <a href="/2017/05/02/merge-k-sorted-lists/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -446,7 +513,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/05/01/javascript-what-this-is/#comment">评论</a>
+          <a href="/2017/05/01/javascript-what-this-is/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -509,7 +576,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/04/27/a-update-of-the-template-tool-for-my-blog/#comment">评论</a>
+          <a href="/2017/04/27/a-update-of-the-template-tool-for-my-blog/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -578,7 +645,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/04/25/best-time-to-buy-and-sell-stock-ii/#comment">评论</a>
+          <a href="/2017/04/25/best-time-to-buy-and-sell-stock-ii/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -650,7 +717,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/04/18/best-time-to-buy-and-sell-stock/#comment">评论</a>
+          <a href="/2017/04/18/best-time-to-buy-and-sell-stock/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -737,84 +804,7 @@
       <span>
         <i class="icon-comments"></i>
         <span>
-          <a href="/2017/04/14/ShadowsocksX-NG-R8-Updater/#comment">评论</a>
-        </span>
-      </span>
-    </div>
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/04/11/climbing-stairs/"><span>70. Climbing Stairs</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/04/11/climbing-stairs/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-04-11T02:00:59.000Z">
-          2017-04-11
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><strong>Difficulty: Easy</strong></p>
-<p></p><p>You are climbing a stair case. It takes <i>n</i> steps to reach to the top.</p>
-
-<p>Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?<br></p>
-
-<p><b>Note:</b> Given <i>n</i> will be a positive integer.<br></p>
-
-<p>n 阶楼梯，每次可以爬一阶或者两阶，问有多少种方法。</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>由于包含动态规划的两个特征：</p>
-<ul>
-<li>最优子结构</li>
-<li>重复的子问题</li>
-</ul>
-<p>因此可用动态规划。</p>
-<p>核心算法：为了到达第 i 阶（i &gt;= 3)，可以从 i - 1 阶上一阶，也可以从 i - 2 阶上两阶。递归这个算法即可。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">climbStairs</span><span class="params">(self, n)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type n: int</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        stor = &#123;<span class="number">1</span>: <span class="number">1</span>, <span class="number">2</span>: <span class="number">2</span>&#125;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">3</span>, n+<span class="number">1</span>):</div><div class="line">            stor[i] = stor[i<span class="number">-1</span>] + stor[i<span class="number">-2</span>]</div><div class="line">        <span class="keyword">return</span> stor[n]</div></pre></td></tr></table></figure>
-
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/algorithm/">algorithm</a>
-    </span>
-    
-
-    </div>
-
-    
-    <div class="article-meta pull-right">
-      <span>
-        <i class="icon-comments"></i>
-        <span>
-          <a href="/2017/04/11/climbing-stairs/#comment">评论</a>
+          <a href="/2017/04/14/ShadowsocksX-NG-R8-Updater/#comment">Comments</a>
         </span>
       </span>
     </div>
@@ -827,10 +817,10 @@
 
 <nav class="pagination">
   
-  <a href="/" class="pagination-prev">上一页</a>
+  <a href="/" class="pagination-prev">Prev</a>
   
   
-  <a href="/page/3/" class="pagination-next">下一页</a>
+  <a href="/page/3/" class="pagination-next">Next</a>
   
 </nav>
     </main>
